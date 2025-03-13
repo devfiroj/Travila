@@ -1,0 +1,1820 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./output.css" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
+      .fade {
+      transition: opacity 1s ease-in-out;
+    }
+    </style>
+    
+    <title>Travila</title>
+  </head>
+  <body style="font-family: 'Manrope', serif">
+    <header>
+      <!-- Above Navbar -->
+      <section
+        class="bg-[#FFFFFF] text-sm h-[2rem] px-4 flex justify-end md:justify-between items-center border-b-2 border-[#F2F4F6]"
+      > 
+        <!-- Left Section-Phone and Email -->
+        <section class="hidden space-x-2 md:flex justify-center items-center">
+          <section class="flex justify-center items-center gap-0.5">
+            <img src="./public/Icon/phone.svg" alt="phone icon">
+            <span>+1 222-555-33-99</span>
+          </section>
+          <section class="flex justify-center items-center gap-0.5">
+            <img src="./public/Icon/email.svg" alt="email icon">
+            <span>support@travila.com</span>
+          </section>
+        </section>
+        <!-- Middle -->
+        <section class="hidden lg:flex items-center space-x-3">
+          <img src="./public/Icon/lightning.svg" alt="lightning icon">
+          <span
+            >Unlock the Magic of Travel with Travila - Your Gateway to
+            Extraordinary Experiences</span
+          >
+          <a href="#" class="text-[#F09814] font-bold ml-1">Get This Now ➔</a>
+        </section>
+        <!-- Right-Selects -->
+        <section class=" flex justify-center  items-center gap-1 h-full ">
+          <button id="langBtn" class=" relative flex justify-between items-center h-full">
+            <img src="./public/Icon/globe.svg" alt="glove icon">
+            <span id="selectedLang">EN</span>
+            <img src="./public/Icon/downArrow.svg" alt="downArrow">
+            <ul id="langOptions" class="absolute z-20 left-5 top-7 w-8 mt-1 bg-white border border-gray-300 rounded-md shadow-md hidden">
+              <li class="px-1  hover:bg-gray-100 cursor-pointer" data-value="EN">EN</li>
+              <li class="px-1  hover:bg-gray-100 cursor-pointer" data-value="HI">HI</li>
+              <li class="px-1  hover:bg-gray-100 cursor-pointer" data-value="BN">BN</li>
+            </ul>
+          </button>
+          <button id="currencyBtn"
+            class=" relative flex justify-center items-center px-1 border-l-2 border-r-2 border-[#F2F4F6] h-full"
+          >
+            <span id="selectedCurrency">USD</span>
+            <img src="./public/Icon/downArrow.svg" alt="downArrow">
+            <ul id="currencyOptions" class="absolute z-20 top-7 w-10 mt-1 bg-white border border-gray-300 rounded-md shadow-md hidden">
+              <li class="px-1  hover:bg-gray-100 cursor-pointer" data-value="EN">USD</li>
+              <li class="px-1  hover:bg-gray-100 cursor-pointer" data-value="HI">INR</li>
+              <li class="px-1  hover:bg-gray-100 cursor-pointer" data-value="BN">EUR</li>
+            </ul>
+          </button>
+          <figure>
+            <img src="./public/Icon/light.svg" alt="dark-light mode icon">
+          </figure>
+        </section>
+      </section>
+      <!-- Navbar -->
+      <nav
+        class="bg-white shadow-md px-6 py-4 flex justify-between items-center"
+      >
+        <!-- Logo -->
+        <section class="flex items-center space-x-2">
+          <svg
+            class="bg-[#FEFA17] rounded-full"
+            width="35"
+            height="35"
+            viewBox="0 0 35 35"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <mask
+              id="mask0_1_7640"
+              style="mask-type: luminance"
+              maskUnits="userSpaceOnUse"
+              x="0"
+              y="0"
+              width="35"
+              height="35"
+            >
+              <path d="M35 0.470001H0.125V34.22H35V0.470001Z" fill="white" />
+            </mask>
+            <g mask="url(#mask0_1_7640)">
+              <path
+                d="M35 34.2199H0.125C1.65423 33.4651 3.11995 32.5827 4.50726 31.5815C7.11772 29.6978 10.6613 27.808 14.7365 27.4458C21.6642 26.83 30.2457 31.9257 35 34.2199Z"
+                fill="black"
+              />
+              <path
+                d="M17.5598 22.4769C16.0833 18.9329 13.4256 17.3933 12.02 17.2544C11.6173 17.2278 11.2135 17.2859 10.8336 17.4251C10.4537 17.5642 10.1057 17.7815 9.81109 18.0635C10.033 17.7886 10.2737 17.5303 10.5317 17.2907C10.1596 16.9465 9.72259 16.6144 9.72259 16.6144C10.1124 16.8016 10.5376 17.0492 10.6911 17.1458C11.0947 16.7859 11.5252 16.4589 11.9787 16.1677C11.5904 15.8468 11.182 15.5524 10.7561 15.2862C11.2903 15.467 11.8065 15.6995 12.2976 15.9805C12.9066 15.6239 13.5402 15.3132 14.1934 15.0507C13.939 14.8343 13.6728 14.6327 13.3961 14.447C13.7783 14.5846 14.1495 14.7521 14.5064 14.9481C15.2095 14.6757 15.9297 14.4518 16.6621 14.2779C13.0358 13.2455 10.2009 14.3987 9.20869 15.4432C8.80576 15.874 8.55079 16.427 8.48229 17.019C8.04959 16.0112 7.29323 15.1848 6.3384 14.6764C4.1768 13.7526 2.0152 15.5639 2.0152 15.5639C2.91354 15.3863 3.84358 15.496 4.67881 15.8779L5.48203 15.3405L4.93868 15.9986C5.78907 16.4474 6.55809 17.0417 7.21249 17.7555C6.66847 17.4148 6.02466 17.2802 5.39344 17.3752C3.99372 17.6106 1.44823 19.3374 0.213867 22.978C0.757307 22.4769 1.33566 22.0169 1.94433 21.6015C1.99425 21.1941 2.0712 20.7907 2.17466 20.394C2.17004 20.7368 2.18582 21.0795 2.22191 21.4204C2.80497 21.0175 3.417 20.6602 4.05278 20.3517C4.10411 19.7788 4.21094 19.2125 4.3717 18.6612C4.33766 19.1718 4.33766 19.6841 4.3717 20.1947C4.8592 19.9772 5.36278 19.7996 5.87773 19.6634C5.87773 19.4763 5.93089 18.9812 6.00176 18.5465C6.00176 18.5465 6.00176 19.1019 6.08444 19.6091C6.27737 19.5648 6.47424 19.5286 6.67505 19.5004C5.96632 20.2128 5.2517 21.7524 5.31666 25.061C5.31666 25.061 5.73599 24.0769 6.27344 23.0505C6.16948 22.6381 6.11397 22.2145 6.10807 21.7886C6.10807 21.7886 6.26163 22.2898 6.4329 22.7426C6.59236 22.4407 6.76364 22.1388 6.929 21.8792L6.97035 21.8128C6.91129 21.4868 6.80498 20.8347 6.77545 20.3819C6.77545 20.3819 6.94672 20.9856 7.14753 21.5351C7.55059 20.8997 8.02426 20.3142 8.55906 19.7902C11.8546 25.5742 11.5121 33.9966 11.5121 33.9966L13.0595 33.8577C12.6342 25.8278 10.0828 21.04 9.13199 19.5125C9.89939 19.37 10.6856 19.37 11.453 19.5125C11.453 18.9993 11.453 18.4438 11.453 18.4438C11.5534 18.8725 11.6243 19.3676 11.6479 19.5487C12.1717 19.6482 12.6871 19.7895 13.1894 19.9713C13.2003 19.4531 13.1766 18.9346 13.1185 18.4197C13.3159 18.9592 13.4603 19.5174 13.5497 20.086C14.2148 20.3401 14.8604 20.6448 15.4809 20.9977C15.5002 20.6559 15.5002 20.3132 15.4809 19.9713C15.6105 20.3661 15.7131 20.7696 15.788 21.1788C16.4084 21.5675 17.0005 22.0013 17.5598 22.4769Z"
+                fill="black"
+              />
+              <path
+                d="M8.57099 16.041C9.42148 10.6615 12.5517 7.63063 14.4416 6.94838C14.9844 6.77036 15.5574 6.70904 16.1246 6.76826C16.6917 6.82749 17.2407 7.00598 17.7371 7.29253C17.3414 6.99967 16.9248 6.73732 16.491 6.50764C16.8867 5.90389 17.3769 5.30013 17.3769 5.30013C16.9044 5.69257 16.4083 6.18161 16.2252 6.36274C15.5543 6.01442 14.8571 5.72166 14.1404 5.48729C14.563 4.90745 15.0227 4.35683 15.5165 3.83904C14.8422 4.26042 14.2111 4.7499 13.6325 5.30013C12.6756 5.0267 11.7005 4.82491 10.7149 4.69637C10.99 4.30203 11.2858 3.92313 11.6008 3.56131C11.1259 3.88889 10.6739 4.25001 10.2483 4.64203C9.21218 4.51025 8.16781 4.45778 7.12402 4.48506C11.7603 1.7923 16.0303 2.39002 17.7312 3.48886C18.4258 3.94057 18.9616 4.60672 19.2609 5.39069C19.6034 3.90545 20.2413 2.31757 21.4166 1.43005C24.0389 -0.56235 27.6061 1.1644 27.6061 1.1644C26.3162 1.23303 25.0785 1.70749 24.0625 2.52285L22.7809 2.06399L23.7495 2.78246C22.7309 3.68886 21.8719 4.7671 21.2099 5.9703C21.8483 5.33047 22.6823 4.93405 23.5723 4.84731C25.5803 4.69637 29.6555 6.16954 32.5435 10.7339C31.6257 10.2229 30.6745 9.7771 29.6968 9.3996C29.4975 8.851 29.2587 8.3182 28.9822 7.80572C29.1011 8.2749 29.1938 8.7506 29.2598 9.2306C28.3242 8.8832 27.3648 8.6067 26.3894 8.4034C26.1315 7.63393 25.797 6.89348 25.3913 6.19369C25.5982 6.88598 25.758 7.59204 25.8697 8.3068C25.1283 8.17561 24.3778 8.10495 23.6254 8.09552C23.5427 7.84798 23.3242 7.17781 23.0821 6.61028C23.0821 6.61028 23.2415 7.38309 23.3242 8.09552C23.0466 8.09552 22.7336 8.09552 22.4915 8.14382C23.6727 8.8804 25.1905 10.74 26.1945 15.3044C26.1945 15.3044 25.2909 14.0969 24.216 12.8894C24.2247 12.2797 24.1592 11.6713 24.0211 11.0781C24.0211 11.0781 23.9798 11.8207 23.8971 12.5029C23.5782 12.1467 23.2474 11.7966 22.9285 11.4886L22.8517 11.4162C22.8517 10.9453 22.7513 10.0215 22.6391 9.3876C22.6391 9.3876 22.6391 10.2811 22.5092 11.1022C21.7577 10.3846 20.9273 9.7585 20.0346 9.2366C17.4418 18.293 20.6901 29.7644 20.6901 29.7644L18.5167 30.1145C16.4496 18.9631 18.3573 11.4826 19.1546 9.0495C18.0552 9.1128 16.9755 9.3744 15.9653 9.8223C15.7527 9.134 15.5933 8.3612 15.5933 8.3612C15.5985 8.8918 15.63 9.4217 15.6878 9.9491C14.9999 10.2639 14.3382 10.6354 13.7092 11.06C13.5309 10.3573 13.3987 9.6433 13.3135 8.9227C13.2244 9.7245 13.2125 10.5334 13.2781 11.3377C12.4669 11.9275 11.699 12.5773 10.9807 13.2818C10.8508 12.8151 10.7463 12.3414 10.6676 11.863C10.6279 12.4479 10.6279 13.035 10.6676 13.6199C9.91168 14.3733 9.21088 15.1825 8.57099 16.041Z"
+                fill="black"
+              />
+            </g>
+          </svg>
+          <span class="text-lg font-bold">Travila</span>
+        </section>
+
+        <!-- Navigation Links (Desktop) -->
+        <ul
+          class="hidden lg:flex space-x-6 text-gray-700 text-xs font-semibold"
+        >
+          <li class="relative group">
+            <a
+              href="#"
+              class="hover:text-orange-500 flex justify-between items-center"
+              >Home
+              <img src="./public/Icon/downArrow.svg" alt="Down Arrow Icon">
+            </a>
+            <!-- Dropdown Menu -->
+            <ul class=" z-20 absolute left-0 hidden group-hover:block bg-white shadow-md rounded-md py-2 w-25">
+              <li><a href="#" class="block px-4 py-2 hover:bg-gray-200">Submenu 1</a></li>
+              <li><a href="#" class="block px-4 py-2 hover:bg-gray-200">Submenu 2</a></li>
+              <li><a href="#" class="block px-4 py-2 hover:bg-gray-200">Submenu 3</a></li>
+            </ul>
+            
+          </li>
+          <li class="relative group">
+            <a
+              href="#"
+              class="hover:text-orange-500 flex justify-between items-center"
+              >Tours
+              <img src="./public/Icon/downArrow.svg" alt="Down Arrow Icon">
+            </a>
+            <!-- Dropdown Menu -->
+            <ul class=" z-20 absolute left-0 hidden group-hover:block bg-white shadow-md rounded-md py-2 w-25">
+              <li><a href="#" class="block px-4 py-2 hover:bg-gray-200">Submenu 1</a></li>
+              <li><a href="#" class="block px-4 py-2 hover:bg-gray-200">Submenu 2</a></li>
+              <li><a href="#" class="block px-4 py-2 hover:bg-gray-200">Submenu 3</a></li>
+            </ul>
+          </li>
+          <li class="relative group">
+            <a
+              href="#"
+              class="hover:text-orange-500 flex justify-between items-center"
+              >Destinations
+              <img src="./public/Icon/downArrow.svg" alt="Down Arrow Icon">
+            </a>
+            <!-- Dropdown Menu -->
+            <ul class=" z-20 absolute left-0 hidden group-hover:block bg-white shadow-md rounded-md py-2 w-25">
+              <li><a href="#" class="block px-4 py-2 hover:bg-gray-200">Submenu 1</a></li>
+              <li><a href="#" class="block px-4 py-2 hover:bg-gray-200">Submenu 2</a></li>
+              <li><a href="#" class="block px-4 py-2 hover:bg-gray-200">Submenu 3</a></li>
+            </ul>
+          </li>
+          <li class="relative group">
+            <a
+              href="#"
+              class="hover:text-orange-500 flex justify-between items-center"
+              >Activities
+              <img src="./public/Icon/downArrow.svg" alt="Down Arrow Icon">
+            </a>
+            <!-- Dropdown Menu -->
+            <ul class=" z-20 absolute left-0 hidden group-hover:block bg-white shadow-md rounded-md py-2 w-25">
+              <li><a href="#" class="block px-4 py-2 hover:bg-gray-200">Submenu 1</a></li>
+              <li><a href="#" class="block px-4 py-2 hover:bg-gray-200">Submenu 2</a></li>
+              <li><a href="#" class="block px-4 py-2 hover:bg-gray-200">Submenu 3</a></li>
+            </ul>
+          </li>
+          <li class="relative group">
+            <a
+              href="#"
+              class="hover:text-orange-500 flex justify-between items-center"
+              >Hotel
+              <img src="./public/Icon/downArrow.svg" alt="Down Arrow Icon">
+            </a>
+            <!-- Dropdown Menu -->
+            <ul class=" z-20 absolute left-0 hidden group-hover:block bg-white shadow-md rounded-md py-2 w-25">
+              <li><a href="#" class="block px-4 py-2 hover:bg-gray-200">Submenu 1</a></li>
+              <li><a href="#" class="block px-4 py-2 hover:bg-gray-200">Submenu 2</a></li>
+              <li><a href="#" class="block px-4 py-2 hover:bg-gray-200">Submenu 3</a></li>
+            </ul>
+          </li>
+          <li class="relative group">
+            <a
+              href="#"
+              class="hover:text-orange-500 flex justify-between items-center"
+              >Rental
+              <img src="./public/Icon/downArrow.svg" alt="Down Arrow Icon">
+            </a>
+            <!-- Dropdown Menu -->
+            <ul class=" z-20 absolute left-0 hidden group-hover:block bg-white shadow-md rounded-md py-2 w-25">
+              <li><a href="#" class="block px-4 py-2 hover:bg-gray-200">Submenu 1</a></li>
+              <li><a href="#" class="block px-4 py-2 hover:bg-gray-200">Submenu 2</a></li>
+              <li><a href="#" class="block px-4 py-2 hover:bg-gray-200">Submenu 3</a></li>
+            </ul>
+          </li>
+          <li class="relative group">
+            <a
+              href="#"
+              class="hover:text-orange-500 flex justify-between items-center"
+              >Tickets
+              <img src="./public/Icon/downArrow.svg" alt="Down Arrow Icon">
+            </a>
+            <!-- Dropdown Menu -->
+            <ul class=" z-20 absolute left-0 hidden group-hover:block bg-white shadow-md rounded-md py-2 w-25">
+              <li><a href="#" class="block px-4 py-2 hover:bg-gray-200">Submenu 1</a></li>
+              <li><a href="#" class="block px-4 py-2 hover:bg-gray-200">Submenu 2</a></li>
+              <li><a href="#" class="block px-4 py-2 hover:bg-gray-200">Submenu 3</a></li>
+            </ul>
+          </li>
+          <li class="relative group">
+            <a
+              href="#"
+              class="hover:text-orange-500 flex justify-between items-center"
+              >Pages
+              <img src="./public/Icon/downArrow.svg" alt="Down Arrow Icon">
+            </a>
+            <!-- Dropdown Menu -->
+            <ul class=" z-20 absolute left-0 hidden group-hover:block bg-white shadow-md rounded-md py-2 w-25">
+              <li><a href="#" class="block px-4 py-2 hover:bg-gray-200">Submenu 1</a></li>
+              <li><a href="#" class="block px-4 py-2 hover:bg-gray-200">Submenu 2</a></li>
+              <li><a href="#" class="block px-4 py-2 hover:bg-gray-200">Submenu 3</a></li>
+            </ul>
+          </li>
+          <li class="relative group">
+            <a
+              href="#"
+              class="hover:text-orange-500 flex justify-between items-center"
+              >Blog
+              <img src="./public/Icon/downArrow.svg" alt="Down Arrow Icon">
+            </a>
+            <!-- Dropdown Menu -->
+            <ul class=" z-20 absolute left-0 hidden group-hover:block bg-white shadow-md rounded-md py-2 w-25">
+              <li><a href="#" class="block px-4 py-2 hover:bg-gray-200">Submenu 1</a></li>
+              <li><a href="#" class="block px-4 py-2 hover:bg-gray-200">Submenu 2</a></li>
+              <li><a href="#" class="block px-4 py-2 hover:bg-gray-200">Submenu 3</a></li>
+            </ul>
+          </li>
+          <li><a href="#" class="hover:text-orange-500">Contact</a></li>
+        </ul>
+
+        <!-- Right Section -->
+        <section class="hidden lg:flex justify-center items-center gap-1.5">
+          <button aria-label="Become a Local Expert Button"
+            class="block bg-black text-white px-4 py-1 rounded-full text-sm hover:bg-orange-500"
+          >
+            Become Local Expert
+          </button>
+          <div class="bg-[#FEFA17] hover:scale-105">
+            <img src="./public/Icon/menu.svg" alt="Menu Icon">
+          </div>
+        </section>
+        <!-- Hamburger button -->
+        <button aria-label="Hamburger button" id="menu-toggle"class="lg:hidden bg-yellow-400 px-3 py-1 text-lg rounded focus:outline-none">
+          ☰
+        </button>
+        <!-- Mobile Menu -->
+        <ul id="mobile-menu" class="hidden lg:hidden absolute z-20 top-25 right-0 w-[200px] bg-white shadow-md text-gray-700 text-sm flex-col items-start font-semibold space-y-4 py-4 transform transition">
+          <li>
+            <button class="menu-item w-full text-left pl-4 py-1 hover:text-orange-500">Home▾</button>
+            <ul class="submenu hidden pl-6 space-y-2 text-gray-600">
+              <li><a href="#" class="hover:text-orange-500">Sub Home 1</a></li>
+              <li><a href="#" class="hover:text-orange-500">Sub Home 2</a></li>
+            </ul>
+          </li>
+          <li>
+            <button class="menu-item w-full text-left pl-4 py-2 hover:text-orange-500">Tours▾</button>
+            <ul class="submenu hidden pl-6 space-y-2 text-gray-600">
+              <li><a href="#" class="hover:text-orange-500">Tour Package 1</a></li>
+              <li><a href="#" class="hover:text-orange-500">Tour Package 2</a></li>
+            </ul>
+          </li>
+          <li>
+            <button class="menu-item w-full text-left pl-4 py-2 hover:text-orange-500">Destinations▾</button>
+            <ul class="submenu hidden pl-6 space-y-2 text-gray-600">
+              <li><a href="#" class="hover:text-orange-500">Destination 1</a></li>
+              <li><a href="#" class="hover:text-orange-500">Destination 2</a></li>
+            </ul>
+          </li>
+          <li>
+            <button class="menu-item w-full text-left pl-4 py-2 hover:text-orange-500">Activiies▾</button>
+            <ul class="submenu hidden pl-6 space-y-2 text-gray-600">
+              <li><a href="#" class="hover:text-orange-500">Activiies 1</a></li>
+              <li><a href="#" class="hover:text-orange-500">Activiies 2</a></li>
+            </ul>
+          </li>
+          <li>
+            <button class="menu-item w-full text-left pl-4 py-2 hover:text-orange-500">Hotel▾</button>
+            <ul class="submenu hidden pl-6 space-y-2 text-gray-600">
+              <li><a href="#" class="hover:text-orange-500">Hotel 1</a></li>
+              <li><a href="#" class="hover:text-orange-500">Hotel 2</a></li>
+            </ul>
+          </li>
+          <li>
+            <button class="menu-item w-full text-left pl-4 py-2 hover:text-orange-500">Rental▾</button>
+            <ul class="submenu hidden pl-6 space-y-2 text-gray-600">
+              <li><a href="#" class="hover:text-orange-500">Rental 1</a></li>
+              <li><a href="#" class="hover:text-orange-500">Rental 2</a></li>
+            </ul>
+          </li>
+          <li>
+            <button class="menu-item w-full text-left pl-4 py-2 hover:text-orange-500">Tickets▾</button>
+            <ul class="submenu hidden pl-6 space-y-2 text-gray-600">
+              <li><a href="#" class="hover:text-orange-500">Tickets 1</a></li>
+              <li><a href="#" class="hover:text-orange-500">Tickets 2</a></li>
+            </ul>
+          </li>
+          <li>
+            <button class="menu-item w-full text-left pl-4 py-2 hover:text-orange-500">Pages▾</button>
+            <ul class="submenu hidden pl-6 space-y-2 text-gray-600">
+              <li><a href="#" class="hover:text-orange-500">Pages 1</a></li>
+              <li><a href="#" class="hover:text-orange-500">Pages 2</a></li>
+            </ul>
+          </li>
+          <li>
+            <button class="menu-item w-full text-left pl-4 py-2 hover:text-orange-500">Blog▾</button>
+            <ul class="submenu hidden pl-6 space-y-2 text-gray-600">
+              <li><a href="#" class="hover:text-orange-500">Blog 1</a></li>
+              <li><a href="#" class="hover:text-orange-500">Blog 2</a></li>
+            </ul>
+          </li>
+          <!-- Add more menus with submenus here -->
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <!-- Hero Section -->
+      <!-- <section
+        class="relative h-[400px] flex flex-col items-center justify-center gap-4 bg-cover bg-center text-white text-center p-6"
+        style="background-image: url('./public/images/Background.png')"
+      >
+        <div class="absolute inset-0 bg-gray-800 opacity-60"></div>
+        <div
+          class="relative z-10 bg-[#FEFA17] rounded-2xl p-2 text-black font-semibold"
+        >
+          🌎 Explore the World
+        </div>
+        <h1 class="relative z-10 text-4xl text-white font-semibold px-4">
+          Your Gateway to Extraordinary Adventures
+        </h1>
+        <p class="w-fit md:w-140 relative z-10 text-center mb-18 font-semibold">
+          Pack your bags and let Travila redefine your travel experience. Where
+          every journey is a story waiting to be told
+        </p>
+      </section> -->
+      <div class="bg-gray-900 text-white">
+
+        <section
+          id="hero-slider"
+          class="relative h-[400px] flex flex-col items-center justify-center gap-4 bg-cover bg-center text-white text-center p-6 fade"
+          style="background-image: url('https://source.unsplash.com/1600x900/?travel,adventure');"
+        >
+          <div class="absolute inset-0 bg-gray-800 opacity-60"></div>
+        
+          <div class="relative z-10 bg-[#FEFA17] rounded-2xl p-2 text-black font-semibold" id="hero-badge">
+            🌎 Explore the World
+          </div>
+        
+          <h1 class="relative z-10 text-4xl text-white font-semibold px-4" id="hero-title">
+            Your Gateway to Extraordinary Adventures
+          </h1>
+        
+          <p class="w-fit md:w-140 relative z-10 text-center mb-8 font-semibold" id="hero-description">
+            Pack your bags and let Travila redefine your travel experience. Every journey is a new story waiting to be told.
+          </p>
+        
+          <!-- Navigation arrows -->
+          <div class="absolute z-50 flex justify-between w-full px-4 top-1/2 transform -translate-y-1/2">
+            <button id="prev-slide" class="bg-white/30 hover:bg-white/50 text-white p-2 rounded-full">
+              <span class="p-2 text-2xl font-bold">&lt;</span>
+            </button>
+            <button id="next-slide" class="bg-white/30 hover:bg-white/50 text-white p-2 rounded-full">
+              <span class="p-2 text-2xl font-bold">&gt;</span>
+            </button>
+          </div>
+        
+          <!-- Slide indicators -->
+          <div class="absolute bottom-4 z-20 flex space-x-2" id="slide-indicators">
+            <!-- Indicators will be generated here -->
+          </div>
+        </section>
+        </div>
+      <!-- Categories Buttons and Search Form -->
+      <section
+        class="relative z-10 w-full lg:w-7/10 md:w-19/20 bg-white p-4 rounded-2xl shadow-lg flex flex-col justify-center items-center gap-4 animate-fadeIn md:-translate-y-1/2 md:mx-auto"
+      >
+        <!-- categories button -->
+        <section class="w-full flex flex-col md:flex-row md:justify-between md:items-center">
+          <!-- Buttons -->
+          <section class="flex justify-center flex-wrap items-center w-fit">
+            <button aria-label="tours button"
+              class=" bg-black text-white px-2 md:px-4 py-2 rounded-xl md:rounded-3xl font-semibold"
+            >
+              Tours
+            </button>
+            <button aria-label="Hotels Button"
+              class=" text-gray-600 px-1.5 md:px-4 rounded-md hover:text-black"
+            >
+              Hotels
+            </button>
+            <button aria-label="Tours Button"
+              class=" text-gray-600 px-1.5 md:px-4 rounded-md hover:text-black"
+            >
+              Tickets
+            </button>
+            <button aria-label="Rental Button"
+              class=" text-gray-600 px-1.5  md:px-4 rounded-md hover:text-black"
+            >
+              Rental
+            </button>
+            <button aria-label="Activities Button"
+              class=" text-gray-600 px-1.5 md:px-4 rounded-md hover:text-black"
+            >
+              Activities
+            </button>
+          </section>
+          <!-- Need Help -->
+          <section class="flex justify-center items-center self-end md:self-auto gap-1">
+            <img src="public/Icon/user.svg" alt="user icon">
+
+            <a href="#" class="text-gray-600 hover:text-black">
+              Need help?
+            </a>
+          </section>
+        </section>
+        <!-- search options -->
+        <form 
+          class="w-full gap-5 md:gap-2 py-4 lg:py-0 px-2 lg:px-0 flex flex-col md:flex-row md:flex-wrap  justify-evenly items-center  mx-2 border-[#E4E6E8] border-2 rounded-2xl"
+        > 
+          <!-- Location -->
+          <section class="flex flex-col justify-center items-start gap-2">
+            <div class="font-semibold text-[#737373] md:text-xs">Location</div>
+            <section class="flex justify-center items-center gap-1">
+              <img src="./public/Icon/location.svg" alt="location icon"/>
+
+              <select name="" id="" class=" md:text-xs font-semibold" aria-label="select location">
+                <option value="New York,USA" class=" md:text-xs font-semibold" aria-label="New York,USA">New York,USA</option>
+                <option value="Tokyo,JAPAN" class=" md:text-xs font-semibold" aria-label="Tokyo, JAPAN">Tokyo,JAPAN</option>
+                <option value="Delhi,INDIA" class="md:text-xs font-semibold">Delhi,INDIA</option>
+              </select>
+            </section>
+          </section>
+          <!-- Check In -->
+          <section class="flex flex-col justify-center items-start gap-2 border-[#E4E6E8] md:border-l-2 md:px-4">
+            <div class="font-semibold text-[#737373] md:text-xs">Check In</div>
+
+            <section class="flex justify-center items-center gap-1">
+              <img src="public/Icon/calender.svg" alt="calender icon">
+
+              <input type="date" name="" id="" class="font-semibold md:text-xs" aria-label="date input" required>
+            </section>
+          </section>
+          <!-- Check Out -->
+          <section class="flex flex-col justify-center items-start gap-2 border-[#E4E6E8] md:border-l-2 md:px-4">
+            <div class="font-semibold text-[#737373] md:text-xs">Check Out</div>
+
+            <section class="flex justify-center items-center gap-1">
+              <img src="./public/Icon/calender.svg" alt="calender icon">
+              <input type="date" name="" id="" class="font-semibold md:text-xs" aria-label="date input" required>
+            </section>
+          </section>
+          <!-- No. of Guests -->
+          <section class="flex flex-col justify-center items-start gap-2 border-[#E4E6E8] md:border-l-2 md:px-4">
+            <div class="font-semibold text-[#737373] md:text-xs">Guests</div>
+
+            <section class="flex justify-center items-center gap-1">
+              <img src="./public/Icon/user.svg" alt="user icon">
+
+              <select name="" id="" class="md:text-xs font-semibold" aria-label="select guest">
+                <option class="md:text-xs font-semibold" value="2 Adult" aria-label="2 Adult, 1 Children">2 Adult, 1 Children</option>
+                <option class="md:text-xs font-semibold" value="2 Adult, 1 Children" aria-label="2 Adult">2 Adult</option>
+                <option class="md:text-xs font-semibold" value="2 Adult, 2 Children" aria-label="2 Adult 2 Children">2 Adult, 2 Children</option>
+                
+              </select>
+            </section>
+          </section>
+
+          <!-- Search Button -->
+          <section onclick="document.getElementById('searchBtn').click()" class="border-4 font-bold text-white ml-4 rounded-full bg-black flex justify-center items-center w-max gap-1 p-4 hover:scale-105 hover:cursor-pointer transition">
+            <img src="./public/Icon/search.svg" alt="search icon">
+            <input id="searchBtn" type="submit" value="Search" aria-label="Search Button">
+          </section>
+          
+          
+        
+            <!-- Search -->
+        
+        </form>
+      </section>
+
+      <!-- Top Search Destination -->
+      <section class="flex flex-col items-center justify-center gap-2.5 mt-14 md:mt-0">
+        <h2 class="text-2xl md:text-4xl text-black font-bold text-centers">
+          Top Searched Destinations
+        </h2>
+        <p class="text-[#737373]">
+          Favorite destinations of professional tourists
+        </p>
+        <section class="flex flex-wrap justify-center items-center w-[80%] gap-2 mt-1">
+          <section
+            class="flex items-center justify-between p-3 bg-white rounded-2xl border-[#E4E6E8] border-2 w-60 hover:scale-105 transition"
+          >
+            <!-- Left Section -->
+            <section class="flex items-center gap-2.5">
+              <!-- Circular Image -->
+              <img
+                src="./public/images/destination.png.png"
+                alt="Venice image"
+                class="w-16 h-16 rounded-full object-cover"
+              />
+
+              <!-- Text Content -->
+              <article>
+                <h2 class="font-semibold">Venice</h2>
+                <p class="text-gray-500 text-sm flex items-center gap-1">
+                  <img src="./public/Icon/flag.svg" alt="flag icon">
+                  356 Tours
+                </p>
+              </article>
+            </section>
+
+            <!-- Arrow Button -->
+            <button aria-label="Arrow Button"
+              class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full cursor-pointer"
+            >
+            <img src="./public/Icon/rightArrow.svg" alt="right arrow icon">
+            </button>
+          </section>
+
+          <section
+            class="flex items-center justify-between p-3 bg-white rounded-2xl border-[#E4E6E8] border-2 w-60 hover:scale-105 transition"
+          >
+            <!-- Left Section -->
+            <section class="flex items-center gap-2.5">
+              <!-- Circular Image -->
+              <img
+                src="./public/images/destination2.png.png"
+                alt="Amsterdam"
+                class="w-16 h-16 rounded-full object-cover"
+              />
+
+              <!-- Text Content -->
+              <article>
+                <h2 class="font-semibold">Amsterdam</h2>
+                <p class="text-gray-500 text-sm flex items-center gap-1">
+                  <img src="./public/Icon/flag.svg" alt="flag icon">
+                  356 Tours
+                </p>
+              </article>
+            </section>
+
+            <!-- Arrow Button -->
+            <button aria-label="Arrow Button"
+              class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full cursor-pointer"
+            >
+              <img src="./public/Icon/rightArrow.svg" alt="right arrow icon">
+            </button>
+          </section>
+
+          <section
+            class="flex items-center justify-between p-3 bg-white rounded-2xl border-[#E4E6E8] border-2 w-60 hover:scale-105 transition"
+          >
+            <!-- Left Section -->
+            <section class="flex items-center gap-2.5">
+              <!-- Circular Image -->
+              <img
+                src="./public/images/destination3.png.png"
+                alt="Budapest"
+                class="w-16 h-16 rounded-full object-cover"
+              />
+
+              <!-- Text Content -->
+              <article>
+                <h2 class="font-semibold">Budapest</h2>
+                <p class="text-gray-500 text-sm flex items-center gap-1">
+                  <img src="./public/Icon/flag.svg" alt="flag icon">
+                  356 Tours
+                </p>
+              </article>
+            </section>
+
+            <!-- Arrow Button -->
+            <button aria-label="Arrow Button"
+              class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full cursor-pointer"
+            >
+              <img src="./public/Icon/rightArrow.svg" alt="right arrow icon">
+          </button>
+          </section>
+
+          <section
+            class="flex items-center justify-between p-3 bg-white rounded-2xl border-[#E4E6E8] border-2 w-60 hover:scale-105 transition"
+          >
+            <!-- Left Section -->
+            <section class="flex items-center gap-2.5">
+              <!-- Circular Image -->
+              <img
+                src="./public/images/destination4.png.png"
+                alt="Lisbon"
+                class="w-16 h-16 rounded-full object-cover"
+              />
+
+              <!-- Text Content -->
+              <article>
+                <h2 class="font-semibold">Lisbon</h2>
+                <p class="text-gray-500 text-sm flex items-center gap-1">
+                  <svg
+                    width="12"
+                    height="13"
+                    viewBox="0 0 12 13"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g clip-path="url(#clip0_1_6566)">
+                      <mask
+                        id="mask0_1_6566"
+                        style="mask-type: luminance"
+                        maskUnits="userSpaceOnUse"
+                        x="0"
+                        y="0"
+                        width="12"
+                        height="13"
+                      >
+                        <path
+                          d="M12 0.719971H0V12.72H12V0.719971Z"
+                          fill="white"
+                        />
+                      </mask>
+                      <g mask="url(#mask0_1_6566)">
+                        <path
+                          d="M1 0.719971C0.725 0.719971 0.5 0.944971 0.5 1.21997V12.22C0.5 12.495 0.725 12.72 1 12.72C1.275 12.72 1.5 12.495 1.5 12.22V7.19497C2.12 6.80497 3.505 6.18497 5.515 6.79497C8.745 7.77497 11.33 3.96497 11.435 3.80497C11.525 3.67497 11.52 3.50497 11.43 3.37497C11.34 3.24997 11.175 3.18997 11.025 3.23497C11 3.23997 8.42 3.91997 6.09 2.28997C4.455 1.14497 2.52 1.13997 1.5 1.24497V1.21997C1.5 0.944971 1.275 0.719971 1 0.719971Z"
+                          fill="#8E8E8E"
+                        />
+                      </g>
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_1_6566">
+                        <rect
+                          width="12"
+                          height="12"
+                          fill="white"
+                          transform="translate(0 0.719971)"
+                        />
+                      </clipPath>
+                    </defs>
+                  </svg>
+                  356 Tours
+                </p>
+              </article>
+            </section>
+
+            <!-- Arrow Button -->
+            <button aria-label="Arrow Button"
+              class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full cursor-pointer"
+            >
+              <img src="./public/Icon/rightArrow.svg" alt="right arrow icon">
+            </button>
+          </section>
+
+          <section
+            class="flex items-center justify-between p-3 bg-white rounded-2xl border-[#E4E6E8] border-2 w-60 hover:scale-105 transition"
+          >
+            <!-- Left Section -->
+            <section class="flex items-center gap-2.5">
+              <!-- Circular Image -->
+              <img
+                src="./public/images/destination5.png.png"
+                alt="London"
+                class="w-16 h-16 rounded-full object-cover"
+              />
+
+              <!-- Text Content -->
+              <article>
+                <h2 class="font-semibold">London</h2>
+                <p class="text-gray-500 text-sm flex items-center gap-1">
+                  <svg
+                    width="12"
+                    height="13"
+                    viewBox="0 0 12 13"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g clip-path="url(#clip0_1_6566)">
+                      <mask
+                        id="mask0_1_6566"
+                        style="mask-type: luminance"
+                        maskUnits="userSpaceOnUse"
+                        x="0"
+                        y="0"
+                        width="12"
+                        height="13"
+                      >
+                        <path
+                          d="M12 0.719971H0V12.72H12V0.719971Z"
+                          fill="white"
+                        />
+                      </mask>
+                      <g mask="url(#mask0_1_6566)">
+                        <path
+                          d="M1 0.719971C0.725 0.719971 0.5 0.944971 0.5 1.21997V12.22C0.5 12.495 0.725 12.72 1 12.72C1.275 12.72 1.5 12.495 1.5 12.22V7.19497C2.12 6.80497 3.505 6.18497 5.515 6.79497C8.745 7.77497 11.33 3.96497 11.435 3.80497C11.525 3.67497 11.52 3.50497 11.43 3.37497C11.34 3.24997 11.175 3.18997 11.025 3.23497C11 3.23997 8.42 3.91997 6.09 2.28997C4.455 1.14497 2.52 1.13997 1.5 1.24497V1.21997C1.5 0.944971 1.275 0.719971 1 0.719971Z"
+                          fill="#8E8E8E"
+                        />
+                      </g>
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_1_6566">
+                        <rect
+                          width="12"
+                          height="12"
+                          fill="white"
+                          transform="translate(0 0.719971)"
+                        />
+                      </clipPath>
+                    </defs>
+                  </svg>
+                  356 Tours
+                </p>
+              </article>
+            </section>
+
+            <!-- Arrow Button -->
+            <button aria-label="Arrow Button"
+              class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full cursor-pointer"
+            >
+              <img src="./public/Icon/rightArrow.svg" alt="right arrow">
+            </button>
+          </section>
+
+          <section
+            class="flex items-center justify-between p-3 bg-white rounded-2xl border-[#E4E6E8] border-2 w-60 hover:scale-105 transition"
+          >
+            <!-- Left Section -->
+            <section class="flex items-center gap-2.5">
+              <!-- Circular Image -->
+              <img
+                src="./public/images/destination6.png.png"
+                alt="Ottawa"
+                class="w-16 h-16 rounded-full object-cover"
+              />
+
+              <!-- Text Content -->
+              <article>
+                <h2 class="font-semibold">Ottawa</h2>
+                <p class="text-gray-500 text-sm flex items-center gap-1">
+                  <svg
+                    width="12"
+                    height="13"
+                    viewBox="0 0 12 13"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g clip-path="url(#clip0_1_6566)">
+                      <mask
+                        id="mask0_1_6566"
+                        style="mask-type: luminance"
+                        maskUnits="userSpaceOnUse"
+                        x="0"
+                        y="0"
+                        width="12"
+                        height="13"
+                      >
+                        <path
+                          d="M12 0.719971H0V12.72H12V0.719971Z"
+                          fill="white"
+                        />
+                      </mask>
+                      <g mask="url(#mask0_1_6566)">
+                        <path
+                          d="M1 0.719971C0.725 0.719971 0.5 0.944971 0.5 1.21997V12.22C0.5 12.495 0.725 12.72 1 12.72C1.275 12.72 1.5 12.495 1.5 12.22V7.19497C2.12 6.80497 3.505 6.18497 5.515 6.79497C8.745 7.77497 11.33 3.96497 11.435 3.80497C11.525 3.67497 11.52 3.50497 11.43 3.37497C11.34 3.24997 11.175 3.18997 11.025 3.23497C11 3.23997 8.42 3.91997 6.09 2.28997C4.455 1.14497 2.52 1.13997 1.5 1.24497V1.21997C1.5 0.944971 1.275 0.719971 1 0.719971Z"
+                          fill="#8E8E8E"
+                        />
+                      </g>
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_1_6566">
+                        <rect
+                          width="12"
+                          height="12"
+                          fill="white"
+                          transform="translate(0 0.719971)"
+                        />
+                      </clipPath>
+                    </defs>
+                  </svg>
+                  356 Tours
+                </p>
+              </article>
+            </section>
+
+            <!-- Arrow Button -->
+            <button aria-label="Arrow Button"
+              class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full cursor-pointer"
+            >
+              <img src="./public/Icon/rightArrow.svg" alt="right arrow icon">
+            </button>
+          </section>
+
+          <section
+            class="flex items-center justify-between p-3 bg-white rounded-2xl border-[#E4E6E8] border-2 w-60 hover:scale-105 transition"
+          >
+            <!-- Left Section -->
+            <section class="flex items-center gap-2.5">
+              <!-- Circular Image -->
+              <img
+                src="./public/images/destination7.png.png"
+                alt="Paris"
+                class="w-16 h-16 rounded-full object-cover"
+              />
+
+              <!-- Text Content -->
+              <article>
+                <h2 class="font-semibold">Paris</h2>
+                <p class="text-gray-500 text-sm flex items-center gap-1">
+                  <svg
+                    width="12"
+                    height="13"
+                    viewBox="0 0 12 13"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g clip-path="url(#clip0_1_6566)">
+                      <mask
+                        id="mask0_1_6566"
+                        style="mask-type: luminance"
+                        maskUnits="userSpaceOnUse"
+                        x="0"
+                        y="0"
+                        width="12"
+                        height="13"
+                      >
+                        <path
+                          d="M12 0.719971H0V12.72H12V0.719971Z"
+                          fill="white"
+                        />
+                      </mask>
+                      <g mask="url(#mask0_1_6566)">
+                        <path
+                          d="M1 0.719971C0.725 0.719971 0.5 0.944971 0.5 1.21997V12.22C0.5 12.495 0.725 12.72 1 12.72C1.275 12.72 1.5 12.495 1.5 12.22V7.19497C2.12 6.80497 3.505 6.18497 5.515 6.79497C8.745 7.77497 11.33 3.96497 11.435 3.80497C11.525 3.67497 11.52 3.50497 11.43 3.37497C11.34 3.24997 11.175 3.18997 11.025 3.23497C11 3.23997 8.42 3.91997 6.09 2.28997C4.455 1.14497 2.52 1.13997 1.5 1.24497V1.21997C1.5 0.944971 1.275 0.719971 1 0.719971Z"
+                          fill="#8E8E8E"
+                        />
+                      </g>
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_1_6566">
+                        <rect
+                          width="12"
+                          height="12"
+                          fill="white"
+                          transform="translate(0 0.719971)"
+                        />
+                      </clipPath>
+                    </defs>
+                  </svg>
+                  356 Tours
+                </p>
+              </article>
+            </section>
+
+            <!-- Arrow Button -->
+            <button aria-label="Arrow Button"
+              class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full cursor-pointer"
+            >
+              <img src="./public/Icon/rightArrow.svg" alt="right arrow icon">
+            </button>
+          </section>
+
+          <section
+            class="flex items-center justify-between p-3 bg-white rounded-2xl border-[#E4E6E8] border-2 w-60 hover:scale-105 transition"
+          >
+            <!-- Left Section -->
+            <section class="flex items-center gap-2.5">
+              <!-- Circular Image -->
+              <img
+                src="./public/images/destination8.png.png"
+                alt="Paris"
+                class="w-16 h-16 rounded-full object-cover"
+              />
+
+              <!-- Text Content -->
+              <article>
+                <h2 class="font-semibold">Paris</h2>
+                <p class="text-gray-500 text-sm flex items-center gap-1">
+                  <img src="./public/Icon/flag.svg" alt="flag icon">
+                  356 Tours
+                </p>
+              </article>
+            </section>
+
+            <!-- Arrow Button -->
+            <button aria-label="Arrow Button"
+              class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full cursor-pointer"
+            >
+              <img src="./public/Icon/rightArrow.svg" alt="right arrow icon">
+            </button>
+          </section>
+        </section>
+      </section>
+
+      <!-- Our Feature Tours -->
+      <section class=" bg-[#F2F4F6] flex flex-col justify-center items-center w-full h-auto mt-20">
+        <!-- Out Feature Tours and filters -->
+        <section class="flex flex-col lg:flex-row justify-between w-[95%] lg:w-[66%] my-10 gap-4 lg:gap-0">
+          <!-- Texts -->
+          <section class="flex flex-col justify-center gap-2 items-center lg:items-start">
+            <h2 class="font-bold text-3xl md:text-4xl text-black">Our Featured Tours</h2>
+            <p class="text-[#737373] text-sm">Favorite destinations based on customer reviews</p>
+          </section>
+
+          <!-- filters -->
+          <section class="flex justify-center items-center flex-wrap gap-2">
+            <select name="" id="" aria-label="select categories" class=" flex justify-center items-center rounded-2xl text-sm bg-[#E4E6E8] p-2">
+              <option value="">Categories</option>
+              <option value="">Category 1</option>
+              <option value="">Category 2</option>
+
+            </select>
+            <select name="" id="" aria-label="duration" class=" flex justify-center items-center rounded-2xl text-sm bg-[#E4E6E8] p-2">
+              <option value="">Duration</option>
+              <option value="">Duration 1</option>
+              <option value="">Duration 2</option>
+
+            </select>
+            
+            <select name="" id="" aria-label="select Review/Rating" class=" flex justify-center items-center rounded-2xl text-sm bg-[#E4E6E8] p-2">
+              <option value="">Review/Rating</option>
+              <option value="">1 star</option>
+              <option value="">2 star</option>
+
+            </select>
+            <select name="" id="" aria-label="select price range" class=" flex justify-center items-center rounded-2xl text-sm bg-[#E4E6E8] p-2">
+              <option value="">Price Range</option>
+              <option value="">1K-3K</option>
+              <option value="">3K-5K</option>
+
+            </select>
+
+          </section>
+           
+        </section>
+        <!-- Cards -->
+        <section class="flex justify-center flex-wrap items-center sm:w-[100%] lg:w-[75%]  gap-6 mb-20">
+          <!-- Card 1 -->
+          <article class="shadow-lg w-70 rounded-3xl overflow-hidden border-2 border-[#E4E6E8] bg-white hover:scale-105 transform transition">
+            <section class="relative">
+                <figure><img src="/public/images/journey2.png.png" alt="Singapore Skylines" class="w-full h-48 object-cover"></figure>
+                <span class="absolute top-2 left-2 bg-white text-[#F09814] px-3 py-1 text-xs font-semibold rounded-lg">Top Rated</span>
+                <button aria-label="Wishlist" class="absolute top-2 right-2 bg-white p-1 rounded-full shadow-md">
+                  <img src="./public/Icon/love.svg" alt="love icon">
+                </button>
+                <div class="z-10 absolute bottom-1 right-3 bg-white text-black border-2 border-[#E4E6E8] px-2 py-1 text-xs font-semibold rounded-xl">
+                    ⭐ 4.96 <span class="text-[#737373]">(672 reviews)</span>
+                </div>
+              </section>
+            <section class="p-4 pt-6 bg-white rounded-t-3xl -translate-y-4 gap-2">
+                <h3 class="text-lg font-semibold">California Sunset/Twilight Boat Cruise</h3>
+                <p class="text-gray-500 text-sm flex items-center mt-1.5">
+                  <img src="./public/Icon/duration.svg" alt="clock icon">
+                  2 days 3 nights &nbsp; &nbsp;
+                  <img src="./public/Icon/user.svg" alt="user icon">
+                  4-6 guest</p>
+                <div class="flex justify-between items-center gap-1.5">
+                  <p class="mt-2 font-bold">$48.25 <span class="text-gray-500 text-sm font-normal">/ person</span></p>
+                  <button aria-label="Book Now" class="mt-2 bg-[#F2F4F6] border-[#E4E6E8] border-2 text-black p-2 rounded-2xl  transition-all duration-300  hover:border-black  hover:bg-white hover:text-black hover:border-[2px] hover:scale-105">Book Now</button>
+                </div>
+                
+              </section>
+          </article>
+          <!-- Card 2 -->
+          <article class="shadow-lg w-70 rounded-3xl overflow-hidden border-2 border-[#E4E6E8] bg-white hover:scale-105 transform transition">
+            <section class="relative">
+                <figure><img src="/public/images/journey3.png.png" alt="Singapore Skylines" class="w-full h-48 object-cover"></figure>
+                <span class="absolute top-2 left-2 bg-white text-[#3DC262] px-3 py-1 text-xs font-semibold rounded-lg">Best Sale</span>
+                <button aria-label="Wishlist" class="absolute top-2 right-2 bg-white p-1 rounded-full shadow-md">
+                  <img src="./public/Icon/love.svg" alt="love icon">
+
+                </button>
+                <div class="z-10 absolute bottom-1 right-3 bg-white text-black border-2 border-[#E4E6E8] px-2 py-1 text-xs font-semibold rounded-xl">
+                    ⭐ 4.96 <span class="text-[#737373]">(672 reviews)</span>
+                </div>
+              </section>
+            <section class="p-4 pt-6 bg-white rounded-t-3xl -translate-y-4 gap-2">
+                <h3 class="text-lg font-semibold">NYC: Food Tastings and Culture Tour</h3>
+                <p class="text-gray-500 text-sm flex items-center mt-1.5">
+                  <img src="./public/Icon/duration.svg" alt="clock icon">
+                  2 days 3 nights &nbsp; &nbsp;
+                  <img src="./public/Icon/user.svg" alt="user icon">
+                  4-6 guest</p>
+                <div class="flex justify-between items-center gap-1.5">
+                  <p class="mt-2 font-bold">$48.25 <span class="text-gray-500 text-sm font-normal">/ person</span></p>
+                  <button aria-label="Book Now" class="mt-2 bg-[#F2F4F6] border-[#E4E6E8] border-2 text-black p-2 rounded-2xl  transition-all duration-300  hover:border-black  hover:bg-white hover:text-black hover:border-[2px] hover:scale-105">Book Now</button>
+                </div>
+                
+              </section>
+          </article>
+          <!-- Card 3 -->
+          <article class="shadow-lg w-70 rounded-3xl overflow-hidden border-2 border-[#E4E6E8] bg-white hover:scale-105 transform transition">
+            <section class="relative">
+                <figure><img src="/public/images/journey4.png.png" alt="Singapore Skylines" class="w-full h-48 object-cover"></figure>
+                <span class="absolute top-2 left-2 bg-white text-[#F09814] px-3 py-1 text-xs font-semibold rounded-lg">Top Rated</span>
+                <button aria-label="Wishlist" class="absolute top-2 right-2 bg-white p-1 rounded-full shadow-md">
+                  <img src="./public/Icon/love.svg" alt="love icon">
+
+                </button>
+                <div class="z-10 absolute bottom-1 right-3 bg-white text-black border-2 border-[#E4E6E8] px-2 py-1 text-xs font-semibold rounded-xl">
+                    ⭐ 4.96 <span class="text-[#737373]">(672 reviews)</span>
+                </div>
+              </section>
+              <section class="p-4 pt-6 bg-white rounded-t-3xl -translate-y-4 gap-2">
+                <h3 class="text-lg font-semibold">Grand Canyon Horseshoe Bend 2 days</h3>
+                <p class="text-gray-500 text-sm flex items-center mt-1.5">
+                  <img src="./public/Icon/duration.svg" alt="clock icon">
+                  2 days 3 nights &nbsp; &nbsp;
+                  <img src="./public/Icon/user.svg" alt="user icon">
+                  4-6 guest</p>
+                <div class="flex justify-between items-center gap-1.5">
+                  <p class="mt-2 font-bold">$48.25 <span class="text-gray-500 text-sm font-normal">/ person</span></p>
+                  <button aria-label="Book Now"class="mt-2 bg-[#F2F4F6] border-[#E4E6E8] border-2 text-black p-2 rounded-2xl  transition-all duration-300  hover:border-black  hover:bg-white hover:text-black hover:border-[2px] hover:scale-105">Book Now</button>
+                </div>
+                
+              </section>
+          </article>
+          <!-- Card 4 -->
+          <article class="shadow-lg w-70 rounded-3xl overflow-hidden border-2 border-[#E4E6E8] bg-white hover:scale-105 transform transition">
+            <section class="relative">
+                <figure><img src="/public/images/journey2.png.png" alt="Singapore Skylines" class="w-full h-48 object-cover"></figure>
+                <span class="absolute top-2 left-2 bg-white text-[#F09814] px-3 py-1 text-xs font-semibold rounded-lg">Top Rated</span>
+                <button aria-label="Wishlist" class="absolute top-2 right-2 bg-white p-1 rounded-full shadow-md">
+                  <img src="./public/Icon/love.svg" alt="love icon">
+
+                </button>
+                <div class="z-10 absolute bottom-1 right-3 bg-white text-black border-2 border-[#E4E6E8] px-2 py-1 text-xs font-semibold rounded-xl">
+                    ⭐ 4.96 <span class="text-[#737373]">(672 reviews)</span>
+                </div>
+              </section>
+            <section class="p-4 pt-6 bg-white rounded-t-3xl -translate-y-4 gap-2">
+                <h3 class="text-lg font-semibold">California Sunset/Twilight Boat Cruise</h3>
+                <p class="text-gray-500 text-sm flex items-center mt-1.5">
+                  <img src="./public/Icon/duration.svg" alt="clock icon">
+                  2 days 3 nights &nbsp; &nbsp;
+                  <img src="./public/Icon/user.svg" alt="user icon">
+                  4-6 guest</p>
+                <div class="flex justify-between items-center gap-1.5">
+                  <p class="mt-2 font-bold">$48.25 <span class="text-gray-500 text-sm font-normal">/ person</span></p>
+                  <button aria-label="Book Now" class="mt-2 bg-[#F2F4F6] border-[#E4E6E8] border-2 text-black p-2 rounded-2xl  transition-all duration-300  hover:border-black  hover:bg-white hover:text-black hover:border-[2px] hover:scale-105">Book Now</button>
+                </div>
+                
+              </section>
+          </article>
+          <!-- Card 5 -->
+          <article class="shadow-lg w-70 rounded-3xl overflow-hidden border-2 border-[#E4E6E8] bg-white hover:scale-105 transform transition">
+              <section class="relative">
+                <figure><img src="/public/images/journey3.png.png" alt="Singapore Skylines" class="w-full h-48 object-cover"></figure>
+                <span class="absolute top-2 left-2 bg-white text-[#3DC262] px-3 py-1 text-xs font-semibold rounded-lg">Best Sale</span>
+                <button aria-label="wishlist" class="absolute top-2 right-2 bg-white p-1 rounded-full shadow-md">
+                  <img src="./public/Icon/love.svg" alt="love icon">
+
+                </button>
+                <div class="z-10 absolute bottom-1 right-3 bg-white text-black border-2 border-[#E4E6E8] px-2 py-1 text-xs font-semibold rounded-xl">
+                    ⭐ 4.96 <span class="text-[#737373]">(672 reviews)</span>
+                </div>
+              </section>
+              <section class="p-4 pt-6 bg-white rounded-t-3xl -translate-y-4 gap-2">
+                <h3 class="text-lg font-semibold">NYC: Food Tastings and Culture Tour</h3>
+                <p class="text-gray-500 text-sm flex items-center mt-1.5">
+                  <img src="./public/Icon/duration.svg" alt="clock icon">
+                  2 days 3 nights &nbsp; &nbsp;
+                  <img src="./public/Icon/user.svg" alt="user icon">
+                  4-6 guest</p>
+                <div class="flex justify-between items-center gap-1.5">
+                  <p class="mt-2 font-bold">$48.25 <span class="text-gray-500 text-sm font-normal">/ person</span></p>
+                  <button aria-label="book now" class="mt-2 bg-[#F2F4F6] border-[#E4E6E8] border-2 text-black p-2 rounded-2xl  transition-all duration-300  hover:border-black  hover:bg-white hover:text-black hover:border-[2px] hover:scale-105">Book Now</button>
+                </div>
+                
+              </section>
+          </article>
+          <!-- Card 6 -->
+          <article class="shadow-lg w-70 rounded-3xl overflow-hidden border-2 border-[#E4E6E8] bg-white hover:scale-105 transform transition">
+            <section class="relative">
+                <figure><img src="/public/images/journey4.png.png" alt="Singapore Skylines" class="w-full h-48 object-cover"></figure>
+                <span class="absolute top-2 left-2 bg-white text-[#F09814] px-3 py-1 text-xs font-semibold rounded-lg">Top Rated</span>
+                <button aria-label="Wishlist" class="absolute top-2 right-2 bg-white p-1 rounded-full shadow-md">
+                  <img src="./public/Icon/love.svg" alt="love icon">
+
+                </button>
+                <div class="z-10 absolute bottom-1 right-3 bg-white text-black border-2 border-[#E4E6E8] px-2 py-1 text-xs font-semibold rounded-xl">
+                    ⭐ 4.96 <span class="text-[#737373]">(672 reviews)</span>
+                </div>
+            </section>
+            <section class="p-4 pt-6 bg-white rounded-t-3xl -translate-y-4 gap-2">
+                <h3 class="text-lg font-semibold">Grand Canyon Horseshoe
+                  Bend 2 days</h3>
+                <p class="text-gray-500 text-sm flex items-center mt-1.5">
+                  <img src="./public/Icon/duration.svg" alt="clock icon">
+                  2 days 3 nights &nbsp; &nbsp;
+                  <img src="./public/Icon/user.svg" alt="user icon">
+                  4-6 guest</p>
+                <div class="flex justify-between items-center gap-1.5">
+                  <p class="mt-2 font-bold">$48.25 <span class="text-gray-500 text-sm font-normal">/ person</span></p>
+                  <button aria-label="Book Now" class="mt-2 bg-[#F2F4F6] border-[#E4E6E8] border-2 text-black p-2 rounded-2xl  transition-all duration-300  hover:border-black  hover:bg-white hover:text-black hover:border-[2px] hover:scale-105">Book Now</button>
+                </div>
+                
+            </section>
+          </article>
+
+        </section>
+      </section>
+
+      <!-- We offer tours in a range of location -->
+      <section class="h-auto w-full flex flex-col md:flex-row justify-center items-center bg-no-repeat bg-[50%] gap-5 p-6 lg:p-16 mt-10 lg:mt-0" style="background-image: url('./public/images/Section.png');">
+        <section class="flex w-[100%] md:w-[50%]  justify-center lg:justify-end items-center gap-3 ">
+          <div class="flex flex-col gap-2 -translate-y-3">
+            <img src="./public/images/payment.png.png" alt="temple" class="h-36 w-36 rounded-xl hover:scale-105 transition transform">
+            <img src="./public/images/payment3.png.png" alt="one girl chilling in beach" class="h-36 w-36 rounded-xl hover:scale-105 transition transform">
+          </div>
+          <div class="flex flex-col gap-2">
+            <img src="./public/images/payment2.png.png" alt="two girl enjoying on mountain" class="h-36 w-36 rounded-xl hover:scale-105 transition transform">
+            <img src="./public/images/payment4.png.png" alt="two girl enjoying safari" class="h-36 w-36 rounded-xl hover:scale-105 transition transform">
+          </div>
+        </section>
+
+        <!-- Texts -->
+        <section class="flex w-[100%] md:w-[50%] justify-center items-start flex-col gap-3">
+          <h4 class="bg-[#F2F4F6] text-black text-sm p-2 rounded-2xl font-semibold w-max">
+            Easy Payments
+          </h4>
+          <h2 class="text-2xl lg:text-4xl font-bold lg:w-[60%]">
+            We offer tours in a range of locations
+          </h2>
+          <p class="lg:w-[70%]">
+            Choose one style or create a package, fill your passports with adventures together.
+          </p>
+          <section class="flex justify-start items-center gap-3 w-[60%] md:w-[80%] flex-wrap">
+            
+              <span><img src="./public/Icon/check.svg" alt="check icon"class="inline-block w-4 h-4">Security Assurance</span>
+              <span><img src="./public/Icon/check.svg" alt="check icon"class="inline-block w-4 h-4">Transparent Policies</span>
+           
+            
+              <span><img src="./public/Icon/check.svg" alt="check icon"class="inline-block w-4 h-4">Customer Support</span>
+              <span><img src="./public/Icon/check.svg" alt="check icon"class="inline-block w-4 h-4">Reputable Affiliation</span>
+           
+          </section>
+          <section class="flex flex-col gap-3">
+            <p class="font-bold">
+              Payment is secure and safe
+            </p>
+            <section class="flex justify-start items-center gap-4 flex-wrap">
+              <img src="./public/images/paypal.png.png" alt="paypal logo" class="hover:scale-105 transition transform">
+              <img src="./public/images/stripe.png.png" alt="stripe logo" class="hover:scale-105 transition transform">
+              <img src="./public/images/mastercard.png.png" alt="mastercard logo" class="hover:scale-105 transition transform">
+              <img src="./public/images/skrill.png.png" alt="skrill logo" class="hover:scale-105 transition transform">
+            </section>
+          </section>
+        </section>
+
+      </section>
+
+      <!-- Top Categories of Tours -->
+      <section class="bg-[#FFFFFF] flex flex-col justify-center items-center my-10 gap-4">
+        <section class="flex  flex-col md:flex-row justify-between items-center w-[85%] lg:w-[66%]">
+          <!-- Texts -->
+          <div class="flex flex-col justify-center gap-2 items-start">
+            <h2 class="font-bold text-2xl md:text-4xl text-black">Top Categories of Tours</h2>
+            <p class="text-[#737373] ">Favorite destinations based on customer reviews</p>
+          </div>
+
+          <!-- View More Button -->
+          <button aria-label="View More" class=" flex justify-center items-center self-end md:self-auto rounded-2xl text-sm bg-black text-white p-2 gap-2 hover:scale-105 transition ">
+            View More
+            <img src="./public/Icon/whiteRightArrow.svg" alt="white right arrow icon">
+          </button>
+          
+           
+        </section>
+        <!-- Cards -->
+        <section class="flex flex-wrap justify-center items-center md:w-[92%] lg:w-[72%] gap-3">
+          <!-- Card1 -->
+          <article class=" bg-white rounded-xl shadow-md overflow-hidden p-3 border-[#E4E6E8] border-[1px] hover:scale-105 transition w-40 md:w-auto">
+            <img src="public/images/top.png.png" alt="Mountain" class="w-full h-20 object-cover rounded-xl">
+            <h3 class=" text-lg font-semibold">Mountain</h3>
+            <section class="flex justify-between items-center">
+              <p class="text-gray-500 text-xs">356 Tours, 248 Activities</p>
+              <button aria-label="Right Arrow" class="w-4 h-4 bg-gray-100 flex justify-center items-center rounded-full hover:bg-gray-200 cursor-pointer">
+                <img src="./public/Icon/rightArrow.svg" alt="rightArrow">
+              </button>
+            </section>
+          </article>
+          <!-- Card2 -->
+          <article class=" bg-white rounded-xl shadow-md overflow-hidden p-3 border-[#E4E6E8] border-[1px] hover:scale-105 transition w-40 md:w-auto">
+            <img src="public/images/top2.png.png" alt="Safari" class="w-full h-20 object-cover rounded-xl">
+            <h3 class=" text-lg font-semibold">Safari</h3>
+            <section class="flex justify-between items-center">
+              <p class="text-gray-500 text-xs">356 Tours, 248 Activities</p>
+              <button aria-label="Right Arrow" class="w-4 h-4 bg-gray-100 flex justify-center items-center rounded-full hover:bg-gray-200 cursor-pointer">
+                <img src="./public/Icon/rightArrow.svg" alt="rightArrow">
+              </button>
+            </section>
+          </article>
+          <!-- Card3 -->
+          <article class=" bg-white rounded-xl shadow-md overflow-hidden p-3 border-[#E4E6E8] border-[1px] hover:scale-105 transition w-40 md:w-auto">
+            <img src="public/images/top3.png.png" alt="Desert" class="w-full h-20 object-cover rounded-xl">
+            <h3 class=" text-lg font-semibold">Desert</h3>
+            <section class="flex justify-between items-center">
+              <p class="text-gray-500 text-xs">356 Tours, 248 Activities</p>
+              <button aria-label="Right Arrow" class="w-4 h-4 bg-gray-100 flex justify-center items-center rounded-full hover:bg-gray-200 cursor-pointer">
+                <img src="./public/Icon/rightArrow.svg" alt="rightArrow">
+              </button>
+            </section>
+          </article>
+          <!-- Card4 -->
+          <article class=" bg-white rounded-xl shadow-md overflow-hidden p-3 border-[#E4E6E8] border-[1px] hover:scale-105 transition w-40 md:w-auto">
+            <img src="public/images/top4.png.png" alt="Flower" class="w-full h-20 object-cover rounded-xl">
+            <h3 class=" text-lg font-semibold">Flower</h3>
+            <section class="flex justify-between items-center">
+              <p class="text-gray-500 text-xs">356 Tours, 248 Activities</p>
+              <button aria-label="Right Arrow" class="w-4 h-4 bg-gray-100 flex justify-center items-center rounded-full hover:bg-gray-200 cursor-pointer">
+                <img src="./public/Icon/rightArrow.svg" alt="rightArrow">
+              </button>
+            </section>
+          </article>
+          <!-- Card5 -->
+          <article class=" bg-white rounded-xl shadow-md overflow-hidden p-3 border-[#E4E6E8] border-[1px] hover:scale-105 transition w-40 md:w-auto">
+            <img src="public/images/top5.png.png" alt="Beach" class="w-full h-20 object-cover rounded-xl">
+            <h3 class=" text-lg font-semibold">Beach</h3>
+            <section class="flex justify-between items-center">
+              <p class="text-gray-500 text-xs">356 Tours, 248 Activities</p>
+              <button aria-label="Right Arrow" class="w-4 h-4 bg-gray-100 flex justify-center items-center rounded-full hover:bg-gray-200 cursor-pointer">
+                <img src="./public/Icon/rightArrow.svg" alt="rightArrow">
+              </button>
+            </section>
+          </article>
+          <!-- Card6 -->
+          <article class=" bg-white rounded-xl shadow-md overflow-hidden p-3 border-[#E4E6E8] border-[1px] hover:scale-105 transition w-40 md:w-auto">
+            <img src="public/images/top6.png.png" alt="Temples" class="w-full h-20 object-cover rounded-xl">
+            <h3 class=" text-lg font-semibold">Temples</h3>
+            <section class="flex justify-between items-center">
+              <p class="text-gray-500 text-xs">356 Tours, 248 Activities</p>
+              <button aria-label="Right Arrow" class="w-4 h-4 bg-gray-100 flex justify-center items-center rounded-full hover:bg-gray-200 cursor-pointer">
+                <img src="./public/Icon/rightArrow.svg" alt="rightArrow">
+              </button>
+            </section>
+          </article>
+          <!-- Card7 -->
+          <article class=" bg-white rounded-xl shadow-md overflow-hidden p-3 border-[#E4E6E8] border-[1px] hover:scale-105 transition w-40 md:w-auto">
+            <img src="public/images/top7.png.png" alt="Yatch" class="w-full h-20 object-cover rounded-xl">
+            <h3 class=" text-lg font-semibold">Yatch</h3>
+            <section class="flex justify-between items-center">
+              <p class="text-gray-500 text-xs">356 Tours, 248 Activities</p>
+              <button aria-label="Right Arrow" class="w-4 h-4 bg-gray-100 flex justify-center items-center rounded-full hover:bg-gray-200 cursor-pointer">
+                <img src="./public/Icon/rightArrow.svg" alt="rightArrow">
+              </button>
+            </section>
+          </article>
+          <!-- Card8 -->
+          <article class=" bg-white rounded-xl shadow-md overflow-hidden p-3 border-[#E4E6E8] border-[1px] hover:scale-105 transition w-40 md:w-auto">
+            <img src="public/images/top7.png (1).png" alt="Valley" class="w-full h-20 object-cover rounded-xl">
+            <h3 class=" text-lg font-semibold">Valley</h3>
+            <section class="flex justify-between items-center">
+              <p class="text-gray-500 text-xs">356 Tours, 248 Activities</p>
+              <button aria-label="Right Arrow" class="w-4 h-4 bg-gray-100 flex justify-center items-center rounded-full hover:bg-gray-200 cursor-pointer">
+                <img src="./public/Icon/rightArrow.svg" alt="rightArrow">
+              </button>
+            </section>
+          </article>
+
+          
+
+        </section>
+      </section>
+
+      <!-- Download From Google Play & App Store -->
+
+      <section class="flex flex-col md:flex-row justify-center flex-wrap w-auto items-center py-10">
+        <!-- Download -->
+        <section class="bg-[#9DD3FB] h-[20rem] w-[100%] md:w-[46%] lg:w-[35%] p-12 flex flex-col justify-center gap-4">
+          <div class="bg-[#FEFA17]  w-max p-2 rounded-xl inline-block font-semibold">
+            Install APP & Get discount code
+          </div>
+          <h2 class="font-bold text-2xl">
+            Up to 55% Discount and lots of special gifts
+          </h2>
+          <section class="flex justify-start items-center gap-2 ">
+            <a href=""><img class="rounded-2xl hover:scale-105 transition" src="./public/images/Link → googleplay.png.png" alt="google play logo"></a>
+            <a href=""><img class="rounded-2xl hover:scale-105 transition" src="./public/images/Link → appstore.png.png" alt="app store logo"></a>
+          </section>
+
+        </section>
+        <!-- Image Section -->
+         <!-- <figure class="object-contain bg-amber-500 h-40"> -->
+          <img class="h-[20rem] hover:scale-105 transition w-[100%] md:w-auto" src="./public/images/payment4.png.png" alt="two girls chilling ">
+         <!-- </figure> -->
+        <!-- <div style="background-image: url('./public/images/payment4.png.png');" class="bg-cover">
+
+        </div> -->
+        
+
+      </section>
+
+      <section class="h-auto w-full flex flex-wrap justify-center items-center gap-10 lg:gap-5 md:p-8 lg:p-16">
+        
+
+        <!-- Texts -->
+        <section class="flex md:w-[85%] lg:w-[35%] justify-end items-start flex-col gap-3 p-2">
+          <div class="bg-[#FEFA17] text-black text-sm p-2 rounded-2xl font-semibold w-max">
+            🌎 Why Book Travila?
+          </div>
+          <h2 class="text-2xl md:text-4xl font-bold">
+            Embracing Adventure Since 2003
+          </h2>
+          <p class="">
+            Choose one style or create a package, fill your passports with adventures together.
+          </p>
+          <section class="flex justify-start items-center gap-4">
+            <article class="flex flex-col">
+              <h2 class="text-3xl md:text-4xl font-bold">45+</h2>
+              <div class="text-sm text-[#737373] font-semibold">Global Branches</div>
+            </article>
+            <article class="flex flex-col">
+              <h2 class="text-3xl md:text-4xl font-bold">29K</h2>
+              <div class="text-sm text-[#737373] font-semibold">Destination Collaborations</div>
+            </article>
+            <article class="flex flex-col">
+              <h2 class="text-3xl md:text-4xl font-bold">20+</h2>
+              <div class="text-sm text-[#737373] font-semibold">Years Experience</div>
+            </article>
+            <article class="flex flex-col">
+              <h2 class="text-3xl md:text-4xl font-bold">168K</h2>
+              <div class="text-sm text-[#737373] font-semibold">Happy Customers</div>
+            </article>
+          </section>
+        </section>
+
+        <section class="flex md:w-[85%] lg:w-max md:justify-center lg:justify-start items-center gap-3">
+          <section class="flex flex-col gap-2 ">
+            <section class=" h-38 md:h-42 w-42 md:w-46 rounded-xl bg-[#FFF0EC] border-[1px] border-[#E4E6E8] flex flex-col justify-center items-center gap-1 p-2 hover:scale-105 transition">
+              <img src="./public/images/experience.png.png" alt="globe icon">
+              <div class="font-bold text-sm text-center">300,000+ Experiences</div>
+              <div class="text-[#737373] text-sm text-center">Make memories around the world.</div>
+
+            </section>
+            <section class="h-38 md:h-42 w-42 md:w-46 rounded-xl bg-[#E3F0FF] border-[1px] border-[#E4E6E8] flex flex-col justify-center items-center gap-1 p-2 hover:scale-105 transition">
+              <img src="./public/Icon/reserveNow.svg" alt="ticket icon">
+              <div class="font-bold text-sm text-center">Reserve now, Pay later</div>
+              <div class="text-[#737373] text-sm text-center">Book your spot first, pay later.</div>
+            </section>
+          </section>
+          <section class="flex flex-col gap-2 -translate-y-3 ">
+            <section class="h-38 md:h-42 w-42 md:w-46 rounded-xl bg-[#E4F9F9] border-[1px] border-[#E4E6E8] flex flex-col justify-center items-center gap-1 p-2 hover:scale-105 transition">
+              <img src="./public/Icon/troley.svg" alt="trolley icon">
+              <div class="font-bold text-sm text-center">Trusted Reviews</div>
+              <div class="text-[#737373] text-sm text-center">4.8 stars from 160,000+
+                Trustpilot reviews.</div>
+            </section>
+            <section class="h-38 md:h-42 w-42 md:w-46 rounded-xl bg-[#EFEFEB] border-[1px] border-[#E4E6E8] flex flex-col justify-center items-center gap-1 p-2 hover:scale-105 transition">
+              <img src="./public/Icon/windosSeat.svg" alt="window icon">
+              <div class="font-bold text-sm text-center">Security Assurance</div>
+              <div class="text-[#737373] text-sm text-center">Data security through
+                encryption</div>
+            </section>
+          </section>
+        </section>
+
+      </section>
+
+
+      <!-- Trending Destination Section -->
+      <section class="max-w-6xl mx-auto px-4 py-10 flex flex-col justify-center items-center">
+        <!-- Heading -->
+        <section class="text-center">
+            <h2 class="text-3xl font-bold">Trending Destinations</h2>
+            <p class="text-gray-500">Most popular choices for travelers</p>
+        </section>
+
+        <!-- Grid Layout -->
+        <section class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 w-[72%]">
+            <!-- Featured Card -->
+            <article class="relative sm:col-span-2 lg:col-span-2 hover:scale-105 transition">
+                <figure><img src="public/images/Link → trend.png.png" alt="Western Europe" class="w-full h-64 object-cover rounded-lg"></figure>
+                <div class="absolute top-3 right-3 bg-white text-sm px-3 py-1 rounded-full shadow-md">
+                    <span class="font-semibold">26 promotions</span>
+                </div>
+                <section class="hidden md:block md:absolute md:bottom-3 md:right-3 md:bg-white md:text-sm md:px-3 md:py-1 md:rounded shadow-md">
+                    <span class="text-gray-700">Promotion will end in</span>
+                    <div class="flex space-x-1 text-black font-bold">
+                        <span>22</span>:<span>09</span>:<span>45</span>:<span>58</span>
+                    </div>
+                </section>
+                <article class="absolute bottom-3 left-3 bg-white p-3 rounded-lg shadow-md">
+                    <h3 class="font-semibold">Western Europe</h3>
+                    <p class="text-gray-500 text-sm">356 Tours, 248 Activities</p>
+                </article>
+            </article>
+
+            <!-- Other Destination Cards -->
+            <article class="relative hover:scale-105 transition">
+                <figure><img src="public/images/Link → trend2.png.png" alt="New York" class="w-full h-64 object-cover rounded-lg"></figure>
+                <div class="absolute bottom-3 left-3 bg-white p-3 rounded-lg shadow-md">
+                    <h3 class="font-semibold">New York</h3>
+                    <p class="text-gray-500 text-sm">356 Tours, 248 Activities</p>
+                </div>
+            </article>
+
+            <article class="relative hover:scale-105 transition">
+                <figure><img src="public/images/Link → trend3.png.png" alt="Venice" class="w-full h-64 object-cover rounded-lg"></figure>
+                <div class="absolute bottom-3 left-3 bg-white p-3 rounded-lg shadow-md">
+                    <h3 class="font-semibold">Venice</h3>
+                    <p class="text-gray-500 text-sm">356 Tours, 248 Activities</p>
+                </div>
+            </article>
+
+            <article class="relative hover:scale-105 transition">
+                <figure><img src="public/images/Link (1).png" alt="Amsterdam" class="w-full h-64 object-cover rounded-lg"></figure>
+                <div class="absolute bottom-3 left-3 bg-white p-3 rounded-lg shadow-md">
+                    <h3 class="font-semibold">Amsterdam</h3>
+                    <p class="text-gray-500 text-sm">356 Tours, 248 Activities</p>
+                </div>
+            </article>
+
+            <article class="relative hover:scale-105 transition">
+                <figure><img src="public/images/Link → trend5.png.png" alt="London" class="w-full h-64 object-cover rounded-lg"></figure>
+                <div class="absolute bottom-3 left-3 bg-white p-3 rounded-lg shadow-md ">
+                    <h3 class="font-semibold">London</h3>
+                    <p class="text-gray-500 text-sm">356 Tours, 248 Activities</p>
+                </div>
+            </article>
+        </section>
+      </section>
+
+      <!-- A central traveler image -->
+      <section class="relative max-w-7xl mx-auto px-6 py-16 flex justify-center">
+        <!-- Dashed Path Background (Can be an SVG) -->
+        <figure class="absolute inset-0 flex items-center justify-center -z-10">
+            <img src="public/images/Section (1).png" alt="Path Decoration" class="w-full h-auto">
+        </figure>
+
+        <section class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center w-[72%]">
+            <!-- Left Side Features -->
+            <section class="space-y-8">
+                <article class="flex items-center space-x-4">
+                    <figure class="bg-white shadow-lg p-3 rounded-xl">
+                        <img src="public/Icon/security.svg" alt="Security Assurance" class="w-10 h-10">
+                    </figure>
+                    <article>
+                        <h3 class="font-semibold text-lg">Security Assurance</h3>
+                        <p class="text-gray-500 text-sm">
+                            Demonstrates commitment to user data security through encryption and secure payment practices.
+                        </p>
+                        <a href="#" class="text-blue-500 font-medium text-sm">Learn More →</a>
+                    </article>
+                </article>
+
+                <article class="flex items-center space-x-4">
+                    <figure class="bg-white shadow-lg p-3 rounded-xl">
+                        <img src="public/Icon/support.svg" alt="Customer Support" class="w-10 h-10">
+                    </figure>
+                    <article>
+                        <h3 class="font-semibold text-lg">Customer Support</h3>
+                        <p class="text-gray-500 text-sm">
+                            Demonstrates commitment to user data security through encryption and secure payment practices.
+                        </p>
+                        <a href="#" class="text-blue-500 font-medium text-sm">Learn More →</a>
+                    </article>
+                </article>
+            </section>
+
+            <!-- Traveler Image -->
+            <section class="relative flex justify-center">
+                <figure><img src="public/images/man.png.png" alt="Traveler" class="w-72 h-auto"></figure>
+                <div class="absolute bottom-16 left-10 bg-white shadow-lg px-4 py-2 rounded-full text-orange-500 font-semibold">
+                    +01 235 368
+                </div>
+            </section>
+
+            <!-- Right Side Features -->
+            <section class="space-y-8">
+                <article class="flex items-center space-x-4">
+                    <figure class="bg-white shadow-lg p-3 rounded-xl">
+                        <img src="public/Icon/policy.svg" alt="Transparent Policies" class="w-10 h-10">
+                    </figure>
+                    <article>
+                        <h3 class="font-semibold text-lg">Transparent Policies</h3>
+                        <p class="text-gray-500 text-sm">
+                            Demonstrates commitment to user data security through encryption and secure payment practices.
+                        </p>
+                        <a href="#" class="text-blue-500 font-medium text-sm">Learn More →</a>
+                    </article>
+                </article>
+
+                <article class="flex items-center space-x-4">
+                    <figure class="bg-white shadow-lg p-3 rounded-xl">
+                        <img src="public/Icon/repu.svg" alt="Reputable Affiliations" class="w-10 h-10">
+                    </figure>
+                    <article>
+                        <h3 class="font-semibold text-lg">Reputable Affiliations</h3>
+                        <p class="text-gray-500 text-sm">
+                            Demonstrates commitment to user data security through encryption and secure payment practices.
+                        </p>
+                        <a href="#" class="text-blue-500 font-medium text-sm">Learn More →</a>
+                    </article>
+                </article>
+            </section>
+          </section>
+      </section>
+
+      <!-- Cover Advertisement -->
+      <figure class="flex items-center justify-center my-8">;
+        <img src="./public/images/banner-ads.png.png" alt="ad banner" class="w-[90%] lg:w-[60%] object-cover pb-12">
+
+      </figure>
+
+      <!-- Get Inspiration for your next trip -->
+      <section class=" flex flex-col justify-center items-center w-full h-auto mt-20 bg-[#FCFCF3]">
+    
+        <section class="flex justify-between w-[72%] my-10">
+          <!-- Texts -->
+          <div class="flex flex-col justify-center gap-2 items-start">
+            <h2 class="font-bold text-3xl md:text-4xl text-black">Get inspiration for your next trip</h2>
+            <p class="text-[#737373] ">Favorite destinations based on customer reviews</p>
+          </div>
+
+          <!-- Arrow Buttons -->
+          <section class="hidden md:flex justify-center items-center gap-2">
+            <button aria-label="Left Arrow" class=" flex justify-center items-center rounded-2xl bg-[#E4E6E8] p-2 hover:scale-105 transition">
+              <img src="./public/Icon/blackLeftArrow.svg" alt="blackLeftArrow">  
+            </button>
+            <button aria-label="Right Arrow" class="flex justify-center items-center rounded-2xl bg-[#E4E6E8] p-2 hover:scale-105 transition">
+              <img src="./public/Icon/blackRightArrow.svg" alt="blackRightArrow">
+          </section>
+           
+        </section>
+        <!-- Cards -->
+        <section class="flex justify-center flex-wrap items-center w-[90%] gap-4 mb-20">
+          <!-- Card 1 -->
+          <article class="shadow-lg w-75 rounded-3xl overflow-hidden border-2 border-[#E4E6E8] bg-white hover:scale-105 transition">
+            <section class="relative">
+                <figure><img src="/public/images/news.png.png" alt="Singapore Skylines" class="w-full h-48 object-cover"></figure>
+                <span class="absolute top-2 left-2 bg-white px-3 py-1 text-xs font-semibold rounded-lg">Culture</span>
+                <button aria-label="Wishlist" class="absolute top-2 right-2 bg-white p-1 rounded-full shadow-md">
+                  <img src="./public/Icon/love.svg" alt="love icon">
+                </button>
+            </section>
+            <article class="p-4 pt-6 bg-white rounded-t-3xl -translate-y-4 gap-2">
+                
+                <p class=" text-xs flex items-center">
+                  <img src="./public/Icon/calender.svg" alt="calender icon">
+                  18 Sep 2024 &nbsp; &nbsp;
+                  <img src="./public/Icon/duration.svg" alt="duration icon">
+                  6 mins &nbsp; &nbsp;
+                  <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g clip-path="url(#clip0_1_7340)">
+                    <mask id="mask0_1_7340" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="17" height="17">
+                    <path d="M16.8604 0.0898438H0.860352V16.0898H16.8604V0.0898438Z" fill="white"/>
+                    </mask>
+                    <g mask="url(#mask0_1_7340)">
+                    <path d="M8.86035 14.0898C12.1741 14.0898 14.8604 11.4035 14.8604 8.08984C14.8604 4.77613 12.1741 2.08984 8.86035 2.08984C5.54664 2.08984 2.86035 4.77613 2.86035 8.08984C2.86035 9.08159 3.10097 10.0172 3.52702 10.8413L2.86035 14.0898L6.10888 13.4231C6.93304 13.8492 7.8686 14.0898 8.86035 14.0898Z" stroke="#8E8E8E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M5.86702 8.08984H5.86035V8.09651H5.86702V8.08984Z" stroke="#8E8E8E" stroke-width="2.25" stroke-linejoin="round"/>
+                    <path d="M8.86702 8.08984H8.86035V8.09651H8.86702V8.08984Z" stroke="#8E8E8E" stroke-width="2.25" stroke-linejoin="round"/>
+                    <path d="M11.867 8.08984H11.8604V8.09651H11.867V8.08984Z" stroke="#8E8E8E" stroke-width="2.25" stroke-linejoin="round"/>
+                    </g>
+                    </g>
+                    <defs>
+                    <clipPath id="clip0_1_7340">
+                    <rect width="16" height="16" fill="white" transform="translate(0.860352 0.0898438)"/>
+                    </clipPath>
+                    </defs>
+                  </svg>
+                  38 comments
+                </p>
+                <h3 class="text-lg font-semibold my-2">Ultimate Travel Planning Guide: 10
+                  Tips for a Seamless Journey</h3>  
+                <section class="flex justify-between items-center gap-1.5">
+                  <section class="flex justify-center items-center gap-2">
+                    <img src="./public/images/avatar.png (1).png" alt="Jimmy Dave image">
+                    <span class=" text-sm font-normal">Jimmy Dave</span>
+
+                  </section>
+                  
+                  <button aria-label="Keep Reading" class="mt-2 text-sm bg-[#F2F4F6] border-[#E4E6E8] border-2 text-black p-2 rounded-2xl  transition-all duration-300  hover:border-black  hover:bg-white hover:text-black hover:border-[2px] hover:scale-105">Keep Reading</button>
+                </section>
+                
+            </article>
+          </article>
+          <!-- Card 2 -->
+          <article class="shadow-lg w-75 rounded-3xl overflow-hidden border-2 border-[#E4E6E8] bg-white hover:scale-105 transition">
+            <section class="relative">
+                <figure><img src="/public/images/news2.png.png" alt="Singapore Skylines" class="w-full h-48 object-cover"></figure>
+                <span class="absolute top-2 left-2 bg-white px-3 py-1 text-xs font-semibold rounded-lg">Travel</span>
+                <button aria-label="Wishlist" class="absolute top-2 right-2 bg-white p-1 rounded-full shadow-md">
+                  <img src="./public/Icon/love.svg" alt="love icon">
+                </button>
+            </section>
+            <article class="p-4 pt-6 bg-white rounded-t-3xl -translate-y-4 gap-2">
+                
+                <p class=" text-xs flex items-center">
+                  <img src="./public/Icon/calender.svg" alt="calender icon">
+                  18 Sep 2024 &nbsp; &nbsp;
+                  <img src="./public/Icon/duration.svg" alt="clock icon">
+                  6 mins &nbsp; &nbsp;
+                  <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g clip-path="url(#clip0_1_7340)">
+                    <mask id="mask0_1_7340" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="17" height="17">
+                    <path d="M16.8604 0.0898438H0.860352V16.0898H16.8604V0.0898438Z" fill="white"/>
+                    </mask>
+                    <g mask="url(#mask0_1_7340)">
+                    <path d="M8.86035 14.0898C12.1741 14.0898 14.8604 11.4035 14.8604 8.08984C14.8604 4.77613 12.1741 2.08984 8.86035 2.08984C5.54664 2.08984 2.86035 4.77613 2.86035 8.08984C2.86035 9.08159 3.10097 10.0172 3.52702 10.8413L2.86035 14.0898L6.10888 13.4231C6.93304 13.8492 7.8686 14.0898 8.86035 14.0898Z" stroke="#8E8E8E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M5.86702 8.08984H5.86035V8.09651H5.86702V8.08984Z" stroke="#8E8E8E" stroke-width="2.25" stroke-linejoin="round"/>
+                    <path d="M8.86702 8.08984H8.86035V8.09651H8.86702V8.08984Z" stroke="#8E8E8E" stroke-width="2.25" stroke-linejoin="round"/>
+                    <path d="M11.867 8.08984H11.8604V8.09651H11.867V8.08984Z" stroke="#8E8E8E" stroke-width="2.25" stroke-linejoin="round"/>
+                    </g>
+                    </g>
+                    <defs>
+                    <clipPath id="clip0_1_7340">
+                    <rect width="16" height="16" fill="white" transform="translate(0.860352 0.0898438)"/>
+                    </clipPath>
+                    </defs>
+                  </svg>
+                  38 comments
+                </p>
+                <h3 class="text-lg font-semibold my-2">Top 10 Travel Hacks for Budget-
+                  Conscious Adventurers</h3>  
+                <section class="flex justify-between items-center gap-1.5">
+                  <section class="flex justify-center items-center gap-2">
+                    <img src="./public/images/avatar.png (1).png" alt="Jimmy Dave image">
+                    <span class=" text-sm font-normal">Jimmy Dave</span>
+
+                  </section>
+                  
+                  <button aria-label="Keep Reading"  class="mt-2 text-sm bg-[#F2F4F6] border-[#E4E6E8] border-2 text-black p-2 rounded-2xl  transition-all duration-300  hover:border-black  hover:bg-white hover:text-black hover:border-[2px] hover:scale-105">Keep Reading</button>
+                </section>
+                
+            </article>
+          </article>
+          <!-- Card 3 -->
+          <article class="shadow-lg w-75 rounded-3xl overflow-hidden border-2 border-[#E4E6E8] bg-white hover:scale-105 transition">
+            <section class="relative">
+                <figure><img src="/public/images/news3.png.png" alt="Singapore Skylines" class="w-full h-48 object-cover"></figure>
+                <span class="absolute top-2 left-2 bg-white px-3 py-1 text-xs font-semibold rounded-lg">Discovery</span>
+                <button aria-label="Wishlist"  class="absolute top-2 right-2 bg-white p-1 rounded-full shadow-md">
+                  <img src="./public/Icon/love.svg" alt="love icon">
+                </button>
+            </section>
+            <article class="p-4 pt-6 bg-white rounded-t-3xl -translate-y-4 gap-2">
+                
+                <p class=" text-xs flex items-center">
+                  <img src="./public/Icon/calender.svg" alt="calender icon">
+                  18 Sep 2024 &nbsp; &nbsp;
+                  <img src="./public/Icon/duration.svg" alt="clock icon">
+                  6 mins &nbsp; &nbsp;
+                  <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g clip-path="url(#clip0_1_7340)">
+                    <mask id="mask0_1_7340" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="17" height="17">
+                    <path d="M16.8604 0.0898438H0.860352V16.0898H16.8604V0.0898438Z" fill="white"/>
+                    </mask>
+                    <g mask="url(#mask0_1_7340)">
+                    <path d="M8.86035 14.0898C12.1741 14.0898 14.8604 11.4035 14.8604 8.08984C14.8604 4.77613 12.1741 2.08984 8.86035 2.08984C5.54664 2.08984 2.86035 4.77613 2.86035 8.08984C2.86035 9.08159 3.10097 10.0172 3.52702 10.8413L2.86035 14.0898L6.10888 13.4231C6.93304 13.8492 7.8686 14.0898 8.86035 14.0898Z" stroke="#8E8E8E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M5.86702 8.08984H5.86035V8.09651H5.86702V8.08984Z" stroke="#8E8E8E" stroke-width="2.25" stroke-linejoin="round"/>
+                    <path d="M8.86702 8.08984H8.86035V8.09651H8.86702V8.08984Z" stroke="#8E8E8E" stroke-width="2.25" stroke-linejoin="round"/>
+                    <path d="M11.867 8.08984H11.8604V8.09651H11.867V8.08984Z" stroke="#8E8E8E" stroke-width="2.25" stroke-linejoin="round"/>
+                    </g>
+                    </g>
+                    <defs>
+                    <clipPath id="clip0_1_7340">
+                    <rect width="16" height="16" fill="white" transform="translate(0.860352 0.0898438)"/>
+                    </clipPath>
+                    </defs>
+                  </svg>
+                  38 comments
+                </p>
+                <h3 class="text-lg font-semibold my-2">Discovering Hidden Gems: 10 Off-
+                  the-Beaten-Path Travel Tips</h3>  
+                <section class="flex justify-between items-center gap-1.5">
+                  <section class="flex justify-center items-center gap-2">
+                    <img src="./public/images/avatar.png (1).png" alt="Jimmy Dave image">
+                    <span class=" text-sm font-normal">Jimmy Dave</span>
+
+                  </section>
+                  
+                  <button aria-label="Keep Reading" class="mt-2 text-sm bg-[#F2F4F6] border-[#E4E6E8] border-2 text-black p-2 rounded-2xl  transition-all duration-300  hover:border-black  hover:bg-white hover:text-black hover:border-[2px] hover:scale-105">Keep Reading</button>
+                </section>
+                
+            </article>
+          </article>
+          
+          
+          
+
+          
+        </section>
+      </section>
+
+      <!-- Footer Section -->
+       <footer class=" bg-black flex justify-center">
+        <section class="bg-black text-white py-12 px-6 w-[93%] lg:w-[72%]">
+          <section class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+              <!-- Left: Company Info -->
+              <section>
+                  <!-- Travila and Logo -->
+                  <section class="flex items-center space-x-3">
+                    <svg
+                    class="bg-[#FEFA17] rounded-full"
+                    width="35"
+                    height="35"
+                    viewBox="0 0 35 35"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <mask
+                      id="mask0_1_7640"
+                      style="mask-type: luminance"
+                      maskUnits="userSpaceOnUse"
+                      x="0"
+                      y="0"
+                      width="35"
+                      height="35"
+                    >
+                      <path d="M35 0.470001H0.125V34.22H35V0.470001Z" fill="white" />
+                    </mask>
+                    <g mask="url(#mask0_1_7640)">
+                      <path
+                        d="M35 34.2199H0.125C1.65423 33.4651 3.11995 32.5827 4.50726 31.5815C7.11772 29.6978 10.6613 27.808 14.7365 27.4458C21.6642 26.83 30.2457 31.9257 35 34.2199Z"
+                        fill="black"
+                      />
+                      <path
+                        d="M17.5598 22.4769C16.0833 18.9329 13.4256 17.3933 12.02 17.2544C11.6173 17.2278 11.2135 17.2859 10.8336 17.4251C10.4537 17.5642 10.1057 17.7815 9.81109 18.0635C10.033 17.7886 10.2737 17.5303 10.5317 17.2907C10.1596 16.9465 9.72259 16.6144 9.72259 16.6144C10.1124 16.8016 10.5376 17.0492 10.6911 17.1458C11.0947 16.7859 11.5252 16.4589 11.9787 16.1677C11.5904 15.8468 11.182 15.5524 10.7561 15.2862C11.2903 15.467 11.8065 15.6995 12.2976 15.9805C12.9066 15.6239 13.5402 15.3132 14.1934 15.0507C13.939 14.8343 13.6728 14.6327 13.3961 14.447C13.7783 14.5846 14.1495 14.7521 14.5064 14.9481C15.2095 14.6757 15.9297 14.4518 16.6621 14.2779C13.0358 13.2455 10.2009 14.3987 9.20869 15.4432C8.80576 15.874 8.55079 16.427 8.48229 17.019C8.04959 16.0112 7.29323 15.1848 6.3384 14.6764C4.1768 13.7526 2.0152 15.5639 2.0152 15.5639C2.91354 15.3863 3.84358 15.496 4.67881 15.8779L5.48203 15.3405L4.93868 15.9986C5.78907 16.4474 6.55809 17.0417 7.21249 17.7555C6.66847 17.4148 6.02466 17.2802 5.39344 17.3752C3.99372 17.6106 1.44823 19.3374 0.213867 22.978C0.757307 22.4769 1.33566 22.0169 1.94433 21.6015C1.99425 21.1941 2.0712 20.7907 2.17466 20.394C2.17004 20.7368 2.18582 21.0795 2.22191 21.4204C2.80497 21.0175 3.417 20.6602 4.05278 20.3517C4.10411 19.7788 4.21094 19.2125 4.3717 18.6612C4.33766 19.1718 4.33766 19.6841 4.3717 20.1947C4.8592 19.9772 5.36278 19.7996 5.87773 19.6634C5.87773 19.4763 5.93089 18.9812 6.00176 18.5465C6.00176 18.5465 6.00176 19.1019 6.08444 19.6091C6.27737 19.5648 6.47424 19.5286 6.67505 19.5004C5.96632 20.2128 5.2517 21.7524 5.31666 25.061C5.31666 25.061 5.73599 24.0769 6.27344 23.0505C6.16948 22.6381 6.11397 22.2145 6.10807 21.7886C6.10807 21.7886 6.26163 22.2898 6.4329 22.7426C6.59236 22.4407 6.76364 22.1388 6.929 21.8792L6.97035 21.8128C6.91129 21.4868 6.80498 20.8347 6.77545 20.3819C6.77545 20.3819 6.94672 20.9856 7.14753 21.5351C7.55059 20.8997 8.02426 20.3142 8.55906 19.7902C11.8546 25.5742 11.5121 33.9966 11.5121 33.9966L13.0595 33.8577C12.6342 25.8278 10.0828 21.04 9.13199 19.5125C9.89939 19.37 10.6856 19.37 11.453 19.5125C11.453 18.9993 11.453 18.4438 11.453 18.4438C11.5534 18.8725 11.6243 19.3676 11.6479 19.5487C12.1717 19.6482 12.6871 19.7895 13.1894 19.9713C13.2003 19.4531 13.1766 18.9346 13.1185 18.4197C13.3159 18.9592 13.4603 19.5174 13.5497 20.086C14.2148 20.3401 14.8604 20.6448 15.4809 20.9977C15.5002 20.6559 15.5002 20.3132 15.4809 19.9713C15.6105 20.3661 15.7131 20.7696 15.788 21.1788C16.4084 21.5675 17.0005 22.0013 17.5598 22.4769Z"
+                        fill="black"
+                      />
+                      <path
+                        d="M8.57099 16.041C9.42148 10.6615 12.5517 7.63063 14.4416 6.94838C14.9844 6.77036 15.5574 6.70904 16.1246 6.76826C16.6917 6.82749 17.2407 7.00598 17.7371 7.29253C17.3414 6.99967 16.9248 6.73732 16.491 6.50764C16.8867 5.90389 17.3769 5.30013 17.3769 5.30013C16.9044 5.69257 16.4083 6.18161 16.2252 6.36274C15.5543 6.01442 14.8571 5.72166 14.1404 5.48729C14.563 4.90745 15.0227 4.35683 15.5165 3.83904C14.8422 4.26042 14.2111 4.7499 13.6325 5.30013C12.6756 5.0267 11.7005 4.82491 10.7149 4.69637C10.99 4.30203 11.2858 3.92313 11.6008 3.56131C11.1259 3.88889 10.6739 4.25001 10.2483 4.64203C9.21218 4.51025 8.16781 4.45778 7.12402 4.48506C11.7603 1.7923 16.0303 2.39002 17.7312 3.48886C18.4258 3.94057 18.9616 4.60672 19.2609 5.39069C19.6034 3.90545 20.2413 2.31757 21.4166 1.43005C24.0389 -0.56235 27.6061 1.1644 27.6061 1.1644C26.3162 1.23303 25.0785 1.70749 24.0625 2.52285L22.7809 2.06399L23.7495 2.78246C22.7309 3.68886 21.8719 4.7671 21.2099 5.9703C21.8483 5.33047 22.6823 4.93405 23.5723 4.84731C25.5803 4.69637 29.6555 6.16954 32.5435 10.7339C31.6257 10.2229 30.6745 9.7771 29.6968 9.3996C29.4975 8.851 29.2587 8.3182 28.9822 7.80572C29.1011 8.2749 29.1938 8.7506 29.2598 9.2306C28.3242 8.8832 27.3648 8.6067 26.3894 8.4034C26.1315 7.63393 25.797 6.89348 25.3913 6.19369C25.5982 6.88598 25.758 7.59204 25.8697 8.3068C25.1283 8.17561 24.3778 8.10495 23.6254 8.09552C23.5427 7.84798 23.3242 7.17781 23.0821 6.61028C23.0821 6.61028 23.2415 7.38309 23.3242 8.09552C23.0466 8.09552 22.7336 8.09552 22.4915 8.14382C23.6727 8.8804 25.1905 10.74 26.1945 15.3044C26.1945 15.3044 25.2909 14.0969 24.216 12.8894C24.2247 12.2797 24.1592 11.6713 24.0211 11.0781C24.0211 11.0781 23.9798 11.8207 23.8971 12.5029C23.5782 12.1467 23.2474 11.7966 22.9285 11.4886L22.8517 11.4162C22.8517 10.9453 22.7513 10.0215 22.6391 9.3876C22.6391 9.3876 22.6391 10.2811 22.5092 11.1022C21.7577 10.3846 20.9273 9.7585 20.0346 9.2366C17.4418 18.293 20.6901 29.7644 20.6901 29.7644L18.5167 30.1145C16.4496 18.9631 18.3573 11.4826 19.1546 9.0495C18.0552 9.1128 16.9755 9.3744 15.9653 9.8223C15.7527 9.134 15.5933 8.3612 15.5933 8.3612C15.5985 8.8918 15.63 9.4217 15.6878 9.9491C14.9999 10.2639 14.3382 10.6354 13.7092 11.06C13.5309 10.3573 13.3987 9.6433 13.3135 8.9227C13.2244 9.7245 13.2125 10.5334 13.2781 11.3377C12.4669 11.9275 11.699 12.5773 10.9807 13.2818C10.8508 12.8151 10.7463 12.3414 10.6676 11.863C10.6279 12.4479 10.6279 13.035 10.6676 13.6199C9.91168 14.3733 9.21088 15.1825 8.57099 16.041Z"
+                        fill="black"
+                      />
+                    </g>
+                    </svg> 
+                      <h2 class="text-xl font-bold">Travila</h2>
+                  </section>
+                  <p class="text-gray-400 mt-3 text-sm">Dive into local recommendations for a truly authentic experience.</p>
+                  <article class="mt-4 space-y-2 text-gray-400 text-sm">
+                      <p><img src="./public/Icon/address.svg" alt="addres icon" class="inline-block"> 4517 Washington Ave. Manchester, Kentucky 39495</p>
+                      <p><img src="./public/Icon/hour-work.svg" alt=" clock icon" class="inline-block"> Hours: 8:00 - 17:00, Mon - Sat</p>
+                      <p><img src="./public/Icon/mail.svg" alt="mail icon" class="inline-block"> support@travila.com</p>
+                  </article>
+              </section>
+  
+              <!-- Company & Services -->
+              <section class="flex justify-between text-gray-400 text-sm">
+                  <section>
+                      <h3 class="text-white font-semibold mb-2">Company</h3>
+                      <ul class="space-y-2">
+                          <li><a href="#" class="hover:text-yellow-400">About Us</a></li>
+                          <li><a href="#" class="hover:text-yellow-400">Community Blog</a></li>
+                          <li><a href="#" class="hover:text-yellow-400">Jobs & Careers</a></li>
+                          <li><a href="#" class="hover:text-yellow-400">Contact Us</a></li>
+                          <li><a href="#" class="hover:text-yellow-400">Our Awards</a></li>
+                      </ul>
+                  </section>
+                  <section>
+                      <h3 class="text-white font-semibold mb-2">Services</h3>
+                      <ul class="space-y-2">
+                          <li><a href="#" class="hover:text-yellow-400">Tour Guide</a></li>
+                          <li><a href="#" class="hover:text-yellow-400">Tour Booking</a></li>
+                          <li><a href="#" class="hover:text-yellow-400">Hotel Booking</a></li>
+                          <li><a href="#" class="hover:text-yellow-400">Ticket Booking</a></li>
+                          <li><a href="#" class="hover:text-yellow-400">Rental Services</a></li>
+                      </ul>
+                  </section>
+              </section>
+  
+              <!-- Right: Newsletter -->
+              <section>
+                  <h3 class="text-white font-semibold">Newsletter</h3>
+                  <form class="mt-3">
+                      <input type="email" placeholder="Enter your email" class="w-full bg-gray-800 text-white px-4 py-2 rounded-full focus:ring-2 focus:ring-yellow-400" required>
+                      <input type="submit" value="Subscribe" aria-label="Subscribe" class="w-full bg-yellow-400 text-black font-semibold py-2 rounded-full mt-3 hover:bg-yellow-500">
+                  </form>
+              </section>
+          </section>
+  
+          <!-- Call to Action Boxes -->
+          <section class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+              <article class="bg-gray-900 p-5 rounded-lg flex items-center space-x-4 hover:scale-105 transition transform">
+                  <img src="./public/Icon/help.svg" alt="Call Us" class="w-10 h-10">
+                  <section>
+                      <p class="text-gray-400 text-sm">Need help? Call us</p>
+                      <p class="text-white font-bold text-sm lg:text-lg">1-800-222-8888</p>
+                  </section>
+              </article>
+              <article class="bg-gray-900 p-5 rounded-lg flex items-center space-x-4 hover:scale-105 transition transform">
+                  <img src="./public/Icon/join.svg" alt="Affiliate Program" class="w-10 h-10">
+                  <p class="text-white font-bold text-sm lg:text-lg">Join Travila Affiliate Program Today!</p>
+              </article>
+              <article class="bg-gray-900 p-5 rounded-lg flex items-center space-x-4 hover:scale-105 transition transform">
+                  <img src="./public/Icon/msg.svg" alt="Message Us" class="w-10 h-10">
+                  <section>
+                      <p class="text-white font-bold text-sm lg:text-lg">Send us a message</p>
+                      <p class="text-gray-400 text-sm">Contact our agents about your booking.</p>
+                  </section>
+              </article>
+            </section>
+  
+          <!-- Bottom Section -->
+          <section class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center text-gray-400 text-sm mt-10">
+              <p>© 2024 Travila Inc. All rights reserved.</p>
+              <section class="flex space-x-4 mt-4 md:mt-0">
+                  <a href="#"class="hover:scale-105 transition transform"><img src="./public/Icon/ig.svg" alt="Instagram" class="w-8 h-8 p-1 rounded-full border-[1px] border-white"></a>
+                  <a href="#" class="hover:scale-105 transition transform"><img src="./public/Icon/fb.svg" alt="Facebook" class="w-8 h-8 p-1 rounded-full border-[1px] border-white"></a>
+                  <a href="#" class="hover:scale-105 transition transform"><img src="./public/Icon/x.svg" alt="Twitter" class="w-8 h-8 p-1 rounded-full border-[1px] border-white"></a>
+                  <a href="#" class="hover:scale-105 transition transform"><img src="./public/Icon/ig.svg" alt="YouTube" class="w-8 h-8 p-1 rounded-full border-[1px] border-white"></a>
+              </section>
+          </section>
+  
+        </section>
+       </footer>
+      
+    </main>
+    
+  </body>
+  <script src="./script.js"></script>
+</html>
