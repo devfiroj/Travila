@@ -349,11 +349,10 @@
         </p>
       </section> -->
       <div class="bg-gray-900 text-white">
-
         <section
           id="hero-slider"
           class="relative h-[400px] flex flex-col items-center justify-center gap-4 bg-cover bg-center text-white text-center p-6 fade"
-          style="background-image: url('https://source.unsplash.com/1600x900/?travel,adventure');"
+          style="background-image: url('./public/images/Background.png');"
         >
           <div class="absolute inset-0 bg-gray-800 opacity-60"></div>
         
@@ -393,28 +392,28 @@
         <section class="w-full flex flex-col md:flex-row md:justify-between md:items-center">
           <!-- Buttons -->
           <section class="flex justify-center flex-wrap items-center w-fit">
-            <button aria-label="tours button"
-              class=" bg-black text-white px-2 md:px-4 py-2 rounded-xl md:rounded-3xl font-semibold"
+            <button aria-label="Tours button"
+              class="selectBtn bg-black text-white px-2 md:px-4 py-2 rounded-xl md:rounded-3xl font-semibold"
             >
               Tours
             </button>
             <button aria-label="Hotels Button"
-              class=" text-gray-600 px-1.5 md:px-4 rounded-md hover:text-black"
+              class="selectBtn text-gray-600 px-1.5 md:px-4 rounded-md hover:text-black"
             >
               Hotels
             </button>
             <button aria-label="Tours Button"
-              class=" text-gray-600 px-1.5 md:px-4 rounded-md hover:text-black"
+              class="selectBtn text-gray-600 px-1.5 md:px-4 rounded-md hover:text-black"
             >
               Tickets
             </button>
             <button aria-label="Rental Button"
-              class=" text-gray-600 px-1.5  md:px-4 rounded-md hover:text-black"
+              class="selectBtn text-gray-600 px-1.5  md:px-4 rounded-md hover:text-black"
             >
               Rental
             </button>
             <button aria-label="Activities Button"
-              class=" text-gray-600 px-1.5 md:px-4 rounded-md hover:text-black"
+              class="selectBtn text-gray-600 px-1.5 md:px-4 rounded-md hover:text-black"
             >
               Activities
             </button>
@@ -452,7 +451,7 @@
             <section class="flex justify-center items-center gap-1">
               <img src="public/Icon/calender.svg" alt="calender icon">
 
-              <input type="date" name="" id="" class="font-semibold md:text-xs" aria-label="date input" required>
+              <input type="date" name="" id="checkIn" class="font-semibold md:text-xs" aria-label="date input" required>
             </section>
           </section>
           <!-- Check Out -->
@@ -461,7 +460,7 @@
 
             <section class="flex justify-center items-center gap-1">
               <img src="./public/Icon/calender.svg" alt="calender icon">
-              <input type="date" name="" id="" class="font-semibold md:text-xs" aria-label="date input" required>
+              <input type="date" name="" id="checkOut" class="font-semibold md:text-xs" aria-label="date input" required>
             </section>
           </section>
           <!-- No. of Guests -->

@@ -92,7 +92,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-
 const slides = [
   {
     "id": 1,
@@ -306,3 +305,64 @@ document.querySelectorAll("#slide-indicators div").forEach(dot => {
 //     }
 //   });
 // });
+
+//Search form
+document.addEventListener("DOMContentLoaded", () => {
+  // Category Buttons Active State
+  const categoryButtons = document.querySelectorAll(".selectBtn");
+  
+  categoryButtons.forEach(button => {
+      button.addEventListener("click", () => {
+          categoryButtons.forEach(btn => {
+              btn.classList.remove("bg-black", "text-white", "px-2", "md:px-4", "py-2", "rounded-xl", "md:rounded-3xl", "font-semibold");
+              btn.classList.add("text-gray-600", "px-1.5", "md:px-4", "rounded-md", "hover:text-black");
+          });
+          button.classList.remove("text-gray-600", "px-1.5", "rounded-md", "hover:text-black");
+          button.classList.add("bg-black", "text-white", "px-2", "md:px-4", "py-2", "rounded-xl", "md:rounded-3xl", "font-semibold");
+      });
+  });
+
+  // Date Inputs: Prevent Past Dates
+  const today = new Date();
+  today.setMinutes(today.getMinutes() - today.getTimezoneOffset()); // Adjust for time zone
+  const formattedToday = today.toISOString().split("T")[0]; // Get local date
+  
+  const checkInInput = document.querySelector("#checkIn");
+  const checkOutInput = document.querySelector("#checkOut");
+  console.log(checkInInput);
+  // Ensure both inputs have a valid min value at the start
+  checkInInput.setAttribute("min", formattedToday);
+  checkOutInput.setAttribute("min", formattedToday);
+  
+  // Update checkout min date dynamically when check-in changes
+  checkInInput.addEventListener("change", () => {
+      const checkInDate = checkInInput.value;
+      checkOutInput.setAttribute("min", checkInDate);
+  
+      // If checkout date is before the selected check-in date, reset it
+      if (checkOutInput.value < checkInDate) {
+          checkOutInput.value = checkInDate;
+      }
+  });
+  
+  
+
+  // Guest Selection: Dynamic Options
+  const guestSelect = document.querySelector("select[aria-label='select guest']");
+  const guestOptions = [
+      "1 Adult",
+      "2 Adults",
+      "2 Adults, 1 Child",
+      "2 Adults, 2 Children",
+      "3 Adults, 1 Child",
+      "4 Adults"
+  ];
+
+  guestSelect.innerHTML = guestOptions.map(option => `<option value="${option}">${option}</option>`).join("");
+
+  // Search Button Action
+  document.querySelector("#searchBtn").addEventListener("click", (e) => {
+      e.preventDefault();
+      alert(`Searching for trips in ${document.querySelector("select[aria-label='select location']").value}`);
+  });
+});
