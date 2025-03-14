@@ -92,36 +92,19 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-const slides = [
-  {
-    "id": 1,
-    "badge": "🌎 Explore the World",
-    "title": "Your Gateway to Extraordinary Adventures",
-    "description": "Pack your bags and let Travila redefine your travel experience. Where every journey is a story waiting to be told",
-    "image": "./public/images/Background.png"
-  },
-  {
-    "id": 2,
-    "badge": "🏝️ Beach Paradise",
-    "title": "Discover Pristine Coastal Getaways",
-    "description": "Experience the serenity of crystal-clear waters and golden sands with our exclusive beach destination packages",
-    "image": "./public/images/Background2.png"
-  },
-  {
-    "id": 3,
-    "badge": "🏔️ Mountain Escapes",
-    "title": "Conquer Heights and Breathtaking Views",
-    "description": "Embark on thrilling adventures through majestic mountains and experience nature at its most spectacular",
-    "image": "./public/images/Background3.jpg"
-  },
-  {
-      "id": 4,
-      "badge": "🏜️ Desert Adventure",
-      "title": "Discover the Mystique of the Sahara",
-      "description": "Journey through golden sand dunes and immerse yourself in ancient desert cultures on our exclusive guided expeditions",
-      "image": "./public/images/Background4.jpg"
-  }
-];
+let slides = []; // Declare slides globally
+async function fetchSlides() {
+    try {
+        const response = await fetch("./jsonFiles/heroData.json"); // Fetch JSON data
+        slides = await response.json(); // Store data in slides array
+
+        console.log(slides); // Verify that data is loaded
+    } catch (error) {
+        console.error("Error fetching slides:", error);
+    }
+}
+// Call the function to load slides
+fetchSlides();
 
 let currentSlide = 0;
 const heroSlider = document.getElementById("hero-slider");
