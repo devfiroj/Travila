@@ -1,0 +1,34 @@
+{
+    "hotels":[
+    {
+      "id": 1,
+      "name": "Grand Plaza Hotel",
+      "image": "/public/images/journey3.png.png",
+      "rating": 4.5,
+      "reviewCount": 452,
+      "price": 299,
+      "location": "New York, USA",
+      "amenities": ["Pool", "Spa", "Restaurant"]
+    },
+    {
+      "id": 2,
+      "name": "Tokyo Skyline Hotel",
+      "image": "/public/images/journey2.png.png",
+      "rating": 4.8,
+      "reviewCount": 350,
+      "price": 350,
+      "location": "Tokyo, JAPAN",
+      "amenities": ["Pool", "Gym", "Restaurant"]
+    },
+    {
+      "id": 3,
+      "name": "Delhi Comfort Inn",
+      "image": "/public/images/journey4.png.png",
+      "rating": 4.3,
+      "reviewCount": 280,
+      "price": 120,
+      "location": "Delhi, INDIA",
+      "amenities": ["Restaurant", "WiFi"]
+    }
+  ]
+}  
