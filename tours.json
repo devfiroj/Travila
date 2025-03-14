@@ -1,0 +1,154 @@
+{
+    "tours": [
+      {
+        "id": 1,
+        "name": "California Sunset/Twilight Boat Cruise",
+        "image": "/public/images/journey2.png.png",
+        "badge": {
+          "text": "Top Rated",
+          "color": "#F09814"
+        },
+        "rating": 4.96,
+        "reviewCount": 672,
+        "duration": "2 days 3 nights",
+        "guests": "4-6 guest",
+        "price": 48.25,
+        "location": "California, USA"
+      },
+      {
+        "id": 2,
+        "name": "NYC: Food Tastings and Culture Tour",
+        "image": "/public/images/journey3.png.png",
+        "badge": {
+          "text": "Best Sale",
+          "color": "#3DC262"
+        },
+        "rating": 4.96,
+        "reviewCount": 672,
+        "duration": "2 days 3 nights",
+        "guests": "4-6 guest",
+        "price": 48.25,
+        "location": "New York, USA"
+      },
+      {
+        "id": 3,
+        "name": "Grand Canyon Horseshoe Bend 2 days",
+        "image": "/public/images/journey4.png.png",
+        "badge": {
+          "text": "Top Rated",
+          "color": "#F09814"
+        },
+        "rating": 4.96,
+        "reviewCount": 672,
+        "duration": "2 days 3 nights",
+        "guests": "4-6 guest",
+        "price": 48.25,
+        "location": "Arizona, USA"
+      },
+      {
+        "id": 4,
+        "name": "California Sunset/Twilight Boat Cruise",
+        "image": "/public/images/journey2.png.png",
+        "badge": {
+          "text": "Top Rated",
+          "color": "#F09814"
+        },
+        "rating": 4.96,
+        "reviewCount": 672,
+        "duration": "2 days 3 nights",
+        "guests": "4-6 guest",
+        "price": 48.25,
+        "location": "California, USA"
+      },
+      {
+        "id": 5,
+        "name": "NYC: Food Tastings and Culture Tour",
+        "image": "/public/images/journey3.png.png",
+        "badge": {
+          "text": "Best Sale",
+          "color": "#3DC262"
+        },
+        "rating": 4.96,
+        "reviewCount": 672,
+        "duration": "2 days 3 nights",
+        "guests": "4-6 guest",
+        "price": 48.25,
+        "location": "New York, USA"
+      },
+      {
+        "id": 6,
+        "name": "Grand Canyon Horseshoe Bend 2 days",
+        "image": "/public/images/journey4.png.png",
+        "badge": {
+          "text": "Top Rated",
+          "color": "#F09814"
+        },
+        "rating": 4.96,
+        "reviewCount": 672,
+        "duration": "2 days 3 nights",
+        "guests": "4-6 guest",
+        "price": 48.25,
+        "location": "Arizona, USA"
+      },
+      {
+        "id": 7,
+        "name": "Tokyo Historical District Tour",
+        "image": "/public/images/journey3.png.png",
+        "badge": {
+          "text": "Top Rated",
+          "color": "#F09814"
+        },
+        "rating": 4.88,
+        "reviewCount": 542,
+        "duration": "1 day",
+        "guests": "2-10 guest",
+        "price": 65.50,
+        "location": "Tokyo, JAPAN"
+      },
+      {
+        "id": 8,
+        "name": "Mount Fuji Day Trip",
+        "image": "/public/images/journey4.png.png",
+        "badge": {
+          "text": "Best Sale",
+          "color": "#3DC262"
+        },
+        "rating": 4.92,
+        "reviewCount": 489,
+        "duration": "1 day",
+        "guests": "4-12 guest",
+        "price": 120.75,
+        "location": "Tokyo, JAPAN"
+      },
+      {
+        "id": 9,
+        "name": "Delhi Heritage Walk",
+        "image": "/public/images/journey2.png.png",
+        "badge": {
+          "text": "Top Rated",
+          "color": "#F09814"
+        },
+        "rating": 4.85,
+        "reviewCount": 412,
+        "duration": "1 day",
+        "guests": "2-8 guest",
+        "price": 35.50,
+        "location": "Delhi, INDIA"
+      },
+      {
+        "id": 10,
+        "name": "Taj Mahal Sunrise Tour",
+        "image": "/public/images/journey3.png.png",
+        "badge": {
+          "text": "Best Sale",
+          "color": "#3DC262"
+        },
+        "rating": 4.94,
+        "reviewCount": 756,
+        "duration": "1 day",
+        "guests": "2-15 guest",
+        "price": 85.25,
+        "location": "Delhi, INDIA"
+      }
+    ]
+  }
