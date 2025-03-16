@@ -1,0 +1,43 @@
+[
+    {
+      "destination": "Venice",
+      "image": "./public/images/destination.png.png",
+      "tours": 356
+    },
+    {
+      "destination": "Amsterdam",
+      "image": "./public/images/destination2.png.png",
+      "tours": 356
+    },
+    {
+      "destination": "Budapest",
+      "image": "./public/images/destination3.png.png",
+      "tours": 356
+    },
+    {
+      "destination": "Lisbon",
+      "image": "./public/images/destination4.png.png",
+      "tours": 356
+    },
+    {
+      "destination": "London",
+      "image": "./public/images/destination5.png.png",
+      "tours": 356
+    },
+    {
+      "destination": "Ottawa",
+      "image": "./public/images/destination6.png.png",
+      "tours": 356
+    },
+    {
+      "destination": "Paris",
+      "image": "./public/images/destination7.png.png",
+      "tours": 356
+    },
+    {
+        "destination": "Paris",
+        "image": "./public/images/destination8.png.png",
+        "tours": 356
+    }
+]
+  

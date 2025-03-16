@@ -1,0 +1,15 @@
+[
+    {
+        "id":1,
+        "from":"Delhi, INDIA",
+        "to":"New York,USA",
+        "image":"./public/images/ ",
+        "bPrice":"100",
+        "ePrice":"50",
+        "time":"08:00",
+        "date":"16/03/2025",
+        "discount":"10"
+    },{
+        
+    }
+]

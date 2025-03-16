@@ -1,0 +1,50 @@
+
+
+[
+    {
+      "id": 1,
+      "name": "Motto by Hilton New York",
+      "image": "/public/images/hotel1.jpg",
+      "badge": {
+        "text": "Luxory",
+        "color": "#F09814"
+      },
+      "rating": 4.96,
+      "reviewCount": 672,
+      "bookings":[["16/03/2025","20/03/2025"],["25/03/2025","30/03/2025"]],
+      "amenities":["wifi","breakfast","lounge"],
+      "price": 48.25,
+      "location": "New York, USA"
+    },
+    {
+        "id": 2,
+        "name": "Moxy NYC Times Square",
+        "image": "/public/images/hotel2.jpg",
+        "badge": {
+          "text": "Luxory",
+          "color": "#F09814"
+        },
+        "rating": 4.96,
+        "reviewCount": 672,
+        "bookings":[["16/03/2025","20/03/2025"],["25/03/2025","30/03/2025"]],
+        "amenities":["wifi","breakfast","lounge"],
+        "price": 48.25,
+        "location": "New York, USA"
+    },
+    {
+        "id": 3,
+        "name": "Moxy NYC Times Square",
+        "image": "/public/images/hotel3.jpg",
+        "badge": {
+          "text": "Wifi",
+          "color": "#F09814"
+        },
+        "rating": 4.96,
+        "reviewCount": 672,
+        "bookings":[["16/03/2025","20/03/2025"],["25/03/2025","30/03/2025"]],
+        "amenities":["wifi","breakfast","lounge"],
+        "price": 48.25,
+        "location": "New York, USA"
+    }
+    
+]    

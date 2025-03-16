@@ -1,0 +1,556 @@
+// Mobile view submenu
+document.addEventListener("DOMContentLoaded", function () {
+    // Navbar toggle
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    menuToggle.addEventListener('click', function(event) {
+        event.stopPropagation();
+        mobileMenu.classList.toggle('hidden');  
+    });
+
+
+    // Mobile view submenu
+    const menuItems = document.querySelectorAll(".menu-item");
+    menuItems.forEach(item => {
+      item.addEventListener("click", function (event) {
+        event.stopPropagation();
+        const submenu = this.nextElementSibling;
+        const allSubmenus = document.querySelectorAll(".submenu");
+        allSubmenus.forEach(sub => {
+          if (sub !== submenu) {
+            sub.classList.add("hidden");
+          }
+        });
+        submenu.classList.toggle("hidden");
+      });
+    });
+    // To hide the menu when click outside 
+    document.addEventListener('click', function(event) {
+        if (!mobileMenu.contains(event.target) && !menuToggle.contains(event.target)) {
+            mobileMenu.classList.add('hidden');
+            langOptions.classList.add("hidden");
+            currencyOptions.classList.add("hidden");
+            
+        }
+    });
+
+    //Language Option Select
+    const langBtn = document.getElementById("langBtn");
+    const langOptions = document.getElementById("langOptions");
+    const selectedLang = document.getElementById("selectedLang");
+    
+    langBtn.addEventListener("click", (event) => {
+        event.stopPropagation();
+        langOptions.classList.toggle("hidden");
+    });
+    
+    document.querySelectorAll("#langOptions li").forEach(option => {
+      option.addEventListener("click", function () {
+        selectedLang.textContent = this.textContent;
+        setTimeout(() => {
+            langOptions.classList.add("hidden");
+          }, 100);
+        //optionsList.classList.add("hidden");
+      });
+    });
+    
+    document.addEventListener("click", (event) => {
+      if (!langBtn.contains(event.target) && !langOptions.contains(event.target)) {
+        langOptions.classList.add("hidden");
+      }
+    });
+
+    // Currency Option Select
+    const currencyBtn = document.getElementById("currencyBtn");
+    const currencyOptions = document.getElementById("currencyOptions");
+    const selectedCurrency = document.getElementById("selectedCurrency");
+    
+    currencyBtn.addEventListener("click", (event) => {
+        event.stopPropagation();
+        currencyOptions.classList.toggle("hidden");
+    });
+    
+    document.querySelectorAll("#currencyOptions li").forEach(option => {
+      option.addEventListener("click", function () {
+        selectedCurrency.textContent = this.textContent;
+        setTimeout(() => {
+            langOptions.classList.add("hidden");
+          }, 100);
+        //optionsList.classList.add("hidden");
+      });
+    });
+    
+    document.addEventListener("click", (event) => {
+      if (!currencyBtn.contains(event.target) && !currencyOptions.contains(event.target)) {
+        currencyOptions.classList.add("hidden");
+      }
+    });
+});
+
+let slides=[];
+async function fetchSlides() {
+  try{
+    const response=await fetch("./jsonFiles/heroData.json");
+    slides=await response.json();
+  }
+  catch(error){
+    console.error("Error Fetching Slides:",error);
+  }
+}
+
+fetchSlides();
+
+let currentSlide = 0;
+const heroSlider = document.getElementById("hero-slider");
+const heroBadge = document.getElementById("hero-badge");
+const heroTitle = document.getElementById("hero-title");
+const heroDescription = document.getElementById("hero-description");
+const prevBtn = document.getElementById("prev-slide");
+const nextBtn = document.getElementById("next-slide");
+const indicatorsContainer = document.getElementById("slide-indicators");
+
+// Create slide indicators
+slides.forEach((_, index) => {
+  const dot = document.createElement("div");
+  dot.classList.add("w-3", "h-3", "rounded-full", "bg-white/50", "cursor-pointer", "transition", "duration-300");
+  if (index === 0) dot.classList.add("bg-white");
+  dot.setAttribute("data-index", index);
+  indicatorsContainer.appendChild(dot);
+});
+
+const updateSlide = (index) => {
+  heroSlider.style.opacity = "0";
+
+  setTimeout(() => {
+    heroSlider.style.backgroundImage = `url('${slides[index].image}')`;
+    heroBadge.textContent = slides[index].badge;
+    heroTitle.textContent = slides[index].title;
+    heroDescription.textContent = slides[index].description;
+    heroSlider.style.opacity = "1";
+
+    // Update indicators
+    document.querySelectorAll("#slide-indicators div").forEach((dot, i) => {
+      dot.classList.toggle("bg-white", i === index);
+      dot.classList.toggle("bg-white/50", i !== index);
+    });
+
+  }, 800); // Matches transition duration
+};
+
+prevBtn.addEventListener("click", () => {
+  currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+  updateSlide(currentSlide);
+});
+
+nextBtn.addEventListener("click", () => {
+  currentSlide = (currentSlide + 1) % slides.length;
+  updateSlide(currentSlide);
+});
+
+// Auto-slide every 4 seconds
+setInterval(() => {
+  currentSlide = (currentSlide + 1) % slides.length;
+  updateSlide(currentSlide);
+}, 6000);
+
+// Click event for indicators
+document.querySelectorAll("#slide-indicators div").forEach(dot => {
+  dot.addEventListener("click", (e) => {
+    currentSlide = parseInt(e.target.getAttribute("data-index"));
+    updateSlide(currentSlide);
+  });
+});
+
+
+//const categoryButtons = document.querySelectorAll(".selectBtn");
+document.addEventListener("DOMContentLoaded", () => {
+// Category Buttons Active State
+const categoryButtons = document.querySelectorAll(".selectBtn");
+//console.log(categoryButtons);
+let currentCategory="tours";
+let resultsContainer=document.getElementById("searchResults");
+
+const toursForm = document.getElementById("toursForm");
+const hotelsForm = document.getElementById("hotelsForm");
+const ticketsForm = document.getElementById("ticketsForm");
+const rentalForm = document.getElementById("rentalForm");
+const activitiesForm = document.getElementById("activitiesForm");
+
+setupDateInputs(currentCategory);
+categoryButtons.forEach(button => {
+  button.addEventListener("click", () => {
+    resultsContainer.innerHTML = '';
+    // Update button styles
+    categoryButtons.forEach(btn => {
+      btn.classList.remove("bg-black", "text-white", "px-2", "md:px-4", "py-2", "rounded-xl", "md:rounded-3xl", "font-semibold");
+      btn.classList.add("text-gray-600", "px-1.5", "md:px-4", "rounded-md", "hover:text-black");
+      let formId =btn.textContent.trim().toLowerCase()+"Form";
+      //console.log(formId);
+      document.getElementById(formId).setAttribute("hidden","true");
+    });
+
+    let formId = button.textContent.trim().toLowerCase()+"Form";
+    console.log(formId);
+    document.getElementById(formId).removeAttribute("hidden");
+    button.classList.remove("text-gray-600", "px-1.5", "rounded-md", "hover:text-black");
+    button.classList.add("bg-black", "text-white", "px-2", "md:px-4", "py-2", "rounded-xl", "md:rounded-3xl", "font-semibold");
+    
+    // Update current category and rebuild form
+    currentCategory = button.textContent.trim().toLowerCase();
+    setupDateInputs(currentCategory);
+    //buildFormForCategory(currentCategory);
+  });
+
+});
+function setupDateInputs(currentCategory) {
+    const today = new Date();
+    today.setMinutes(today.getMinutes() - today.getTimezoneOffset()); // Adjust for time zone
+    const formattedToday = today.toISOString().split("T")[0]; // Get local date
+    if(currentCategory=="tours"||currentCategory=="hotels"||currentCategory=="rental"){
+        const checkInInput = document.querySelector(`#${currentCategory}checkIn`);
+        const checkOutInput = document.querySelector(`#${currentCategory}checkOut`);
+        checkInInput.value="";
+        checkOutInput.value="";
+        if (checkInInput) {
+            checkInInput.setAttribute("min", formattedToday);
+      
+            // Update checkout min date dynamically when check-in changes
+            checkInInput.addEventListener("change", () => {
+                if (checkOutInput) {
+                    const checkInDate = checkInInput.value;
+                    checkOutInput.setAttribute("min", checkInDate);
+      
+                    // If checkout date is before the selected check-in date, reset it
+                    if (checkOutInput.value < checkInDate) {
+                        checkOutInput.value = checkInDate;
+                    }
+                }
+            });
+        }
+        if (checkOutInput) {
+        checkOutInput.setAttribute("min", formattedToday);
+        }
+    }
+    else if(currentCategory=="tickets" || currentCategory=="activities"){
+        const checkInInput = document.querySelector(`#${currentCategory}checkIn`);
+        checkInInput.setAttribute("min", formattedToday);
+        checkInInput.value="";
+    }
+    
+}
+
+toursForm.addEventListener("submit",async function(e){
+    e.preventDefault();
+    try {
+        //clear previous result
+        resultsContainer.innerHTML = '';
+
+        // Get location value
+        const locationSelect = document.querySelector("#toursLocation");
+        const location = locationSelect ? locationSelect.value : "Unknown";
+        console.log(location);
+        try {
+          const response = await fetch('./jsonFiles/tours.json');
+          if (!response.ok) {
+            throw new Error(`Failed to fetch ${jsonFile}`);
+          }
+          const tourData = await response.json();
+          console.log(typeof tourData);
+          
+          let locFilteredTours= tourData?.filter(item =>
+            item.location && item.location.includes(location.split(',')[0])
+          );
+          if(locFilteredTours.length===0){
+            renderNoResult();
+          }
+          else{
+            // Add heading
+            const heading = document.createElement('h2');
+            heading.textContent = `Tours Search Results for ${location}`;
+            heading.className = 'text-2xl font-bold mb-8';
+            resultsContainer.appendChild(heading);
+            // Create results grid with your specific layout
+            const resultsGrid = document.createElement('section');
+            resultsGrid.className = 'flex justify-center flex-wrap items-center sm:w-[100%] lg:w-[75%] gap-6 mb-20';
+            // Render cards based on current category
+            locFilteredTours.forEach(item => {
+            let card;
+            card = renderTourCard(item);
+            resultsGrid.appendChild(card);
+            });
+            resultsContainer.appendChild(resultsGrid);
+    
+            // Scroll to results
+            resultsContainer.scrollIntoView({ behavior: 'smooth' });
+          }
+    
+        } catch (error) {
+          console.error("Error fetching data:", error);
+          // If JSON fetch fails, just show a simple alert
+          alert(`Searching for ${currentCategory} in ${location}`);
+        }
+      } catch (error) {
+        console.error("Search error:", error);
+        alert("An error occurred during search. Please try again.");
+    }
+})
+    //render No result found
+    function renderNoResult(){
+        const noResults = document.createElement('div');
+            noResults.className = 'text-center py-12 bg-gray-50 rounded-lg';
+            noResults.innerHTML = `
+            <svg class="w-16 h-16 mx-auto text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            <h3 class="mt-4 text-lg font-medium text-gray-900">No results found</h3>
+            <p class="mt-2 text-gray-500">Try adjusting your search criteria or explore other options.</p>
+            `;
+            resultsContainer.appendChild(noResults);
+    }
+  // Tour card renderer
+  function renderTourCard(tour) {
+    const card = document.createElement('article');
+    card.className = 'shadow-lg w-70 rounded-3xl overflow-hidden border-2 border-[#E4E6E8] bg-white hover:scale-105 transform transition';
+    
+    // Determine badge color class based on badge text
+    let badgeColorClass = 'text-[#F09814]'; // Default to orange/gold
+    let badgeText = 'Top Rated';
+    
+    if (tour.badge) {
+      badgeText = tour.badge.text;
+      if (badgeText === 'Best Sale') {
+        badgeColorClass = 'text-[#3DC262]'; // Green for "Best Sale"
+      }
+    }
+    
+    card.innerHTML = `
+      <section class="relative">
+        <figure><img src="${tour.image || '/public/images/journey2.png.png'}" alt="${tour.name}" class="w-full h-48 object-cover"></figure>
+        <span class="absolute top-2 left-2 bg-white ${badgeColorClass} px-3 py-1 text-xs font-semibold rounded-lg">${badgeText}</span>
+        <button aria-label="Wishlist" class="absolute top-2 right-2 bg-white p-1 rounded-full shadow-md">
+          <img src="./public/Icon/love.svg" alt="love icon">
+        </button>
+        <div class="z-10 absolute bottom-1 right-3 bg-white text-black border-2 border-[#E4E6E8] px-2 py-1 text-xs font-semibold rounded-xl">
+          ⭐ ${tour.rating || '4.96'} <span class="text-[#737373]">(${tour.reviewCount || '672'} reviews)</span>
+        </div>
+      </section>
+      <section class="p-4 pt-6 bg-white rounded-t-3xl -translate-y-4 gap-2">
+        <h3 class="text-lg font-semibold">${tour.name}</h3>
+        <p class="text-gray-500 text-sm flex items-center mt-1.5">
+          <img src="./public/Icon/duration.svg" alt="clock icon">
+          ${tour.duration || '2 days 3 nights'} &nbsp; &nbsp;
+          <img src="./public/Icon/user.svg" alt="user icon">
+          ${tour.guests || '4-6 guest'}</p>
+        <div class="flex justify-between items-center gap-1.5">
+          <p class="mt-2 font-bold">$${tour.price || '48.25'} <span class="text-gray-500 text-sm font-normal">/ person</span></p>
+          <button aria-label="Book Now" class="mt-2 bg-[#F2F4F6] border-[#E4E6E8] border-2 text-black p-2 rounded-2xl transition-all duration-300 hover:border-black hover:bg-white hover:text-black hover:border-[2px] hover:scale-105">Book Now</button>
+        </div>
+      </section>
+    `;
+    
+    return card;
+  }
+
+
+  hotelsForm.addEventListener("submit",async function (e) {
+    e.preventDefault();
+    try {
+        //clear previous result
+        resultsContainer.innerHTML = '';
+
+        // Get location value
+        const locationSelect = document.querySelector("#hotelsLocation");
+        const location = locationSelect ? locationSelect.value : "Unknown";
+
+        const hotelsCheckIn=document.querySelector("#hotelscheckIn").value;
+        console.log(hotelsCheckIn);
+
+        const hotelsCheckOut=document.querySelector("#hotelscheckOut").value;
+        console.log(hotelsCheckOut);
+        try {
+          const response = await fetch('./jsonFiles/hotels.json');
+          if (!response.ok) {
+            throw new Error(`Failed to fetch ${jsonFile}`);
+          }
+          const hotelsData = await response.json();
+          console.log(typeof hotelsData);
+          
+          let filteredHotels= hotelsData?.filter(hotel =>
+            hotel.location && hotel.location.includes(location.split(',')[0])
+            && isHotelAvailable(hotel, hotelsCheckIn, hotelsCheckOut)
+          );
+          //console.log(filteredHotels);
+          if(filteredHotels.length===0){
+            renderNoResult();
+          }
+          else{
+            // Add heading
+            const heading = document.createElement('h2');
+            heading.textContent = `Available Hotels in ${location}`;
+            heading.className = 'text-2xl font-bold mb-8';
+            resultsContainer.appendChild(heading);
+            // Create results grid with your specific layout
+            const resultsGrid = document.createElement('section');
+            resultsGrid.className = 'flex justify-center flex-wrap items-center sm:w-[100%] lg:w-[75%] gap-6 mb-20';
+            // Render cards based on current category
+            filteredHotels.forEach(hotel => {
+            let card;
+            card = renderHotelCard(hotel);
+            resultsGrid.appendChild(card);
+            });
+            resultsContainer.appendChild(resultsGrid);
+    
+            // Scroll to results
+            resultsContainer.scrollIntoView({ behavior: 'smooth' });
+          }
+    
+        } catch (error) {
+          console.error("Error fetching data:", error);
+          // If JSON fetch fails, just show a simple alert
+          alert(`Searching for ${currentCategory} in ${location}`);
+        }
+      } catch (error) {
+        console.error("Search error:", error);
+        alert("An error occurred during search. Please try again.");
+    }    
+  })
+
+  //Checks in Hotel is available
+  function isHotelAvailable(hotel, checkIn, checkOut) {
+    const checkInDate = parseDate(checkIn);
+    const checkOutDate = parseDate(checkOut);
+  
+    return !hotel.bookings.some(booking => {
+      const bookedStartDate = parseDate(booking[0]); // Correct first element
+      const bookedEndDate = parseDate(booking[1]);   // Correct second element
+        console.log(bookedStartDate,bookedEndDate);
+      // Proper overlap check
+      return (
+        (checkInDate >= bookedStartDate && checkInDate < bookedEndDate) || // Check-in falls within a booked range
+        (checkOutDate > bookedStartDate && checkOutDate <= bookedEndDate) || // Check-out falls within a booked range
+        (checkInDate <= bookedStartDate && checkOutDate >= bookedEndDate) // Requested range fully covers a booked range
+      );
+    });
+  }
+  
+  
+  
+  //
+  function parseDate(dateStr) {
+    const [day, month, year] = dateStr.split("/").map(Number);
+    return new Date(year, month - 1, day); // Month is 0-based in JS
+  }
+  
+    function renderHotelCard(hotel){
+    console.log("At render hotel");
+
+    const card = document.createElement('article');
+    card.className = 'shadow-lg w-70 rounded-3xl overflow-hidden border-2 border-[#E4E6E8] bg-white hover:scale-105 transform transition';
+    
+    // Determine badge color class based on badge text
+    let badgeColorClass = 'text-[#F09814]'; // Default to orange/gold
+    let badgeText = 'Top Rated';
+    
+    if (hotel.badge) {
+      badgeText = hotel.badge.text;
+      if (badgeText === 'Best Sale') {
+        badgeColorClass = 'text-[#3DC262]'; // Green for "Best Sale"
+      }
+    }
+    
+    card.innerHTML = `
+      <section class="relative">
+        <figure><img src="${hotel.image || '/public/images/journey2.png.png'}" alt="${hotel.name}" class="w-full h-48 object-cover"></figure>
+        <span class="absolute top-2 left-2 bg-white ${badgeColorClass} px-3 py-1 text-xs font-semibold rounded-lg">${badgeText}</span>
+        <button aria-label="Wishlist" class="absolute top-2 right-2 bg-white p-1 rounded-full shadow-md">
+          <img src="./public/Icon/love.svg" alt="love icon">
+        </button>
+        <div class="z-10 absolute bottom-1 right-3 bg-white text-black border-2 border-[#E4E6E8] px-2 py-1 text-xs font-semibold rounded-xl">
+          ⭐ ${hotel.rating || '4.96'} <span class="text-[#737373]">(${hotel.reviewCount || '672'} reviews)</span>
+        </div>
+      </section>
+      <section class="p-4 pt-6 bg-white rounded-t-3xl -translate-y-4 gap-2">
+        <h3 class="text-lg font-semibold">${hotel.name}</h3>
+        <p class="text-gray-500 text-sm flex items-center mt-1.5">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="12" viewBox="0 0 22 18"> <path fill="black" fill-rule="evenodd" d="M18.67 9.038a10.705 10.705 0 0 0-15.388 0 .585.585 0 0 1-.86 0 .617.617 0 0 1 0-.88 11.917 11.917 0 0 1 17.108 0 .617.617 0 0 1 0 .88c-.099.125-.246.176-.418.176a.623.623 0 0 1-.443-.176zm-2.926 3.293a6.437 6.437 0 0 0-4.621-1.96c-1.745 0-3.368.703-4.621 1.96a.585.585 0 0 1-.86 0 .617.617 0 0 1 0-.88 7.65 7.65 0 0 1 5.48-2.313c2.066 0 4.008.83 5.482 2.313a.617.617 0 0 1 0 .88c-.098.126-.27.176-.417.176a.623.623 0 0 1-.443-.176zm5.187-6.888a13.859 13.859 0 0 0-19.886 0 .585.585 0 0 1-.86 0 .617.617 0 0 1 0-.88c5.948-6.084 15.657-6.084 21.63 0a.617.617 0 0 1-.442 1.056.623.623 0 0 1-.442-.176zM9.796 17.233a2.128 2.128 0 0 1 0-2.941c.762-.78 2.113-.78 2.876 0a2.128 2.128 0 0 1 0 2.941 2.006 2.006 0 0 1-1.426.604c-.541 0-1.057-.227-1.45-.604zm.86-2.061a.848.848 0 0 0 0 1.181c.32.327.86.327 1.155 0a.848.848 0 0 0 0-1.181.705.705 0 0 0-.565-.252.79.79 0 0 0-.59.252z"></path> </svg>
+            Free Wifi &nbsp; &nbsp;
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="12" viewBox="0 0 22 17"> <path fill="black" fill-rule="evenodd" d="M20.172 0H1.832C.823 0 0 .792 0 1.767v6.422c0 .971.823 1.763 1.832 1.763h18.336C21.177 9.952 22 9.16 22 8.189V1.767C22.004.792 21.181 0 20.172 0zm.712 8.277a.61.61 0 0 1-.617.604H1.737a.61.61 0 0 1-.617-.604V1.683a.61.61 0 0 1 .617-.604h18.526a.61.61 0 0 1 .617.604v6.594h.004zm-2.315-1.85H3.435c-.338 0-.61.218-.61.49 0 .27.272.49.61.49h15.13c.338 0 .61-.22.61-.49 0-.272-.272-.49-.606-.49zm-4.965-3.001H8.049c-.124 0-.224.219-.224.49 0 .27.1.49.224.49h5.553c.124 0 .224-.22.224-.49 0-.271-.1-.49-.222-.49zm-9.03 8.996a3.31 3.31 0 0 0-.291-.559c-.148-.213-.08-.495.154-.63a.529.529 0 0 1 .69.14c.1.145.242.392.38.72.488 1.153.55 2.383-.103 3.545a4.304 4.304 0 0 1-.666.885.534.534 0 0 1-.706.04.43.43 0 0 1-.044-.645 3.39 3.39 0 0 0 .526-.697c.503-.896.454-1.866.06-2.8zm3.599 0a3.31 3.31 0 0 0-.292-.559c-.148-.213-.079-.495.155-.63a.529.529 0 0 1 .69.14c.1.145.241.392.38.72.487 1.153.55 2.383-.103 3.545a4.304 4.304 0 0 1-.667.885.534.534 0 0 1-.706.04.43.43 0 0 1-.043-.645 3.39 3.39 0 0 0 .526-.697c.503-.896.454-1.866.06-2.8zm9.002 0c-.394.933-.443 1.903.06 2.8.135.24.309.472.525.696a.43.43 0 0 1-.043.645.534.534 0 0 1-.706-.04 4.304 4.304 0 0 1-.666-.885c-.653-1.162-.59-2.392-.104-3.545.14-.328.28-.575.38-.72a.529.529 0 0 1 .69-.14c.234.135.303.417.155.63a3.31 3.31 0 0 0-.291.559zm-3.603 0c-.395.933-.443 1.903.06 2.8.135.24.309.472.525.696a.43.43 0 0 1-.043.645.534.534 0 0 1-.706-.04 4.304 4.304 0 0 1-.666-.885c-.653-1.162-.59-2.392-.104-3.545.14-.328.28-.575.38-.72a.529.529 0 0 1 .69-.14c.234.135.303.417.155.63a3.31 3.31 0 0 0-.291.559z"></path> </svg>
+           AC</p>
+        <div class="flex justify-between items-center gap-1.5">
+          <p class="mt-2 font-bold">$${hotel.price || '48.25'} <span class="text-gray-500 text-sm font-normal">/ night</span></p>
+          <button aria-label="Book Now" class="mt-2 bg-[#F2F4F6] border-[#E4E6E8] border-2 text-black p-2 rounded-2xl transition-all duration-300 hover:border-black hover:bg-white hover:text-black hover:border-[2px] hover:scale-105">Book Now</button>
+        </div>
+      </section>
+    `;
+    
+    return card;
+  }
+
+
+  async function renderTopSearchedDestination(){
+    const topSearchDestinationContainer = document.querySelector("#topSearchedDestination");
+
+    const tsdResultsGrid=document.createElement("section");
+    tsdResultsGrid.className="flex flex-wrap justify-center items-center w-[80%] gap-2 mt-1";
+
+    try {
+        const response = await fetch('./jsonFiles/topSearchedDestination.json');
+        if (!response.ok) {
+          throw new Error(`Failed to fetch jsonFile`);
+        }
+        const tsdData =await response.json();
+        //console.log(typeof hotelsData);
+
+        if(tsdData.length===0)console.log("No Data on Top Search destination");
+
+        else{
+            // Render cards based on current category
+            tsdData.forEach(data => {
+                let card;
+                card = rendertsdCard(data);
+                tsdResultsGrid.appendChild(card);
+            });
+            topSearchDestinationContainer.appendChild(tsdResultsGrid); 
+        }
+
+    }catch(error){
+        console.error(error);
+    }
+
+    // 
+    
+  }
+    function rendertsdCard(data){
+    const card = document.createElement('section');
+    card.className = 'flex items-center justify-between p-3 bg-white rounded-2xl border-[#E4E6E8] border-2 w-60 hover:scale-105 transition';
+    card.innerHTML=`
+            <section class="flex items-center gap-2.5">
+              <!-- Circular Image -->
+              <img
+                src="${data.image}"
+                alt="${data.destination} image"
+                class="w-16 h-16 rounded-full object-cover"
+              />
+
+              <!-- Text Content -->
+              <article>
+                <h2 class="font-semibold">${data.destination}</h2>
+                <p class="text-gray-500 text-sm flex items-center gap-1">
+                  <img src="./public/Icon/flag.svg" alt="flag icon">
+                  ${data.tours} Tours
+                </p>
+              </article>
+            </section>
+
+            <!-- Arrow Button -->
+            <button aria-label="Arrow Button"
+              class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full cursor-pointer"
+            >
+            <img src="./public/Icon/rightArrow.svg" alt="right arrow icon">
+            </button>`;
+        return card;
+    }
+    renderTopSearchedDestination();
+
+})
