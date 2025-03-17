@@ -832,9 +832,9 @@
             <img src="./public/Icon/location.svg" alt="location icon"/>
 
             <select name="" id="ticketsFromLoc" class=" md:text-xs font-semibold" aria-label="select location">
-              <option value="New York,USA" class=" md:text-xs font-semibold" aria-label="New York,USA">New York,USA</option>
-              <option value="Tokyo,JAPAN" class=" md:text-xs font-semibold" aria-label="Tokyo, JAPAN">Tokyo,JAPAN</option>
-              <option value="Delhi,INDIA" class="md:text-xs font-semibold" aria-label="Delhi,INDIA">Delhi,INDIA</option>
+              <option value="New York, USA" class=" md:text-xs font-semibold" aria-label="New York,USA">New York,USA</option>
+              <option value="Tokyo, JAPAN" class=" md:text-xs font-semibold" aria-label="Tokyo, JAPAN">Tokyo,JAPAN</option>
+              <option value="Delhi, INDIA" class="md:text-xs font-semibold" aria-label="Delhi,INDIA">Delhi,INDIA</option>
             </select>
           </section>
         </section>
@@ -845,9 +845,9 @@
             <img src="./public/Icon/location.svg" alt="location icon"/>
 
             <select name="" id="ticketsToLoc" class=" md:text-xs font-semibold" aria-label="select location">
-              <option value="New York,USA" class=" md:text-xs font-semibold" aria-label="New York,USA">New York,USA</option>
-              <option value="Tokyo,JAPAN" class=" md:text-xs font-semibold" aria-label="Tokyo, JAPAN">Tokyo,JAPAN</option>
-              <option value="Delhi,INDIA" class="md:text-xs font-semibold" aria-label="Delhi,INDIA">Delhi,INDIA</option>
+              <option value="New York, USA" class=" md:text-xs font-semibold" aria-label="New York,USA">New York,USA</option>
+              <option value="Tokyo, JAPAN" class=" md:text-xs font-semibold" aria-label="Tokyo, JAPAN">Tokyo,JAPAN</option>
+              <option value="Delhi, INDIA" class="md:text-xs font-semibold" aria-label="Delhi,INDIA">Delhi,INDIA</option>
             </select>
           </section>
         </section>
@@ -877,10 +877,10 @@
         </section>
 
         <!-- Search Button -->
-        <section id="ticketsSearchBtn" type="submit" class="border-4 font-bold text-white ml-4 rounded-full bg-black flex justify-center items-center w-max gap-1 p-4 hover:scale-105 hover:cursor-pointer transition" aria-label="Search Button">
+        <button id="ticketsSearchBtn" type="submit" class="border-4 font-bold text-white ml-4 rounded-full bg-black flex justify-center items-center w-max gap-1 p-4 hover:scale-105 hover:cursor-pointer transition" aria-label="Search Button">
           <img src="./public/Icon/search.svg" alt="search icon">
           Search
-        </section>
+        </button>
         
           <!-- Search -->
         </form>
@@ -1436,29 +1436,33 @@
 
           <!-- filters -->
           <section class="flex justify-center items-center flex-wrap gap-2">
-            <select name="" id="" aria-label="select categories" class=" flex justify-center items-center rounded-2xl text-sm bg-[#E4E6E8] p-2">
-              <option value="">Categories</option>
-              <option value="">Category 1</option>
-              <option value="">Category 2</option>
-
+            <select name="" id="oftCategories" aria-label="select categories" class=" flex justify-center items-center rounded-2xl text-sm bg-[#E4E6E8] p-2">
+              <option value="Categories">Categories</option>
+              <option value="Mountain">Mountain</option>
+              <option value="Beach">Beach</option>
+              <option value="Desert">Desert</option>
+              <option value="Safari">Safari</option>
+              <option value="Temples">Temples</option>
+              <option value="Historic">Historic</option>
             </select>
-            <select name="" id="" aria-label="duration" class=" flex justify-center items-center rounded-2xl text-sm bg-[#E4E6E8] p-2">
-              <option value="">Duration</option>
-              <option value="">Duration 1</option>
-              <option value="">Duration 2</option>
-
+            <select name="" id="oftDuration" aria-label="duration" class=" flex justify-center items-center rounded-2xl text-sm bg-[#E4E6E8] p-2">
+              <option value="Duration">Duration</option>
+              <option value="1 day">1 day</option>
+              <option value="2 days">2 days</option>
+              <option value="3 days">3 days</option>
             </select>
             
-            <select name="" id="" aria-label="select Review/Rating" class=" flex justify-center items-center rounded-2xl text-sm bg-[#E4E6E8] p-2">
-              <option value="">Review/Rating</option>
-              <option value="">1 star</option>
-              <option value="">2 star</option>
-
+            <select name="" id="oftRatings" aria-label="select Review/Rating" class=" flex justify-center items-center rounded-2xl text-sm bg-[#E4E6E8] p-2">
+              <option value="Review/Rating">Review/Rating</option>
+              <option value="4">4 star</option>
+              <option value="3">3 star</option>
+              <option value="2">2 star</option>
             </select>
-            <select name="" id="" aria-label="select price range" class=" flex justify-center items-center rounded-2xl text-sm bg-[#E4E6E8] p-2">
-              <option value="">Price Range</option>
-              <option value="">1K-3K</option>
-              <option value="">3K-5K</option>
+            <select name="" id="oftPrice" aria-label="select price range" class=" flex justify-center items-center rounded-2xl text-sm bg-[#E4E6E8] p-2">
+              <option value="Price Range">Price</option>
+              <option value="50">Below 50</option>
+              <option value="80">Below 80</option>
+              <option value="100">Below 100</option>
 
             </select>
 
@@ -1466,7 +1470,7 @@
            
         </section>
         <!-- Cards -->
-        <section class="flex justify-center flex-wrap items-center sm:w-[100%] lg:w-[75%]  gap-6 mb-20">
+        <section id="oftResultContainer" class="flex justify-center flex-wrap items-center sm:w-[100%] lg:w-[75%]  gap-6 mb-20">
           <!-- Card 1 -->
           <article class="shadow-lg w-70 rounded-3xl overflow-hidden border-2 border-[#E4E6E8] bg-white hover:scale-105 transform transition">
             <section class="relative">
@@ -1692,7 +1696,7 @@
           </div>
 
           <!-- View More Button -->
-          <button aria-label="View More" class=" flex justify-center items-center self-end md:self-auto rounded-2xl text-sm bg-black text-white p-2 gap-2 hover:scale-105 transition ">
+          <button id="tctViewMore" aria-label="View More" class=" flex justify-center items-center self-end md:self-auto rounded-2xl text-sm bg-black text-white p-2 gap-2 hover:scale-105 transition ">
             View More
             <img src="./public/Icon/whiteRightArrow.svg" alt="white right arrow icon">
           </button>
@@ -1700,7 +1704,7 @@
            
         </section>
         <!-- Cards -->
-        <section class="flex flex-wrap justify-center items-center md:w-[92%] lg:w-[72%] gap-3">
+        <section id="tctResultContainer" class="flex flex-wrap justify-center items-center md:w-[92%] lg:w-[72%] gap-3">
           <!-- Card1 -->
           <article class=" bg-white rounded-xl shadow-md overflow-hidden p-3 border-[#E4E6E8] border-[1px] hover:scale-105 transition w-40 md:w-auto">
             <img src="public/images/top.png.png" alt="Mountain" class="w-full h-20 object-cover rounded-xl">
@@ -1839,19 +1843,19 @@
           </p>
           <section class="flex justify-start items-center gap-4">
             <article class="flex flex-col">
-              <h2 class="text-3xl md:text-4xl font-bold">45+</h2>
+              <h2 id="globalBranch" class="text-3xl md:text-4xl font-bold">45+</h2>
               <div class="text-sm text-[#737373] font-semibold">Global Branches</div>
             </article>
             <article class="flex flex-col">
-              <h2 class="text-3xl md:text-4xl font-bold">29K</h2>
+              <h2 id="destinationCollaboration" class="text-3xl md:text-4xl font-bold">29K</h2>
               <div class="text-sm text-[#737373] font-semibold">Destination Collaborations</div>
             </article>
             <article class="flex flex-col">
-              <h2 class="text-3xl md:text-4xl font-bold">20+</h2>
+              <h2 id="yearsExperience" class="text-3xl md:text-4xl font-bold">20+</h2>
               <div class="text-sm text-[#737373] font-semibold">Years Experience</div>
             </article>
             <article class="flex flex-col">
-              <h2 class="text-3xl md:text-4xl font-bold">168K</h2>
+              <h2 id="happyCustomers" class="text-3xl md:text-4xl font-bold">168K</h2>
               <div class="text-sm text-[#737373] font-semibold">Happy Customers</div>
             </article>
           </section>
@@ -1899,9 +1903,9 @@
         </section>
 
         <!-- Grid Layout -->
-        <section class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 w-[72%]">
+        <section id="tdResultContainer" class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 w-[72%]">
             <!-- Featured Card -->
-            <article class="relative sm:col-span-2 lg:col-span-2 hover:scale-105 transition">
+            <article id="featuredCard" class="relative sm:col-span-2 lg:col-span-2 hover:scale-105 transition">
                 <figure><img src="public/images/Link → trend.png.png" alt="Western Europe" class="w-full h-64 object-cover rounded-lg"></figure>
                 <div class="absolute top-3 right-3 bg-white text-sm px-3 py-1 rounded-full shadow-md">
                     <span class="font-semibold">26 promotions</span>

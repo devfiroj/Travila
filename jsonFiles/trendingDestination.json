@@ -1,0 +1,40 @@
+[   
+    {
+      "id": 1,
+      "location": "Western Europe",
+      "image": "public/images/Link → trend.png.png",
+      "tour": 356,
+      "activities": 248,
+      "promotions":26,
+      "endDate":"2025-03-18T00:00:00Z"
+    },
+    {
+      "id": 2,
+      "location": "New York",
+      "image": "public/images/Link → trend2.png.png",
+      "tour": 356,
+      "activities": 248
+    },
+    {
+      "id": 3,
+      "location": "Venice",
+      "image": "public/images/Link → trend3.png.png",
+      "tour": 356,
+      "activities": 248
+    },
+    {
+      "id": 4,
+      "location": "Amsterdam",
+      "image": "public/images/Link (1).png",
+      "tour": 356,
+      "activities": 248
+    },
+    {
+      "id": 5,
+      "location": "London",
+      "image": "public/images/Link → trend5.png.png",
+      "tour": 356,
+      "activities": 248
+    }
+  ]
+  

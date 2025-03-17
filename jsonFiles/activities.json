@@ -1,0 +1,107 @@
+[
+    {
+      "id": 1,
+      "type": "sightseeing",
+      "location": "Paris, FRANCE",
+      "image": "./public/images/eiffel.jpg",
+      "Price": "150"
+    },
+    {
+      "id": 2,
+      "type": "adventure",
+      "location": "Dubai, UAE",
+      "image": "./public/images/dubai-safari.jpg",
+      "Price": "200"
+    },
+    {
+      "id": 3,
+      "type": "cultural",
+      "location": "Kyoto, JAPAN",
+      "image": "./public/images/kyoto-temple.jpg",
+      "Price": "120"
+    },
+    {
+      "id": 4,
+      "type": "relaxation",
+      "location": "Bali, INDONESIA",
+      "image": "./public/images/bali-beach.jpg",
+      "Price": "180"
+    },
+    {
+      "id": 5,
+      "type": "sightseeing",
+      "location": "Rome, ITALY",
+      "image": "./public/images/colosseum.jpg",
+      "Price": "140"
+    },
+    {
+      "id": 6,
+      "type": "adventure",
+      "location": "Queenstown, NEW ZEALAND",
+      "image": "./public/images/bungee.jpg",
+      "Price": "250"
+    },
+    {
+      "id": 7,
+      "type": "cultural",
+      "location": "Varanasi, INDIA",
+      "image": "./public/images/ghats.jpg",
+      "Price": "100"
+    },
+    {
+      "id": 8,
+      "type": "relaxation",
+      "location": "Maldives",
+      "image": "./public/images/maldives.jpg",
+      "Price": "300"
+    },
+    {
+      "id": 9,
+      "type": "sightseeing",
+      "location": "London, UK",
+      "image": "./public/images/london-eye.jpg",
+      "Price": "160"
+    },
+    {
+      "id": 10,
+      "type": "adventure",
+      "location": "Cape Town, SOUTH AFRICA",
+      "image": "./public/images/table-mountain.jpg",
+      "Price": "220"
+    },
+    {
+      "id": 11,
+      "type": "cultural",
+      "location": "Cairo, EGYPT",
+      "image": "./public/images/pyramids.jpg",
+      "Price": "130"
+    },
+    {
+      "id": 12,
+      "type": "relaxation",
+      "location": "Santorini, GREECE",
+      "image": "./public/images/santorini.jpg",
+      "Price": "210"
+    },
+    {
+      "id": 13,
+      "type": "sightseeing",
+      "location": "New York, USA",
+      "image": "./public/images/statue-of-liberty.jpg",
+      "Price": "170"
+    },
+    {
+      "id": 14,
+      "type": "adventure",
+      "location": "Banff, CANADA",
+      "image": "./public/images/banff-hiking.jpg",
+      "Price": "240"
+    },
+    {
+      "id": 15,
+      "type": "cultural",
+      "location": "Istanbul, TURKEY",
+      "image": "./public/images/istanbul-mosque.jpg",
+      "Price": "150"
+    }
+  ]

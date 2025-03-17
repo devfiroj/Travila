@@ -1,0 +1,59 @@
+[
+    {
+      "id": 1,
+      "category": "Mountain",
+      "image": "public/images/top.png.png",
+      "tour": 356,
+      "activities": 248
+    },
+    {
+      "id": 2,
+      "category": "Safari",
+      "image": "public/images/top2.png.png",
+      "tour": 356,
+      "activities": 248
+    },
+    {
+      "id": 3,
+      "category": "Desert",
+      "image": "public/images/top3.png.png",
+      "tour": 356,
+      "activities": 248
+    },
+    {
+      "id": 4,
+      "category": "Flower",
+      "image": "public/images/top4.png.png",
+      "tour": 356,
+      "activities": 248
+    },
+    {
+      "id": 5,
+      "category": "Beach",
+      "image": "public/images/top5.png.png",
+      "tour": 356,
+      "activities": 248
+    },
+    {
+      "id": 6,
+      "category": "Temples",
+      "image": "public/images/top6.png.png",
+      "tour": 356,
+      "activities": 248
+    },
+    {
+      "id": 7,
+      "category": "Yatch",
+      "image": "public/images/top7.png.png",
+      "tour": 356,
+      "activities": 248
+    },
+    {
+      "id": 8,
+      "category": "Valley",
+      "image": "public/images/top7.png (1).png",
+      "tour": 356,
+      "activities": 248
+    }
+  ]
+  

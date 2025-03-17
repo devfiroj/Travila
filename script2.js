@@ -434,8 +434,6 @@ toursForm.addEventListener("submit",async function(e){
     });
   }
   
-  
-  
   //
   function parseDate(dateStr) {
     const [day, month, year] = dateStr.split("/").map(Number);
@@ -488,6 +486,125 @@ toursForm.addEventListener("submit",async function(e){
   }
 
 
+// Tikets Form
+
+ticketsForm.addEventListener("submit",async function(e){
+    e.preventDefault();
+    try {
+        //clear previous result
+        resultsContainer.innerHTML = '';
+
+        // Get location value
+        const fromLocation = document.querySelector("#ticketsFromLoc").value;
+        const toLocation = document.querySelector("#ticketsToLoc").value;
+        //console.log(location);
+        try {
+          const response = await fetch('./jsonFiles/tickets.json');
+          if (!response.ok) {
+            throw new Error(`Failed to fetch tickets jsonFile`);
+          }
+          const ticketsData = await response.json();
+          console.log(ticketsData);
+          
+          let locFilteredTickets= ticketsData?.filter(item =>
+           item.from===fromLocation && item.to===toLocation
+          );
+          if(locFilteredTickets.length===0){
+            renderNoResult();
+          }
+          else{
+            // Add heading
+            const heading = document.createElement('h2');
+            heading.textContent = `Tickets from ${fromLocation} to ${toLocation}`;
+            heading.className = 'text-2xl font-bold mb-8';
+            resultsContainer.appendChild(heading);
+            // Create results grid with your specific layout
+            const resultsGrid = document.createElement('section');
+            resultsGrid.className = 'flex justify-center flex-wrap items-center sm:w-[100%] lg:w-[75%] gap-6 mb-20';
+            // Render cards based on current category
+            locFilteredTickets.forEach(item => {
+            let card;
+            card = renderTicketCard(item);
+            resultsGrid.appendChild(card);
+            });
+            resultsContainer.appendChild(resultsGrid);
+    
+            // Scroll to results
+            resultsContainer.scrollIntoView({ behavior: 'smooth' });
+          }
+    
+        } catch (error) {
+          console.error("Error fetching data:", error);
+          // If JSON fetch fails, just show a simple alert
+          alert(`Searching for ${currentCategory} in ${location}`);
+        }
+      } catch (error) {
+        console.error("Search error:", error);
+        alert("An error occurred during search. Please try again.");
+    }
+})  
+
+
+    //render Ticket Card
+
+    function renderTicketCard(flight){
+        console.log("At render ticket");
+
+    const card = document.createElement('article');
+    card.className = 'shadow-lg w-80 rounded-3xl overflow-hidden border-2 border-[#E4E6E8] bg-white hover:scale-105 transform transition';
+    
+    card.innerHTML = `
+      <section class="relative h-52">
+            <figure>
+                <img src="${flight.image}" w-full h-48>
+            </figure>
+            <!-- Heart icon -->
+            <button class="absolute top-3 right-3 bg-white p-2 rounded-full shadow-md">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                </svg>
+            </button>
+        </section>
+        <!-- Details Section -->
+        <section class="p-4 pt-6 bg-white rounded-t-3xl -translate-y-4 gap-2">
+            <div class="text-md text-gray-600 flex justify-between">
+                <span>${flight.time}</span>
+                <span>${flight.time}</span>
+            </div>
+            <div class="flex items-center space-x-2 mt-2">
+                <span class="font-semibold text-gray-800 text-xl">${flight.from}</span>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-gray-600">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 15.75L15.75 8.25m0 0H8.25m7.5 0v7.5" />
+                </svg>
+                <span class="font-semibold text-gray-800 text-xl">${flight.to}</span>
+            </div>
+            <div class="flex justify-between">
+                <div>
+                    <p class="text-gray-500 text-sm mt-2">Business</p>
+                    <p class="mt-2 font-bold text-lg">$${flight.bPrice}</p>
+                </div>
+                <div>
+                    <p class="text-gray-500 text-sm mt-2">Economy</p>
+                    <p class="mt-2 font-bold text-lg">$${flight.ePrice}</p>
+                </div>
+            </div>
+            <div class="flex justify-between items-center">
+                <p class="text-gray-600 mt-1">18 Seats left</p>
+                <button aria-label="Book Now" class="mt-4 bg-[#F2F4F6] border-[#E4E6E8] border-2 text-black text-semibold px-4 py-2 rounded-2xl transition-all duration-300 hover:border-black hover:bg-white hover:text-black hover:scale-105 w-fit">Book Now</button>
+            </div>
+        </section>
+    `;
+    
+    return card;
+    }
+
+
+
+
+
+
+
+//Top Searched Destination
   async function renderTopSearchedDestination(){
     const topSearchDestinationContainer = document.querySelector("#topSearchedDestination");
 
@@ -553,4 +670,236 @@ toursForm.addEventListener("submit",async function(e){
     }
     renderTopSearchedDestination();
 
+
+
+    //Filter Section
+
+
+  const categorySelect = document.getElementById("oftCategories");
+  const durationSelect = document.getElementById("oftDuration");
+  const ratingSelect = document.getElementById("oftRatings");
+  const priceSelect = document.getElementById("oftPrice");
+  const tourContainer = document.getElementById("oftResultContainer");
+
+  let toursData = [];
+
+  // Fetch tour data from JSON file
+  fetch("./jsonFiles/tours.json")
+    .then((response) => response.json())
+    .then((data) => {
+      toursData = data;
+      displayTours(toursData);
+    })
+    .catch((error) => console.error("Error loading tour data:", error));
+
+
+    function displayTours(filteredTours) {
+        tourContainer.innerHTML = "";
+        
+        if (filteredTours.length === 0) {
+          tourContainer.innerHTML = "<p>No tours found.</p>";
+          return;
+        }
+        filteredTours.forEach((tour) => {
+            let card;
+            //call render tours
+            card= renderTourCard(tour);
+            tourContainer.appendChild(card);
+            
+        })
+    } 
+    
+    
+    function filterTours() {
+        let filtered = toursData.filter((tour) => {
+          const matchesCategory = categorySelect.value === "Categories" || tour.category === categorySelect.value;
+          const matchesDuration = durationSelect.value === "Duration" || tour.duration.includes(durationSelect.value);
+          const matchesRating = ratingSelect.value === "Review/Rating" || Math.floor(tour.rating) == ratingSelect.value;
+          const matchesPrice = priceSelect.value === "Price Range" || tour.price <= parseFloat(priceSelect.value);
+          
+          return matchesCategory && matchesDuration && matchesRating && matchesPrice;
+        });
+        displayTours(filtered);
+    }
+
+    categorySelect.addEventListener("change", filterTours);
+    durationSelect.addEventListener("change", filterTours);
+    ratingSelect.addEventListener("change", filterTours);
+    priceSelect.addEventListener("change", filterTours);
+
+
+
+
+    // Top Categories Of Tours
+
+
+    // document.getElementById("tctViewMore").addEventListener("click", async function () {
+    //     const response = await fetch("./jsonFiles/topCategoriesOfTours.json");
+    //     const categories = await response.json();
+    //     const container = document.getElementById("tctResultContainer");
+        
+    //     categories.forEach(category => {
+    //         const card = document.createElement("article");
+    //         card.className = "bg-white rounded-xl shadow-md overflow-hidden p-3 border-[#E4E6E8] border-[1px] hover:scale-105 transition w-40 md:w-auto opacity-0 transition-opacity duration-500";
+            
+    //         card.innerHTML = `
+    //             <img src="${category.image}" alt="${category.category}" class="w-full h-20 object-cover rounded-xl">
+    //             <h3 class="text-lg font-semibold">${category.category}</h3>
+    //             <section class="flex justify-between items-center">
+    //                 <p class="text-gray-500 text-xs">${category.tour} Tours, ${category.activities} Activities</p>
+    //                 <button aria-label="Right Arrow" class="w-4 h-4 bg-gray-100 flex justify-center items-center rounded-full hover:bg-gray-200 cursor-pointer">
+    //                     <img src="./public/Icon/rightArrow.svg" alt="rightArrow">
+    //                 </button>
+    //             </section>
+    //         `;
+            
+    //         container.appendChild(card);
+    //         setTimeout(() => {
+    //             card.classList.remove("opacity-0");
+    //         }, 100);
+    //     });
+    //     this.innerHTML="View Less"
+    //     //this.style.display = "none"; // Hide the button after loading more cards
+    // });
+
+  const viewMoreBtn = document.getElementById("tctViewMore");
+  const resultContainer = document.getElementById("tctResultContainer");
+  let isExpanded = false;
+  let extraCards = [];
+
+  async function fetchCategories() {
+    try {
+      const response = await fetch("./jsonFiles/topCategoriesOfTours.json");
+      if (!response.ok) throw new Error("Failed to load categories");
+      return await response.json();
+    } catch (error) {
+      console.error(error);
+      return [];
+    }
+  }
+
+  function createCategoryCard(category) {
+    const card = document.createElement("article");
+    card.className =
+      "bg-white rounded-xl shadow-md overflow-hidden p-3 border-[#E4E6E8] border-[1px] hover:scale-105 transition w-40 md:w-auto opacity-0";
+    card.innerHTML = `
+      <img src="${category.image}" alt="${category.category}" class="w-full h-20 object-cover rounded-xl">
+      <h3 class="text-lg font-semibold">${category.category}</h3>
+      <section class="flex justify-between items-center">
+        <p class="text-gray-500 text-xs">${category.tour} Tours, ${category.activities} Activities</p>
+        <button aria-label="Right Arrow" class="w-4 h-4 bg-gray-100 flex justify-center items-center rounded-full hover:bg-gray-200 cursor-pointer">
+          <img src="./public/Icon/rightArrow.svg" alt="rightArrow">
+        </button>
+      </section>
+    `;
+    return card;
+  }
+
+  async function toggleCategories() {
+    if (!isExpanded) {
+      // Fetch and show additional categories
+      const categories = await fetchCategories();
+      extraCards = categories.map(createCategoryCard);
+      extraCards.forEach((card) => resultContainer.appendChild(card));
+
+      // Apply fade-in effect
+      setTimeout(() => {
+        extraCards.forEach((card) => (card.style.opacity = "1"));
+      }, 50);
+
+      viewMoreBtn.innerHTML = `View Less
+            <img src="./public/Icon/whiteRightArrow.svg" alt="white right arrow icon">`;
+    } else {
+      // Remove added cards with fade-out effect
+      extraCards.forEach((card) => {
+        card.style.opacity = "0";
+        setTimeout(() => card.remove(), 300);
+      });
+      extraCards = [];
+
+      viewMoreBtn.innerHTML = `View More
+            <img src="./public/Icon/whiteRightArrow.svg" alt="white right arrow icon">`;
+    }
+
+    isExpanded = !isExpanded;
+  }
+
+  viewMoreBtn.addEventListener("click", toggleCategories);
+
+
+
+
+  //Trending Destination
+
+  async function renderTrendingDestination() {
+    const container = document.getElementById("tdResultContainer");
+    container.innerHTML = "";
+    const response = await fetch("./jsonFiles/trendingDestination.json");
+    const destinations = await response.json();
+
+    if (destinations.length === 0) return;
+
+    // Featured promotional card
+    const promo = destinations[0];
+    const promoCard = document.createElement("article");
+    promoCard.className = "relative sm:col-span-2 lg:col-span-2 hover:scale-105 transition";
+    promoCard.innerHTML = `
+        <figure><img src="${promo.image}" alt="${promo.location}" class="w-full h-64 object-cover rounded-lg"></figure>
+        <div class="absolute top-3 right-3 bg-white text-sm px-3 py-1 rounded-full shadow-md">
+            <span class="font-semibold">${promo.promotions || 0} promotions</span>
+        </div>
+        <section class="hidden md:block md:absolute md:bottom-3 md:right-3 md:bg-white md:text-sm md:px-3 md:py-1 md:rounded shadow-md">
+            <span class="text-gray-700">Promotion will end in</span>
+            <div id="promo-timer" class="flex space-x-1 text-black font-bold"></div>
+        </section>
+        <article class="absolute bottom-3 left-3 bg-white p-3 rounded-lg shadow-md">
+            <h3 class="font-semibold">${promo.location}</h3>
+            <p class="text-gray-500 text-sm">${promo.tour} Tours, ${promo.activities} Activities</p>
+        </article>
+    `;
+    container.appendChild(promoCard);
+
+    // Countdown Timer (Based on endDate)
+    const timerElement = document.getElementById("promo-timer");
+    const endDate = new Date(promo.endDate);
+
+    function updateTimer() {
+        const now = new Date();
+        now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+        let timeRemaining = Math.floor((endDate - now) / 1000);
+
+        if (timeRemaining <= 0) {
+            timerElement.innerHTML = `<span>00</span>:<span>00</span>:<span>00</span>`;
+            return;
+        }
+
+        const hours = String(Math.floor(timeRemaining / 3600)).padStart(2, "0");
+        const minutes = String(Math.floor((timeRemaining % 3600) / 60)).padStart(2, "0");
+        const seconds = String(timeRemaining % 60).padStart(2, "0");
+
+        timerElement.innerHTML = `<span>${hours}</span>:<span>${minutes}</span>:<span>${seconds}</span>`;
+    }
+
+    setInterval(updateTimer, 1000);
+    updateTimer();
+
+    // Other destination cards
+    destinations.slice(1).forEach(dest => {
+        const card = document.createElement("article");
+        card.className = "relative hover:scale-105 transition";
+        card.innerHTML = `
+            <figure><img src="${dest.image}" alt="${dest.location}" class="w-full h-64 object-cover rounded-lg"></figure>
+            <div class="absolute bottom-3 left-3 bg-white p-3 rounded-lg shadow-md">
+                <h3 class="font-semibold">${dest.location}</h3>
+                <p class="text-gray-500 text-sm">${dest.tour} Tours, ${dest.activities} Activities</p>
+            </div>
+        `;
+        container.appendChild(card);
+    });
+}
+
+renderTrendingDestination();
+
+
+  
 })

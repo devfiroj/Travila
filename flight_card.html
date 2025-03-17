@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Card</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="flex items-center justify-center min-h-screen bg-gray-100">
+    <article class="shadow-lg w-80 rounded-3xl overflow-hidden border-2 border-[#E4E6E8] bg-white hover:scale-105 transform transition">
+        <!-- Image Section -->
+        <section class="relative">
+            <figure>
+                <img src="https://www.shutterstock.com/image-photo/statue-liberty-over-scene-new-260nw-1397031029.jpg" alt="Statue of Liberty" class="w-full h-48 object-cover">
+            </figure>
+            <!-- Heart icon -->
+            <button class="absolute top-3 right-3 bg-white p-2 rounded-full shadow-md">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                </svg>
+            </button>
+        </section>
+        <!-- Details Section -->
+        <section class="p-4 pt-6 bg-white rounded-t-3xl -translate-y-4 gap-2">
+            <div class="text-md text-gray-600 flex justify-between">
+                <span>9:00 PM</span>
+                <span>12:00 AM</span>
+            </div>
+            <div class="flex items-center space-x-2 mt-2">
+                <span class="font-semibold text-gray-800 text-xl">Denmark</span>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-gray-600">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 15.75L15.75 8.25m0 0H8.25m7.5 0v7.5" />
+                </svg>
+                <span class="font-semibold text-gray-800 text-xl">New York</span>
+            </div>
+            <div class="flex justify-between">
+                <div>
+                    <p class="text-gray-500 text-sm mt-2">Business</p>
+                    <p class="mt-2 font-bold text-lg">$288.15</p>
+                </div>
+                <div>
+                    <p class="text-gray-500 text-sm mt-2">Economy</p>
+                    <p class="mt-2 font-bold text-lg">$180.10</p>
+                </div>
+            </div>
+            <div class="flex justify-between items-center">
+                <p class="text-gray-600 mt-1">18 Seats left</p>
+                <button aria-label="Book Now" class="mt-4 bg-[#F2F4F6] border-[#E4E6E8] border-2 text-black text-semibold px-4 py-2 rounded-2xl transition-all duration-300 hover:border-black hover:bg-white hover:text-black hover:scale-105 w-fit">Book Now</button>
+            </div>
+        </section>
+    </article>
+</body>
+</html>

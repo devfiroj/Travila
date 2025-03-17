@@ -1,0 +1,83 @@
+[
+    {
+      "id": 1,
+      "name": "Toyota Fortuner",
+      "type": "SUV",
+      "location": "Delhi, INDIA",
+      "image": "./public/images/fortuner.jpg",
+      "Price": "100"
+    },
+    {
+      "id": 2,
+      "name": "Range Rover Velar",
+      "type": "Luxury",
+      "location": "Dubai, UAE",
+      "image": "./public/images/velar.jpg",
+      "Price": "250"
+    },
+    {
+      "id": 3,
+      "name": "Honda City",
+      "type": "Economic",
+      "location": "Paris, FRANCE",
+      "image": "./public/images/city.jpg",
+      "Price": "80"
+    },
+    {
+      "id": 4,
+      "name": "Suzuki Swift",
+      "type": "Hatchback",
+      "location": "Tokyo, JAPAN",
+      "image": "./public/images/swift.jpg",
+      "Price": "60"
+    },
+    {
+      "id": 5,
+      "name": "BMW X7",
+      "type": "Luxury",
+      "location": "Sydney, AUSTRALIA",
+      "image": "./public/images/x7.jpg",
+      "Price": "300"
+    },
+    {
+      "id": 6,
+      "name": "Audi A6",
+      "type": "Luxury",
+      "location": "New York, USA",
+      "image": "./public/images/a6.jpg",
+      "Price": "220"
+    },
+    {
+      "id": 7,
+      "name": "Ford Ecosport",
+      "type": "SUV",
+      "location": "London, UK",
+      "image": "./public/images/ecosport.jpg",
+      "Price": "90"
+    },
+    {
+      "id": 8,
+      "name": "Volkswagen Polo",
+      "type": "Economic",
+      "location": "Berlin, GERMANY",
+      "image": "./public/images/polo.jpg",
+      "Price": "70"
+    },
+    {
+      "id": 9,
+      "name": "Mercedes-Benz S-Class",
+      "type": "Luxury",
+      "location": "Rome, ITALY",
+      "image": "./public/images/sclass.jpg",
+      "Price": "400"
+    },
+    {
+      "id": 10,
+      "name": "Hyundai i20",
+      "type": "Hatchback",
+      "location": "Bangkok, THAILAND",
+      "image": "./public/images/i20.jpg",
+      "Price": "75"
+    }
+  ]
+  

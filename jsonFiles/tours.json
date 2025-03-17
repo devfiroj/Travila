@@ -9,10 +9,11 @@
         },
         "rating": 4.96,
         "reviewCount": 672,
-        "duration": "2 days 3 nights",
+        "duration": "1 days 2 nights",
         "guests": "4-6 guest",
         "price": 48.25,
-        "location": "New York, USA"
+        "location": "New York, USA",
+        "category":"Beach"
       },
       {
         "id": 2,
@@ -22,12 +23,13 @@
           "text": "Best Sale",
           "color": "#3DC262"
         },
-        "rating": 4.96,
+        "rating": 3.96,
         "reviewCount": 672,
         "duration": "2 days 3 nights",
         "guests": "4-6 guest",
         "price": 48.25,
-        "location": "New York, USA"
+        "location": "New York, USA",
+        "category":"Temple"
       },
       {
         "id": 3,
@@ -37,12 +39,13 @@
           "text": "Top Rated",
           "color": "#F09814"
         },
-        "rating": 4.96,
+        "rating": 2.96,
         "reviewCount": 672,
         "duration": "2 days 3 nights",
         "guests": "4-6 guest",
         "price": 48.25,
-        "location": "Arizona, USA"
+        "location": "Arizona, USA",
+        "category":"Safari"
       },
       {
         "id": 4,
@@ -57,7 +60,8 @@
         "duration": "2 days 3 nights",
         "guests": "4-6 guest",
         "price": 48.25,
-        "location": "California, USA"
+        "location": "California, USA",
+        "category":"Beach"
       },
       {
         "id": 5,
@@ -72,7 +76,8 @@
         "duration": "2 days 3 nights",
         "guests": "4-6 guest",
         "price": 48.25,
-        "location": "New York, USA"
+        "location": "New York, USA",
+        "category":"Temple"
       },
       {
         "id": 6,
@@ -87,7 +92,8 @@
         "duration": "2 days 3 nights",
         "guests": "4-6 guest",
         "price": 48.25,
-        "location": "Arizona, USA"
+        "location": "Arizona, USA",
+        "category":"Safari"
       },
       {
         "id": 7,
@@ -102,11 +108,12 @@
         "duration": "1 day",
         "guests": "2-10 guest",
         "price": 65.50,
-        "location": "Tokyo, JAPAN"
+        "location": "Tokyo, JAPAN",
+        "category":"Historic"
       },
       {
         "id": 8,
-        "name": "Mount Fuji Day Trip",
+        "name": "Mount Fuji Mountain Day Trip",
         "image": "/public/images/journey4.png.png",
         "badge": {
           "text": "Best Sale",
@@ -117,11 +124,12 @@
         "duration": "1 day",
         "guests": "4-12 guest",
         "price": 120.75,
-        "location": "Tokyo, JAPAN"
+        "location": "Tokyo, JAPAN",
+        "category":"Safari"
       },
       {
         "id": 9,
-        "name": "Delhi Heritage Walk",
+        "name": "Taj Mahal Heritage Walk Tour",
         "image": "/public/images/journey2.png.png",
         "badge": {
           "text": "Top Rated",
@@ -132,21 +140,7 @@
         "duration": "1 day",
         "guests": "2-8 guest",
         "price": 35.50,
-        "location": "Delhi, INDIA"
-      },
-      {
-        "id": 10,
-        "name": "Taj Mahal Sunrise Tour",
-        "image": "/public/images/journey3.png.png",
-        "badge": {
-          "text": "Best Sale",
-          "color": "#3DC262"
-        },
-        "rating": 4.94,
-        "reviewCount": 756,
-        "duration": "1 day",
-        "guests": "2-15 guest",
-        "price": 85.25,
-        "location": "Delhi, INDIA"
+        "location": "Delhi, INDIA",
+        "category":"Historic"
       }
-    ]
+]
