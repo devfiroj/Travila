@@ -1,0 +1,11 @@
+[
+    { "id": 1, "location": "New York, USA" },
+    { "id": 2, "location": "Los Angeles, USA" },
+    { "id": 3, "location": "California, USA" },
+    { "id": 4, "location": "Dubai, UAE"},
+    { "id": 5, "location": "Tokyo, Japan" },
+    { "id": 6, "location": "Sydney, Australia" },
+    { "id": 7, "location": "Delhi, INDIA" },
+    {"id":8, "location":"Paris, France"}
+]
+  

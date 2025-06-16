@@ -154,7 +154,7 @@
                 const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${API_KEY}`;
                
                 // Check if the text is travel-related
-                const travelKeywords = ["travel", "trip", "tour", "vacation", "holiday", "flight", "hotel", "destination", "sightseeing", "adventure", "transport", "journey", "explore"];
+                const travelKeywords = ["hii","hello","travel", "trip", "tour", "vacation", "holiday", "flight", "hotel", "destination", "sightseeing", "adventure", "transport", "journey", "explore"];
                 const isTravelQuery = travelKeywords.some(keyword => text.toLowerCase().includes(keyword));
             
                 if (!isTravelQuery) {

@@ -88,6 +88,18 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/service-worker.js').then((registration) => {
+      console.log('Service Worker registered with scope:', registration.scope);
+    }).catch((error) => {
+      console.log('Service Worker registration failed:', error);
+    });
+  });
+}
+
+
+//Slides
 let slides=[];
 async function fetchSlides() {
   try{
@@ -178,6 +190,8 @@ const rentalForm = document.getElementById("rentalForm");
 const activitiesForm = document.getElementById("activitiesForm");
 
 setupDateInputs(currentCategory);
+
+
 categoryButtons.forEach(button => {
   button.addEventListener("click", () => {
     resultsContainer.innerHTML = '';
@@ -239,6 +253,43 @@ function setupDateInputs(currentCategory) {
     }
     
 }
+
+
+//setup Location
+async function setupLocation() {
+  const toursLoc = document.querySelector("#toursLocation");
+  const hotelsLoc = document.querySelector("#hotelsLocation");
+  const ticketsFromLoc = document.querySelector("#ticketsFromLoc");
+  const ticketsToLoc = document.querySelector("#ticketsToLoc");
+  const rentalLoc = document.querySelector("#pickUpLoc");
+  const activitiesLoc = document.querySelector("#activitiesLoc");
+
+  try {
+      const response = await fetch('./jsonFiles/locations.json'); // Make sure the path is correct
+      if (!response.ok) {
+          throw new Error("Failed to fetch locations.");
+      }
+      
+      const locations = await response.json(); // Await the JSON parsing
+      console.log(locations);
+
+      const optionsHTML = locations.map(option => `<option value="${option.location}">${option.location}</option>`).join("");
+
+      // Populate all dropdowns
+      [toursLoc, hotelsLoc, ticketsFromLoc, ticketsToLoc, rentalLoc, activitiesLoc].forEach(dropdown => {
+          if (dropdown) dropdown.innerHTML = optionsHTML;
+      });
+
+  } catch (error) {
+      console.error("Error loading locations:", error);
+  }
+}
+
+// Call the function after DOM loads
+setupLocation();
+
+
+setupLocation();
 
 toursForm.addEventListener("submit",async function(e){
     e.preventDefault();
@@ -404,7 +455,6 @@ toursForm.addEventListener("submit",async function(e){
             // Scroll to results
             resultsContainer.scrollIntoView({ behavior: 'smooth' });
           }
-    
         } catch (error) {
           console.error("Error fetching data:", error);
           // If JSON fetch fails, just show a simple alert
@@ -571,11 +621,21 @@ ticketsForm.addEventListener("submit",async function(e){
                 <span>${flight.time}</span>
                 <span>${flight.time}</span>
             </div>
-            <div class="flex items-center space-x-2 mt-2">
+            <div class="flex items-center justify-between mt-2">
                 <span class="font-semibold text-gray-800 text-xl">${flight.from}</span>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-gray-600">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 15.75L15.75 8.25m0 0H8.25m7.5 0v7.5" />
-                </svg>
+                <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g clip-path="url(#clip0_1_11956)">
+                    <path d="M19.6602 5L21.6602 7M21.6602 7L19.6602 9M21.6602 7H7.66016" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M5.66016 19L3.66016 17M3.66016 17L5.66016 15M3.66016 17H17.6602" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M3.66016 11C3.66016 8.79086 5.45102 7 7.66016 7" stroke="black" stroke-width="1.5" stroke-linecap="round"/>
+                    <path d="M21.6602 13C21.6602 15.2091 19.8693 17 17.6602 17" stroke="black" stroke-width="1.5" stroke-linecap="round"/>
+                    </g>
+                    <defs>
+                    <clipPath id="clip0_1_11956">
+                    <rect width="24" height="24" fill="white" transform="translate(0.660156)"/>
+                    </clipPath>
+                    </defs>
+                  </svg>
                 <span class="font-semibold text-gray-800 text-xl">${flight.to}</span>
             </div>
             <div class="flex justify-between">
@@ -901,5 +961,107 @@ ticketsForm.addEventListener("submit",async function(e){
 renderTrendingDestination();
 
 
+
+//Get Inspiration
+
+fetch('./jsonFiles/inspiration.json')
+.then(response => response.json())
+.then(articles => {
+  const articlesContainer = document.getElementById('articles-container');
+  
+  // Generate article cards
+  articles.forEach(article => {
+    const articleCard = createArticleCard(article);
+    articlesContainer.appendChild(articleCard);
+  });
+  
+  // Set up scroll functionality
+  const scrollLeftBtn = document.getElementById('scroll-left');
+  const scrollRightBtn = document.getElementById('scroll-right');
+  const cardWidth = 320; // Approximate width of a card + gap
+  
+  scrollLeftBtn.addEventListener('click', () => {
+    articlesContainer.scrollBy({
+      left: -cardWidth,
+      behavior: 'smooth'
+    });
+  });
+  
+  scrollRightBtn.addEventListener('click', () => {
+    articlesContainer.scrollBy({
+      left: cardWidth,
+      behavior: 'smooth'
+    });
+  });
+})
+.catch(error => console.error('Error loading articles:', error));
+
+//
+  // Function to create an article card
+  function createArticleCard(article) {
+    const card = document.createElement('article');
+    card.className = 'shadow-lg w-[300px] flex-shrink-0 rounded-3xl overflow-hidden border-2 border-[#E4E6E8] bg-white hover:scale-105 transition';
+    
+    card.innerHTML = `
+      <section class="relative">
+        <figure><img src="${article.image}" alt="${article.title}" class="w-full h-48 object-cover"></figure>
+        <span class="absolute top-2 left-2 bg-white px-3 py-1 text-xs font-semibold rounded-lg">${article.category}</span>
+        <button aria-label="Wishlist" class="absolute top-2 right-2 bg-white p-1 rounded-full shadow-md">
+          <img src="./public/Icon/love.svg" alt="love icon">
+        </button>
+      </section>
+      <article class="p-4 pt-6 bg-white rounded-t-3xl -translate-y-4 gap-2">
+        <p class="text-xs flex items-center">
+          <img src="./public/Icon/calender.svg" alt="calender icon">
+          ${article.date} &nbsp; &nbsp;
+          <img src="./public/Icon/duration.svg" alt="duration icon">
+          ${article.readTime} &nbsp; &nbsp;
+          <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_1_7340)">
+            <mask id="mask0_1_7340" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="17" height="17">
+            <path d="M16.8604 0.0898438H0.860352V16.0898H16.8604V0.0898438Z" fill="white"/>
+            </mask>
+            <g mask="url(#mask0_1_7340)">
+            <path d="M8.86035 14.0898C12.1741 14.0898 14.8604 11.4035 14.8604 8.08984C14.8604 4.77613 12.1741 2.08984 8.86035 2.08984C5.54664 2.08984 2.86035 4.77613 2.86035 8.08984C2.86035 9.08159 3.10097 10.0172 3.52702 10.8413L2.86035 14.0898L6.10888 13.4231C6.93304 13.8492 7.8686 14.0898 8.86035 14.0898Z" stroke="#8E8E8E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M5.86702 8.08984H5.86035V8.09651H5.86702V8.08984Z" stroke="#8E8E8E" stroke-width="2.25" stroke-linejoin="round"/>
+            <path d="M8.86702 8.08984H8.86035V8.09651H8.86702V8.08984Z" stroke="#8E8E8E" stroke-width="2.25" stroke-linejoin="round"/>
+            <path d="M11.867 8.08984H11.8604V8.09651H11.867V8.08984Z" stroke="#8E8E8E" stroke-width="2.25" stroke-linejoin="round"/>
+            </g>
+            </g>
+            <defs>
+            <clipPath id="clip0_1_7340">
+            <rect width="16" height="16" fill="white" transform="translate(0.860352 0.0898438)"/>
+            </clipPath>
+            </defs>
+          </svg>
+          ${article.comments} comments
+        </p>
+        <h3 class="text-lg font-semibold my-2">${article.title}</h3>  
+        <section class="flex justify-between items-center gap-1.5">
+          <section class="flex justify-center items-center gap-2">
+            <img src="${article.authorImage}" alt="${article.author} image">
+            <span class="text-sm font-normal">${article.author}</span>
+          </section>
+          
+          <button aria-label="Keep Reading" class="mt-2 text-sm bg-[#F2F4F6] border-[#E4E6E8] border-2 text-black p-2 rounded-2xl transition-all duration-300 hover:border-black hover:bg-white hover:text-black hover:border-[2px] hover:scale-105">Keep Reading</button>
+        </section>
+      </article>
+    `;
+    
+    return card;
+  }
+
+  document.getElementById("emailSubmitForm").addEventListener("submit", function(event) {
+    event.preventDefault(); // Prevents form submission
+    let button = document.getElementById("emailSubmitBtn");
+    button.value = "Subscribed!"; // Change button text
+    
+    setTimeout(() => {
+        button.value = "Subscribe"; // Revert back after 2 sec
+    }, 2000);
+
+  });
+
+  
   
 })

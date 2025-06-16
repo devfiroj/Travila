@@ -1,10 +1,23 @@
-
-
 [
-    {
-      "id": 1,
-      "name": "Motto by Hilton New York",
-      "image": "/public/images/hotel1.jpg",
+  {
+    "id": 1,
+    "name": "Motto by Hilton New York",
+    "image": "/public/images/hotel3.jpg",
+    "badge": {
+      "text": "Luxory",
+      "color": "#F09814"
+    },
+    "rating": 4.96,
+    "reviewCount": 672,
+    "bookings":[["16/03/2025","20/03/2025"],["25/03/2025","30/03/2025"]],
+    "amenities":["wifi","breakfast","lounge"],
+    "price": 48.25,
+    "location": "New York, USA"
+  },
+  {
+      "id": 2,
+      "name": "Moxy NYC Times Square",
+      "image": "/public/images/hotel7.jpg",
       "badge": {
         "text": "Luxory",
         "color": "#F09814"
@@ -15,36 +28,307 @@
       "amenities":["wifi","breakfast","lounge"],
       "price": 48.25,
       "location": "New York, USA"
+  },
+  {
+      "id": 3,
+      "name": "Moxy NYC Times Square",
+      "image": "/public/images/hotel1.jpg",
+      "badge": {
+        "text": "Wifi",
+        "color": "#F09814"
+      },
+      "rating": 4.96,
+      "reviewCount": 672,
+      "bookings":[["16/03/2025","20/03/2025"],["25/03/2025","30/03/2025"]],
+      "amenities":["wifi","breakfast","lounge"],
+      "price": 48.25,
+      "location": "New York, USA"
+  },
+  {
+    "id": 4,
+    "name": "Moxy Times Square",
+    "image": "/public/images/hotel9.jpg",
+    "badge": {
+      "text": "Wifi",
+      "color": "#F09814"
     },
-    {
-        "id": 2,
-        "name": "Moxy NYC Times Square",
-        "image": "/public/images/hotel2.jpg",
-        "badge": {
-          "text": "Luxory",
-          "color": "#F09814"
-        },
-        "rating": 4.96,
-        "reviewCount": 672,
-        "bookings":[["16/03/2025","20/03/2025"],["25/03/2025","30/03/2025"]],
-        "amenities":["wifi","breakfast","lounge"],
-        "price": 48.25,
-        "location": "New York, USA"
+    "rating": 4.96,
+    "reviewCount": 672,
+    "bookings":[["16/03/2025","20/03/2025"],["25/03/2025","30/03/2025"]],
+    "amenities":["wifi","breakfast","lounge"],
+    "price": 48.25,
+    "location": "Dubai, UAE"
+},
+  
+  {
+    "id": 101,
+    "name": "Beverly Hills Hotel",
+    "image": "/public/images/hotel2.jpg",
+    "badge": {
+      "text": "Premium",
+      "color": "#E44D26"
     },
-    {
-        "id": 3,
-        "name": "Moxy NYC Times Square",
-        "image": "/public/images/hotel3.jpg",
-        "badge": {
-          "text": "Wifi",
-          "color": "#F09814"
-        },
-        "rating": 4.96,
-        "reviewCount": 672,
-        "bookings":[["16/03/2025","20/03/2025"],["25/03/2025","30/03/2025"]],
-        "amenities":["wifi","breakfast","lounge"],
-        "price": 48.25,
-        "location": "New York, USA"
-    }
-    
-]    
+    "rating": 4.92,
+    "reviewCount": 845,
+    "bookings": [["10/04/2025", "15/04/2025"], ["22/04/2025", "28/04/2025"]],
+    "amenities": ["wifi", "pool", "spa", "gym"],
+    "price": 325.00,
+    "location": "Los Angeles, USA"
+  },
+  {
+    "id": 102,
+    "name": "Sunset Boulevard Inn",
+    "image": "/public/images/hotel5.jpg",
+    "badge": {
+      "text": "Popular",
+      "color": "#4CAF50"
+    },
+    "rating": 4.7,
+    "reviewCount": 523,
+    "bookings": [["05/03/2025", "12/03/2025"], ["18/03/2025", "22/03/2025"]],
+    "amenities": ["wifi", "breakfast", "pool"],
+    "price": 189.50,
+    "location": "Los Angeles, USA"
+  },
+  {
+    "id": 103,
+    "name": "Hollywood Heights Resort",
+    "image": "/public/images/hotel8.jpg",
+    "badge": {
+      "text": "Views",
+      "color": "#2196F3"
+    },
+    "rating": 4.85,
+    "reviewCount": 612,
+    "bookings": [["01/05/2025", "07/05/2025"], ["15/05/2025", "20/05/2025"]],
+    "amenities": ["wifi", "restaurant", "bar", "gym"],
+    "price": 275.75,
+    "location": "Los Angeles, USA"
+  },
+  {
+    "id": 201,
+    "name": "San Francisco Bay Hotel",
+    "image": "/public/images/hotel4.jpg",
+    "badge": {
+      "text": "Bay View",
+      "color": "#3F51B5"
+    },
+    "rating": 4.88,
+    "reviewCount": 729,
+    "bookings": [["03/04/2025", "10/04/2025"], ["20/04/2025", "25/04/2025"]],
+    "amenities": ["wifi", "breakfast", "parking", "business center"],
+    "price": 295.00,
+    "location": "California, USA"
+  },
+  {
+    "id": 202,
+    "name": "Napa Valley Retreat",
+    "image": "/public/images/hotel10.jpg",
+    "badge": {
+      "text": "Vineyard",
+      "color": "#8BC34A"
+    },
+    "rating": 4.95,
+    "reviewCount": 512,
+    "bookings": [["12/03/2025", "18/03/2025"], ["25/03/2025", "30/03/2025"]],
+    "amenities": ["wifi", "spa", "wine tours", "gourmet dining"],
+    "price": 450.00,
+    "location": "California, USA"
+  },
+  {
+    "id": 203,
+    "name": "Santa Monica Beachfront",
+    "image": "/public/images/hotel6.jpg",
+    "badge": {
+      "text": "Beachside",
+      "color": "#00BCD4"
+    },
+    "rating": 4.82,
+    "reviewCount": 678,
+    "bookings": [["05/05/2025", "12/05/2025"], ["20/05/2025", "25/05/2025"]],
+    "amenities": ["wifi", "pool", "beach access", "restaurant"],
+    "price": 320.50,
+    "location": "California, USA"
+  },
+  
+  {
+    "id": 301,
+    "name": "Palm Jumeirah Resort",
+    "image": "/public/images/hotel3.jpg",
+    "badge": {
+      "text": "Exclusive",
+      "color": "#9C27B0"
+    },
+    "rating": 4.98,
+    "reviewCount": 892,
+    "bookings": [["10/03/2025", "20/03/2025"], ["01/04/2025", "10/04/2025"]],
+    "amenities": ["wifi", "private beach", "spa", "multiple restaurants"],
+    "price": 850.00,
+    "location": "Dubai, UAE"
+  },
+  {
+    "id": 401,
+    "name": "Shinjuku Grand Hotel",
+    "image": "/public/images/hotel1.jpg",
+    "badge": {
+      "text": "Central",
+      "color": "#FF5722"
+    },
+    "rating": 4.87,
+    "reviewCount": 1024,
+    "bookings": [["05/04/2025", "12/04/2025"], ["20/04/2025", "28/04/2025"]],
+    "amenities": ["wifi", "onsen", "restaurant", "concierge"],
+    "price": 275.00,
+    "location": "Tokyo, Japan"
+  },
+  {
+    "id": 402,
+    "name": "Tokyo Bay Suites",
+    "image": "/public/images/hotel7.jpg",
+    "badge": {
+      "text": "Bay View",
+      "color": "#03A9F4"
+    },
+    "rating": 4.92,
+    "reviewCount": 876,
+    "bookings": [["15/03/2025", "22/03/2025"], ["01/04/2025", "08/04/2025"]],
+    "amenities": ["wifi", "breakfast", "gym", "bar"],
+    "price": 320.00,
+    "location": "Tokyo, Japan"
+  },
+  {
+    "id": 403,
+    "name": "Asakusa Traditional Inn",
+    "image": "/public/images/hotel5.jpg",
+    "badge": {
+      "text": "Cultural",
+      "color": "#795548"
+    },
+    "rating": 4.89,
+    "reviewCount": 742,
+    "bookings": [["10/05/2025", "15/05/2025"], ["25/05/2025", "01/06/2025"]],
+    "amenities": ["wifi", "traditional breakfast", "tea ceremony", "yukata rental"],
+    "price": 195.00,
+    "location": "Tokyo, Japan"
+  },
+  {
+    "id": 501,
+    "name": "Sydney Harbour View Hotel",
+    "image": "/public/images/hotel8.jpg",
+    "badge": {
+      "text": "Harbour View",
+      "color": "#009688"
+    },
+    "rating": 4.91,
+    "reviewCount": 823,
+    "bookings": [["12/03/2025", "20/03/2025"], ["05/04/2025", "15/04/2025"]],
+    "amenities": ["wifi", "pool", "restaurant", "concierge"],
+    "price": 310.00,
+    "location": "Sydney, Australia"
+  },
+  {
+    "id": 502,
+    "name": "Bondi Beach Resort",
+    "image": "/public/images/hotel4.jpg",
+    "badge": {
+      "text": "Beachfront",
+      "color": "#00BCD4"
+    },
+    "rating": 4.85,
+    "reviewCount": 756,
+    "bookings": [["01/04/2025", "10/04/2025"], ["20/04/2025", "30/04/2025"]],
+    "amenities": ["wifi", "beach access", "surf lessons", "bar"],
+    "price": 275.50,
+    "location": "Sydney, Australia"
+  },
+  {
+    "id": 503,
+    "name": "Sydney CBD Luxury Apartments",
+    "image": "/public/images/hotel10.jpg",
+    "badge": {
+      "text": "Central",
+      "color": "#673AB7"
+    },
+    "rating": 4.89,
+    "reviewCount": 692,
+    "bookings": [["15/05/2025", "25/05/2025"], ["10/06/2025", "20/06/2025"]],
+    "amenities": ["wifi", "kitchen", "laundry", "gym access"],
+    "price": 225.00,
+    "location": "Sydney, Australia"
+  },
+  {
+    "id": 601,
+    "name": "The Imperial Delhi",
+    "image": "/public/images/hotel2.jpg",
+    "badge": {
+      "text": "Heritage",
+      "color": "#FFC107"
+    },
+    "rating": 4.93,
+    "reviewCount": 845,
+    "bookings": [["10/03/2025", "20/03/2025"], ["05/04/2025", "15/04/2025"]],
+    "amenities": ["wifi", "spa", "multiple restaurants", "colonial architecture"],
+    "price": 280.00,
+    "location": "Delhi, India"
+  },
+  {
+    "id": 602,
+    "name": "Connaught Place Hotel",
+    "image": "/public/images/hotel6.jpg",
+    "badge": {
+      "text": "Central",
+      "color": "#E91E63"
+    },
+    "rating": 4.78,
+    "reviewCount": 723,
+    "bookings": [["01/04/2025", "08/04/2025"], ["15/04/2025", "22/04/2025"]],
+    "amenities": ["wifi", "breakfast", "business center", "rooftop restaurant"],
+    "price": 150.00,
+    "location": "Delhi, India"
+  },
+  {
+    "id": 603,
+    "name": "South Delhi Luxury Suites",
+    "image": "/public/images/hotel9.jpg",
+    "badge": {
+      "text": "Exclusive",
+      "color": "#9C27B0"
+    },
+    "rating": 4.85,
+    "reviewCount": 612,
+    "bookings": [["20/05/2025", "30/05/2025"], ["10/06/2025", "20/06/2025"]],
+    "amenities": ["wifi", "pool", "gym", "butler service"],
+    "price": 220.00,
+    "location": "Delhi, India"
+  },
+  {
+    "id": 701,
+    "name": "Eiffel View Hotel",
+    "image": "/public/images/hotel3.jpg",
+    "badge": {
+      "text": "Iconic View",
+      "color": "#3F51B5"
+    },
+    "rating": 4.95,
+    "reviewCount": 1245,
+    "bookings": [["15/03/2025", "22/03/2025"], ["10/04/2025", "20/04/2025"]],
+    "amenities": ["wifi", "breakfast", "concierge", "rooftop terrace"],
+    "price": 450.00,
+    "location": "Paris, France"
+  },
+  {
+    "id": 702,
+    "name": "Le Marais Boutique Hotel",
+    "image": "/public/images/hotel8.jpg",
+    "badge": {
+      "text": "Boutique",
+      "color": "#FF4081"
+    },
+    "rating": 4.87,
+    "reviewCount": 876,
+    "bookings": [["01/04/2025", "10/04/2025"], ["20/04/2025", "30/04/2025"]],
+    "amenities": ["wifi", "artisanal breakfast", "wine cellar", "art collection"],
+    "price": 325.00,
+    "location": "Paris, France"
+  }
+]

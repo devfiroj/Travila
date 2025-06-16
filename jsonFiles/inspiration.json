@@ -1,0 +1,68 @@
+[
+    {
+      "id": 1,
+      "category": "Culture",
+      "image": "/public/images/news.png.png",
+      "date": "18 Sep 2024",
+      "readTime": "6 mins",
+      "comments": 38,
+      "title": "Ultimate Travel Planning Guide: 10 Tips for a Seamless Journey",
+      "author": "Jimmy Dave",
+      "authorImage": "./public/images/avatar.png (1).png"
+    },
+    {
+      "id": 2,
+      "category": "Travel",
+      "image": "/public/images/news2.png.png",
+      "date": "18 Sep 2024",
+      "readTime": "6 mins",
+      "comments": 38,
+      "title": "Top 10 Travel Hacks for Budget-Conscious Adventurers",
+      "author": "Jimmy Dave",
+      "authorImage": "./public/images/avatar.png (1).png"
+    },
+    {
+      "id": 3,
+      "category": "Discovery",
+      "image": "/public/images/news3.png.png",
+      "date": "18 Sep 2024",
+      "readTime": "6 mins",
+      "comments": 38,
+      "title": "Discovering Hidden Gems: 10 Off-the-Beaten-Path Travel Tips",
+      "author": "Jimmy Dave",
+      "authorImage": "./public/images/avatar.png (1).png"
+    },
+    {
+      "id": 4,
+      "category": "Adventure",
+      "image": "/public/images/news.png.png",
+      "date": "20 Sep 2024",
+      "readTime": "8 mins",
+      "comments": 42,
+      "title": "Extreme Adventure Travel: Pushing Your Boundaries Safely",
+      "author": "Jimmy Dave",
+      "authorImage": "./public/images/avatar.png (1).png"
+    },
+    {
+      "id": 5,
+      "category": "Food",
+      "image": "/public/images/news2.png.png",
+      "date": "22 Sep 2024",
+      "readTime": "5 mins",
+      "comments": 27,
+      "title": "Culinary Tourism: Exploring the World Through Food",
+      "author": "Jimmy Dave",
+      "authorImage": "./public/images/avatar.png (1).png"
+    },
+    {
+        "id": 5,
+        "category": "Food",
+        "image": "/public/images/news2.png.png",
+        "date": "22 Sep 2024",
+        "readTime": "5 mins",
+        "comments": 27,
+        "title": "Culinary Tourism: Exploring the World Through Food",
+        "author": "Jimmy Dave",
+        "authorImage": "./public/images/avatar.png (1).png"
+      }
+  ]

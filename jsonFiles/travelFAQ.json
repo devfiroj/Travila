@@ -1,0 +1,42 @@
+[
+    {
+      "id": 1,
+      "question": "How do I book a flight through your website?",
+      "answer": "Booking a flight is easy! Simply use our search tool at the top of the homepage, enter your departure and destination cities, travel dates, and the number of passengers. Browse the available options, select the flight that suits you best, and follow the checkout process. You'll receive a confirmation email once your booking is complete."
+    },
+    {
+      "id": 2,
+      "question": "What is your cancellation policy?",
+      "answer": "Our cancellation policy varies depending on the type of booking and the provider. Generally, flights can be canceled for free within 24 hours of booking if the departure is more than 7 days away. Hotel reservations typically offer free cancellation up to 48 hours before check-in. For specific details, please check the terms and conditions during the booking process or contact our customer support team."
+    },
+    {
+      "id": 3,
+      "question": "Do you offer travel insurance?",
+      "answer": "Yes, we offer comprehensive travel insurance packages to protect your trip. Our insurance options cover trip cancellation, medical emergencies, lost baggage, travel delays, and more. You can add insurance during the booking process, or purchase it separately from your existing reservation through your account dashboard."
+    },
+    {
+      "id": 4,
+      "question": "How can I find the best travel deals?",
+      "answer": "<p>To find the best travel deals, we recommend:</p><ul class='list-disc ml-5 mt-2 space-y-1'><li>Signing up for our newsletter to receive exclusive promotions</li><li>Booking flights 2-3 months in advance for international trips</li><li>Being flexible with your travel dates (midweek flights are often cheaper)</li><li>Using our price alert feature to track fare changes</li><li>Checking our \"Deals\" section regularly for flash sales and seasonal promotions</li></ul>"
+    },
+    {
+      "id": 5,
+      "question": "Do I need a visa for my destination?",
+      "answer": "Visa requirements vary based on your nationality and destination country. While we provide general information about travel requirements, we recommend checking with the embassy or consulate of your destination country for the most up-to-date visa information. You can also use our \"Visa Checker\" tool on our website by entering your passport country and destination to get basic visa requirement information."
+    },
+    {
+      "id": 6,
+      "question": "How can I contact customer support?",
+      "answer": "<p>Our customer support team is available 24/7 through multiple channels:</p><ul class='list-disc ml-5 mt-2 space-y-1'><li>Phone: +1-800-TRAVEL (available 24/7)</li><li>Email: support@travelwebsite.com</li><li>Live Chat: Available on our website and mobile app</li><li>Social Media: Message us on Facebook, Twitter, or Instagram</li></ul><p class='mt-2'>For urgent matters related to current trips, please use our emergency hotline: +1-888-TRIP-HELP.</p>"
+    },
+    {
+      "id": 7,
+      "question": "Can I change my flight dates after booking?",
+      "answer": "Yes, most flights can be changed, though change fees and fare differences may apply. To change your flight dates, log into your account, go to 'My Trips', select the booking you want to modify, and follow the 'Change Flight' prompts. Alternatively, you can contact our customer service team for assistance. Change policies vary by airline and fare type, so it's best to check the specific terms of your booking."
+    },
+    {
+      "id": 8,
+      "question": "What should I do if my flight is delayed or canceled?",
+      "answer": "If your flight is delayed or canceled, please contact us immediately through our 24/7 support line. Our team will help you find alternative flights and accommodations if needed. We also recommend downloading our mobile app for real-time flight updates and rebooking options. Remember to save all receipts for additional expenses as these may be covered by your travel insurance or the airline's compensation policy."
+    }
+  ]
